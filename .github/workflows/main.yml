@@ -1,0 +1,18 @@
+# .github/workflows/pages-deploy.yml
+name: Deploy GitHub Pages from client folder
+on:
+  push:
+    branches: [ main ]  # 监听main分支的提交
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./client  # 关键：指定部署client文件夹
+          publish_branch: gh-pages  # 部署到gh-pages分支（自动创建）
