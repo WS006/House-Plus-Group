@@ -1,6 +1,13 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* House Plus Group - African Solar Commerce Design System
+ * Design Movement: Industrial Precision meets African Energy
+ * Font: Barlow (bold, condensed) + Barlow (body)
+ * Colors: Navy Blue #0f2d5e (trust/authority) + Solar Gold #f59e0b (energy/action)
+ * Layout: Asymmetric, data-dense, B2B-focused
+ */
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -119,6 +126,11 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Barlow', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 800;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
