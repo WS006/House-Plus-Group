@@ -4,15 +4,19 @@
     <meta charset="utf-8">
     <title>House Plus Group</title>
     <script>
-      // SPA redirect for GitHub Pages
-      // This script redirects 404s to the index.html with the path preserved
-      var pathSegmentsToKeep = 1;
+      // GitHub Pages SPA redirect for 404 errors
+      // This preserves the requested path and passes it to the React app
+      var pathSegmentsToKeep = 0;
       var l = window.location;
-      l.replace(
-        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        '/House-Plus-Group/?p=' + l.pathname.slice(0, l.pathname.length - 1).split('/').slice(0, 1 + pathSegmentsToKeep).join('/') +
-        '&q=' + l.search.slice(1)
-      );
+      
+      // Prevent infinite redirect loops
+      if (!l.pathname.includes('/?')) {
+        l.replace(
+          l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+          '/House-Plus-Group/?p=' + l.pathname.slice(0, l.pathname.length - 1).split('/').slice(1 + pathSegmentsToKeep).join('/') +
+          '&q=' + l.search.slice(1)
+        );
+      }
     </script>
   </head>
   <body>
