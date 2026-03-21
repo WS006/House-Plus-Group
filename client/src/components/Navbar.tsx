@@ -70,11 +70,13 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-              <img 
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663457782054/fA3FQLnTsLWN8wdASzWxSY/HousePlusGroupLogo_9e1cc7f4.png" 
-                alt="House Plus Group"
-                className="h-12 w-auto"
-              />
+              <div className="w-9 h-9 bg-[#f59e0b] rounded-lg flex items-center justify-center">
+                <span className="text-[#0f2d5e] font-black text-sm leading-none">HP</span>
+              </div>
+              <div className="hidden sm:block">
+                <div className="text-white font-bold text-base leading-tight">House Plus</div>
+                <div className="text-[#f59e0b] text-[10px] leading-tight tracking-wide uppercase">Group Factory</div>
+              </div>
             </Link>
 
             {/* Desktop Nav */}

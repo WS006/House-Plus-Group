@@ -1,8 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://www.houseplus-ch.com/sitemap.xml
-
-# Block admin area from indexing
-User-agent: *
-Disallow: /admin
