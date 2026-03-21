@@ -40,7 +40,6 @@ function Layout({ children }: { children: React.ReactNode }) {
 function AdminLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
-
 function Router() {
   // GitHub Pages SPA routing fix
   useEffect(() => {
