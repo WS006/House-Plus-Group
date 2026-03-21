@@ -41,15 +41,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-[#f59e0b] rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-[#0f2d5e] font-black text-sm">HP</span>
-              </div>
-              <div>
-                <div className="text-white font-bold text-lg leading-tight">House Plus</div>
-                <div className="text-[#f59e0b] text-xs tracking-wide uppercase">Group Factory</div>
-              </div>
-            </div>
+            <img 
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663457782054/fA3FQLnTsLWN8wdASzWxSY/HousePlusGroupLogo_9e1cc7f4.png" 
+              alt="House Plus Group"
+              className="h-14 w-auto mb-4"
+            />
             <p className="text-white/60 text-sm leading-relaxed mb-5">
               {t('footer_desc')}
             </p>
