@@ -1,8 +1,57 @@
+# House Plus Group robots.txt
+# 配置搜索引擎爬虫的访问规则
+
+# 默认规则：允许所有爬虫访问大部分页面
 User-agent: *
 Allow: /
-
-Sitemap: https://www.houseplus-ch.com/sitemap.xml
-
-# Block admin area from indexing
-User-agent: *
 Disallow: /admin
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /*.js$
+Disallow: /*.css$
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.gitignore
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /pnpm-lock.yaml
+
+# 爬虫延迟（毫秒）
+Crawl-delay: 1
+
+# 请求速率限制
+Request-rate: 1/1s
+
+# Sitemap 位置 - 更新为正确的域名
+Sitemap: https://www.houseplus.com.ng/sitemap.xml
+
+# 特殊规则：Google 爬虫（允许更快爬取）
+User-agent: Googlebot
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Crawl-delay: 0
+
+# 特殊规则：Bing 爬虫
+User-agent: Bingbot
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Crawl-delay: 1
+
+# 特殊规则：百度爬虫
+User-agent: Baiduspider
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Crawl-delay: 1
+
+# 禁止某些不良爬虫
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
