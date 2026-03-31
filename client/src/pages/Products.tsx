@@ -11,6 +11,7 @@ import { motion } from 'framer-motion';
 import { ChevronRight, Heart, Search, SlidersHorizontal, X } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useSearch } from 'wouter';
+import { injectSchema, clearSchemaScripts, generateWebPageSchema, generateOrganizationSchema } from '@/lib/schema';
 
 type Category = 'all' | 'solar' | 'appliances' | '3c';
 
@@ -34,6 +35,17 @@ export default function Products() {
   const [inquiryProduct, setInquiryProduct] = useState('');
   const [favorites, setFavorites] = useState<string[]>(() => favoritesStore.getAll());
   const [showFilters, setShowFilters] = useState(false);
+
+  // Inject Schema.org structured data
+  useEffect(() => {
+    clearSchemaScripts();
+    injectSchema(generateWebPageSchema({
+      pageTitle: 'Products - House Plus Group',
+      pageDescription: 'Browse our complete catalog of solar panels, inverters, lithium batteries, home appliances, and 3C electronics. Factory direct pricing with OEM/ODM options.',
+      pageUrl: 'https://www.houseplus.com.ng/products'
+    }));
+    injectSchema(generateOrganizationSchema());
+  }, []);
 
   const allProducts = productsStore.getAll();
 

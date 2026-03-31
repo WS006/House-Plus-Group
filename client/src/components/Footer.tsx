@@ -5,7 +5,7 @@
 
 import { useLanguage } from '@/contexts/LanguageContext';
 import { LANGUAGES } from '@/lib/i18n';
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Youtube } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Youtube, Twitter } from 'lucide-react';
 import { Link } from 'wouter';
 
 const PRODUCT_LINKS = [
@@ -63,16 +63,19 @@ export default function Footer() {
                 title="Email">
                 <Mail className="w-4 h-4" />
               </a>
-              <a href="#" className="w-8 h-8 bg-white/10 hover:bg-[#1877F2] rounded-lg flex items-center justify-center transition-colors" title="Facebook">
+              <a href="https://www.facebook.com/houseplusgroup" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/10 hover:bg-[#1877F2] rounded-lg flex items-center justify-center transition-colors" title="Facebook">
                 <Facebook className="w-4 h-4" />
               </a>
-              <a href="#" className="w-8 h-8 bg-white/10 hover:bg-[#E4405F] rounded-lg flex items-center justify-center transition-colors" title="Instagram">
+              <a href="https://www.instagram.com/houseplusgroup" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/10 hover:bg-[#E4405F] rounded-lg flex items-center justify-center transition-colors" title="Instagram">
                 <Instagram className="w-4 h-4" />
               </a>
-              <a href="#" className="w-8 h-8 bg-white/10 hover:bg-[#FF0000] rounded-lg flex items-center justify-center transition-colors" title="YouTube">
+              <a href="https://twitter.com/houseplusgroup" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/10 hover:bg-[#1DA1F2] rounded-lg flex items-center justify-center transition-colors" title="Twitter">
+                <Twitter className="w-4 h-4" />
+              </a>
+              <a href="https://www.youtube.com/@houseplusgroup" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/10 hover:bg-[#FF0000] rounded-lg flex items-center justify-center transition-colors" title="YouTube">
                 <Youtube className="w-4 h-4" />
               </a>
-              <a href="#" className="w-8 h-8 bg-white/10 hover:bg-[#0A66C2] rounded-lg flex items-center justify-center transition-colors" title="LinkedIn">
+              <a href="https://www.linkedin.com/company/house-plus-group" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/10 hover:bg-[#0A66C2] rounded-lg flex items-center justify-center transition-colors" title="LinkedIn">
                 <Linkedin className="w-4 h-4" />
               </a>
             </div>

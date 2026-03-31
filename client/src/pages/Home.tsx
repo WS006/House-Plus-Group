@@ -11,6 +11,7 @@ import { Award, CheckCircle, ChevronLeft, ChevronRight, Factory, Globe, Package,
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'wouter';
 import InquiryModal from '@/components/InquiryModal';
+import { injectSchema, clearSchemaScripts, generateWebPageSchema, generateOrganizationSchema } from '@/lib/schema';
 
 // Hero slides data
 const HERO_SLIDES = [
@@ -90,6 +91,18 @@ export default function Home() {
   const [inquiryOpen, setInquiryOpen] = useState(false);
   const products = productsStore.getAll();
   const hotProducts = products.filter(p => p.isHot).slice(0, 6);
+
+  // Inject Schema.org structured data
+  useEffect(() => {
+    clearSchemaScripts();
+    injectSchema(generateWebPageSchema({
+      pageTitle: 'House Plus Group — Solar Energy, Home Appliances & 3C Electronics Manufacturer',
+      pageDescription: 'House Plus Group is a China-based manufacturer and supplier of solar panels, inverters, lithium batteries, home appliances, and 3C electronics. Factory direct pricing, OEM/ODM available. Serving Africa and global markets.',
+      pageUrl: 'https://www.houseplus.com.ng/',
+      imageUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663457782054/fA3FQLnTsLWN8wdASzWxSY/hero-solar-9WdVUX6sZBGChCdiLZdas5.webp'
+    }));
+    injectSchema(generateOrganizationSchema());
+  }, []);
 
   // Auto-play carousel
   useEffect(() => {
