@@ -4,21 +4,20 @@
     <meta charset="utf-8">
     <title>House Plus Group</title>
     <script>
-      // GitHub Pages SPA redirect for 404 errors
-      // For custom domain, we don't need the repo name in the path
+      // spa-github-pages redirect
+      // This is a standard solution for handling client-side routing in GitHub Pages
+      // Reference: https://github.com/rafgraph/spa-github-pages
+      
+      var segmentCount = 0;
       var l = window.location;
       
-      // Only redirect if we're not already at the index page
-      if (!l.pathname.includes('index.html')) {
-        // Get the path as-is (without repo name since we're using custom domain)
-        var path = l.pathname;
-        
-        // Redirect to index.html with the path as query parameter
-        l.replace(
-          l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-          '/index.html?redirect=' + encodeURIComponent(path)
-        );
-      }
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/?p=' +
+        l.pathname.slice(1).split('/').slice(segmentCount).join('/') +
+        (l.search ? '&' + l.search.slice(1) : '') +
+        l.hash
+      );
     </script>
   </head>
   <body>

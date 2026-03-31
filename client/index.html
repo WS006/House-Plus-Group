@@ -93,25 +93,24 @@
   <body>
     <div id="root"></div>
     <script>
-      // GitHub Pages SPA routing fix
+      // spa-github-pages redirect handler
+      // Reference: https://github.com/rafgraph/spa-github-pages
       (function() {
-        // Try to get redirect from sessionStorage (from 404.html redirect)
         var redirect = sessionStorage.redirect;
         delete sessionStorage.redirect;
-        
-        // If no sessionStorage redirect, check URL query parameter (from 404.html script)
-        if (!redirect) {
-          var params = new URLSearchParams(window.location.search);
-          redirect = params.get('redirect');
-        }
-        
-        // If we have a redirect path, restore it
-        if (redirect && redirect !== location.href && redirect !== location.pathname) {
-          // Ensure the path starts with /
-          if (!redirect.startsWith('/')) {
-            redirect = '/' + redirect;
-          }
+        if (redirect && redirect !== location.href) {
           history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
+    <script>
+      // Handle the ?p= parameter from 404.html redirect
+      (function() {
+        var params = new URLSearchParams(window.location.search);
+        var p = params.get('p');
+        if (p) {
+          sessionStorage.redirect = '/' + p + window.location.hash;
+          window.location.replace(window.location.pathname);
         }
       })();
     </script>
