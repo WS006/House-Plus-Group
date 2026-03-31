@@ -93,24 +93,22 @@
   <body>
     <div id="root"></div>
     <script>
-      // spa-github-pages redirect handler
-      // Reference: https://github.com/rafgraph/spa-github-pages
-      (function() {
-        var redirect = sessionStorage.redirect;
-        delete sessionStorage.redirect;
-        if (redirect && redirect !== location.href) {
-          history.replaceState(null, null, redirect);
-        }
-      })();
-    </script>
-    <script>
-      // Handle the ?p= parameter from 404.html redirect
+      // Optimized spa-github-pages redirect handler
       (function() {
         var params = new URLSearchParams(window.location.search);
         var p = params.get('p');
+        
         if (p) {
-          sessionStorage.redirect = '/' + p + window.location.hash;
-          window.location.replace(window.location.pathname);
+          var path = '/' + p + window.location.hash;
+          history.replaceState(null, null, path);
+        }
+        
+        var redirect = sessionStorage.redirect;
+        if (redirect) {
+          delete sessionStorage.redirect;
+          if (redirect !== location.href) {
+            history.replaceState(null, null, redirect);
+          }
         }
       })();
     </script>
