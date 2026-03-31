@@ -22,6 +22,8 @@ import News from "./pages/News";
 import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
 import Admin from "./pages/Admin";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -71,6 +73,8 @@ function Router() {
       <Route path="/news" component={() => <Layout><News /></Layout>} />
       <Route path="/careers" component={() => <Layout><Careers /></Layout>} />
       <Route path="/contact" component={() => <Layout><Contact /></Layout>} />
+      <Route path="/privacy" component={() => <Layout><Privacy /></Layout>} />
+      <Route path="/terms" component={() => <Layout><Terms /></Layout>} />
       <Route path="/admin" component={() => <AdminLayout><Admin /></AdminLayout>} />
       <Route path="/404" component={() => <Layout><NotFound /></Layout>} />
       <Route component={() => <Layout><NotFound /></Layout>} />

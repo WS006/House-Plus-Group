@@ -17,3 +17,13 @@
 - [x] 优化内部链接结构 - 页面已有内部链接
 - [x] 图片优化和性能改进 - Tailwind 和流式加载已优化
 - [x] 测试所有优化并验证 - 已测试成功
+
+
+## 法律页面和 SPA 路由优化 (2026-03-31)
+
+- [x] 创建 Privacy Policy 页面 - 完整的隐私政策内容已添加
+- [x] 创建 Terms of Service 页面 - 完整的服务条款内容已添加
+- [x] 添加 Privacy 和 Terms 页面的 SEO 元数据 - seo.ts 已更新
+- [x] 在路由中注册 Privacy 和 Terms 页面 - App.tsx 已更新
+- [x] 实施 spa-github-pages 方案 - 404.html 和 index.html 已配置
+- [x] 将构建文件推送到 GitHub - docs 文件夹已部署

@@ -79,6 +79,18 @@ export const pageMetadata: Record<string, PageMetadata> = {
     keywords: "admin dashboard, product management, order management, admin panel",
     canonical: "https://www.houseplus.com.ng/admin",
   },
+  privacy: {
+    title: "Privacy Policy — House Plus Group",
+    description: "Learn how House Plus Group collects, uses, and protects your personal information. Our privacy policy explains our data practices and your rights.",
+    keywords: "privacy policy, data protection, personal information, GDPR, CCPA, privacy rights",
+    canonical: "https://www.houseplus.com.ng/privacy",
+  },
+  terms: {
+    title: "Terms of Service — House Plus Group",
+    description: "Read House Plus Group Terms of Service. Learn about our policies regarding product sales, shipping, returns, intellectual property, and user responsibilities.",
+    keywords: "terms of service, terms and conditions, user agreement, legal terms, refund policy, shipping policy",
+    canonical: "https://www.houseplus.com.ng/terms",
+  },
 };
 
 /**
