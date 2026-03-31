@@ -94,8 +94,23 @@ export function updatePageMeta(page: string) {
   // 更新或创建 Meta 标签
   updateMetaTag("name", "description", meta.description);
   updateMetaTag("name", "keywords", meta.keywords);
+  
+  // 更新 Open Graph 标签
   updateMetaTag("property", "og:title", meta.title);
   updateMetaTag("property", "og:description", meta.description);
+  if (meta.ogImage) {
+    updateMetaTag("property", "og:image", meta.ogImage);
+  }
+  updateMetaTag("property", "og:url", meta.canonical || window.location.href);
+  
+  // 更新 Twitter Card 标签
+  updateMetaTag("name", "twitter:card", "summary_large_image");
+  updateMetaTag("name", "twitter:title", meta.title);
+  updateMetaTag("name", "twitter:description", meta.description);
+  if (meta.ogImage) {
+    updateMetaTag("name", "twitter:image", meta.ogImage);
+  }
+  updateMetaTag("name", "twitter:url", meta.canonical || window.location.href);
 
   // 更新 Canonical 链接
   if (meta.canonical) {
