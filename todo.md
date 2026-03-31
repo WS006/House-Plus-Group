@@ -27,3 +27,13 @@
 - [x] 在路由中注册 Privacy 和 Terms 页面 - App.tsx 已更新
 - [x] 实施 spa-github-pages 方案 - 404.html 和 index.html 已配置
 - [x] 将构建文件推送到 GitHub - docs 文件夹已部署
+
+
+## 关于我们页面升级 (2026-03-31)
+
+- [x] 添加详细的品牌故事和创始人背景
+- [x] 创建团队成员展示部分（管理层、关键部门负责人）
+- [x] 添加公司成就和里程碑展示
+- [x] 添加客户推荐和案例研究
+- [x] 优化页面 SEO 元数据和结构化数据 - 已常用 generateOrganizationSchema
+- [x] 部署并测试页面 - 已推送到 GitHub
