@@ -5,6 +5,8 @@
 import Breadcrumb from '@/components/Breadcrumb';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Mail, Phone } from 'lucide-react';
+import { useEffect } from 'react';
+import { generatePersonSchema, injectSchema, clearSchemaScripts } from '@/lib/schema';
 
 const TEAM = [
   {
@@ -44,6 +46,13 @@ const TEAM = [
 
 export default function Team() {
   const { t } = useLanguage();
+
+  useEffect(() => {
+    clearSchemaScripts();
+    // 为主要联系人 Jack 添加 Person Schema
+    const jackSchema = generatePersonSchema('Jack', 'Sales Director & Key Account Manager', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80');
+    injectSchema(jackSchema);
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50">

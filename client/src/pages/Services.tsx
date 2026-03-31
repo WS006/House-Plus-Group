@@ -7,7 +7,8 @@ import InquiryModal from '@/components/InquiryModal';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion, useInView } from 'framer-motion';
 import { Award, Globe, Package, Settings, Shield, Truck, Users, Zap } from 'lucide-react';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { generateServiceSchema, injectSchema, clearSchemaScripts } from '@/lib/schema';
 
 function FadeIn({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -22,6 +23,13 @@ function FadeIn({ children, delay = 0, className = '' }: { children: React.React
 export default function Services() {
   const { t } = useLanguage();
   const [inquiryOpen, setInquiryOpen] = useState(false);
+
+  useEffect(() => {
+    clearSchemaScripts();
+    // 为 OEM/ODM 服务添加 Service Schema
+    const oemSchema = generateServiceSchema('OEM/ODM Services', 'Custom manufacturing and original design manufacturing services for solar energy, home appliances, and 3C electronics', 'https://www.houseplus.com.ng/services');
+    injectSchema(oemSchema);
+  }, []);
 
   const SERVICES = [
     { icon: <Settings className="w-7 h-7" />, titleKey: 'services_oem', descKey: 'services_oem_desc', color: 'bg-amber-50 border-amber-200', iconBg: 'bg-amber-100 text-amber-600' },

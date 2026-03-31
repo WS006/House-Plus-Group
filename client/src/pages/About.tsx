@@ -7,8 +7,9 @@ import InquiryModal from '@/components/InquiryModal';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion, useInView } from 'framer-motion';
 import { Award, CheckCircle, Globe, Shield, Target, TrendingUp, Users, Zap } from 'lucide-react';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'wouter';
+import { generateOrganizationSchema, injectSchema, clearSchemaScripts } from '@/lib/schema';
 
 function FadeIn({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -32,6 +33,12 @@ const TIMELINE = [
 export default function About() {
   const { t } = useLanguage();
   const [inquiryOpen, setInquiryOpen] = useState(false);
+
+  useEffect(() => {
+    clearSchemaScripts();
+    const schema = generateOrganizationSchema();
+    injectSchema(schema);
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">

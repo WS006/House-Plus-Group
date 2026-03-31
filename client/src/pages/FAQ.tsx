@@ -7,7 +7,8 @@ import InquiryModal from '@/components/InquiryModal';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronDown, MessageCircle } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { generateFAQPageSchema, injectSchema, clearSchemaScripts } from '@/lib/schema';
 
 export default function FAQ() {
   const { t } = useLanguage();
@@ -24,6 +25,13 @@ export default function FAQ() {
     { q: t('faq_q7'), a: t('faq_a7') },
     { q: t('faq_q8'), a: t('faq_a8') },
   ];
+
+  useEffect(() => {
+    clearSchemaScripts();
+    const faqData = FAQS.map(faq => ({ question: faq.q, answer: faq.a }));
+    const faqSchema = generateFAQPageSchema(faqData);
+    injectSchema(faqSchema);
+  }, [FAQS]);
 
   return (
     <div className="min-h-screen bg-gray-50">

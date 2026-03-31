@@ -212,6 +212,111 @@ export function injectSchema(schema: any) {
 }
 
 /**
+ * Generate Service Schema
+ */
+export function generateServiceSchema(serviceName: string, serviceDescription: string, serviceUrl: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": serviceName,
+    "description": serviceDescription,
+    "url": serviceUrl,
+    "provider": {
+      "@type": "Organization",
+      "name": "House Plus Group",
+      "url": "https://www.houseplus.com.ng"
+    },
+    "areaServed": ["NG", "Africa", "Global"]
+  };
+}
+
+/**
+ * Generate FAQPage Schema
+ */
+export function generateFAQPageSchema(faqs: Array<{ question: string; answer: string }>) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+}
+
+/**
+ * Generate Person Schema (for team members)
+ */
+export function generatePersonSchema(name: string, title: string, imageUrl?: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": name,
+    "jobTitle": title,
+    "image": imageUrl || "https://www.houseplus.com.ng/default-avatar.jpg",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "House Plus Group"
+    }
+  };
+}
+
+/**
+ * Generate JobPosting Schema
+ */
+export function generateJobPostingSchema(jobTitle: string, jobDescription: string, jobUrl: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": jobTitle,
+    "description": jobDescription,
+    "url": jobUrl,
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "House Plus Group",
+      "sameAs": "https://www.houseplus.com.ng",
+      "logo": "https://www.houseplus.com.ng/logo.png"
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8 Eso Cl, Ikeja GRA",
+        "addressLocality": "Lagos",
+        "addressRegion": "Lagos",
+        "postalCode": "101233",
+        "addressCountry": "NG"
+      }
+    },
+    "baseSalary": {
+      "@type": "PriceSpecification",
+      "priceCurrency": "NGN",
+      "price": "Competitive"
+    },
+    "employmentType": "FULL_TIME"
+  };
+}
+
+/**
+ * Generate ContactPoint Schema
+ */
+export function generateContactPointSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ContactPoint",
+    "contactType": "Customer Service",
+    "telephone": "+2349078080738",
+    "email": "jack@houseplus-ch.com",
+    "areaServed": ["NG", "Africa", "Global"],
+    "availableLanguage": ["en", "zh", "fr"]
+  };
+}
+
+/**
  * Remove existing schema scripts (to avoid duplicates)
  */
 export function clearSchemaScripts() {

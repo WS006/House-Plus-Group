@@ -7,8 +7,9 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { messagesStore } from '@/lib/store';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Briefcase, ChevronDown, Globe, MapPin, Users } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
+import { generateJobPostingSchema, injectSchema, clearSchemaScripts } from '@/lib/schema';
 
 const JOBS = [
   { title: 'International Sales Manager', location: 'Lagos, Nigeria / Remote', type: 'Full-time', dept: 'Sales', desc: 'Lead our international sales efforts across Africa and the Middle East. Develop new business relationships and manage key accounts.' },
@@ -22,9 +23,22 @@ const JOBS = [
 export default function Careers() {
   const { t } = useLanguage();
   const [openJob, setOpenJob] = useState<number | null>(null);
+
   const [applyJob, setApplyJob] = useState<string | null>(null);
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
   const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    clearSchemaScripts();
+    // 为第一个职位添加 JobPosting Schema
+    const firstJob = JOBS[0];
+    const jobSchema = generateJobPostingSchema(
+      firstJob.title,
+      firstJob.desc,
+      'https://www.houseplus.com.ng/careers'
+    );
+    injectSchema(jobSchema);
+  }, []);
 
   const handleApply = async (e: React.FormEvent) => {
     e.preventDefault();

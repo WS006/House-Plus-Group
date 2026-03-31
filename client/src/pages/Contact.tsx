@@ -7,13 +7,20 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { messagesStore } from '@/lib/store';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, MessageCircle, Phone, Send } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
+import { generateContactPointSchema, injectSchema, clearSchemaScripts } from '@/lib/schema';
 
 export default function Contact() {
   const { t } = useLanguage();
   const [form, setForm] = useState({ name: '', email: '', phone: '', country: '', subject: '', message: '' });
   const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    clearSchemaScripts();
+    const contactSchema = generateContactPointSchema();
+    injectSchema(contactSchema);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

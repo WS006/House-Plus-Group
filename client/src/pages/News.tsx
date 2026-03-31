@@ -6,6 +6,8 @@ import Breadcrumb from '@/components/Breadcrumb';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Calendar, ChevronRight, Tag } from 'lucide-react';
 import { Link } from 'wouter';
+import { useEffect } from 'react';
+import { generateArticleSchema, injectSchema, clearSchemaScripts } from '@/lib/schema';
 
 const NEWS_ARTICLES = [
   {
@@ -68,6 +70,21 @@ const CATEGORIES = ['All', 'Company News', 'Product Launch', 'Market News', 'Bus
 
 export default function News() {
   const { t } = useLanguage();
+
+  useEffect(() => {
+    clearSchemaScripts();
+    // 为最新的新闻文章添加 NewsArticle Schema
+    const latestArticle = NEWS_ARTICLES[0];
+    const articleSchema = generateArticleSchema({
+      pageTitle: latestArticle.title,
+      pageDescription: latestArticle.excerpt,
+      pageUrl: `https://www.houseplus.com.ng/news/${latestArticle.id}`,
+      imageUrl: latestArticle.image,
+      articlePublishedDate: new Date(latestArticle.date).toISOString(),
+      articleAuthor: 'House Plus Group'
+    });
+    injectSchema(articleSchema);
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50">
