@@ -30,7 +30,7 @@ Disallow: /
 User-agent: SemrushBot
 Disallow: /
 
-# Sitemap location - Updated to correct domain
+# Sitemap location
 Sitemap: https://www.houseplus.com.ng/sitemap.xml
 
 # Crawl delay for other bots
