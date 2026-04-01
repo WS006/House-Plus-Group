@@ -1,26 +1,204 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>Loading...</title>
-    <script type="text/javascript">
-      // SPA Router for GitHub Pages
-      // This script handles all routes by serving index.html
-      // The React Router will handle the actual routing in the browser
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+
+    <!-- Dynamic Meta Tags Script - Updates based on current route -->
+    <script>
+      // This script detects the current route and updates meta tags accordingly
+      // This allows Google to see different meta tags for different pages
       
-      var pathname = window.location.pathname;
+      const pageMetadata = {
+        '/': {
+          title: 'House Plus Group — Solar Energy, Home Appliances & 3C Electronics Manufacturer',
+          description: 'House Plus Group is a China-based manufacturer and supplier of solar panels, inverters, lithium batteries, home appliances, and 3C electronics. Factory direct pricing, OEM/ODM available. Serving Africa and global markets.',
+          keywords: 'House Plus Group, solar panels, inverters, lithium batteries, home appliances, 3C electronics, China manufacturer, Nigeria, Africa, OEM ODM, solar energy, air fryer, smart watch, power bank'
+        },
+        '/about': {
+          title: 'About House Plus Group — Our Story & Mission',
+          description: 'Learn about House Plus Group\'s journey, mission, and values. We are a trusted manufacturer of solar energy, home appliances, and 3C electronics serving global markets.',
+          keywords: 'House Plus Group about, company mission, manufacturing, solar energy, home appliances'
+        },
+        '/products': {
+          title: 'Products — Solar Panels, Home Appliances & 3C Electronics',
+          description: 'Browse our complete range of products including solar panels, inverters, lithium batteries, home appliances, and 3C electronics. Factory direct pricing available.',
+          keywords: 'solar panels, inverters, lithium batteries, home appliances, 3C electronics, air fryer, smart watch, power bank'
+        },
+        '/factory': {
+          title: 'Our Factory — Manufacturing Excellence',
+          description: 'Discover House Plus Group\'s state-of-the-art manufacturing facility. We produce solar energy products, home appliances, and 3C electronics with strict quality control.',
+          keywords: 'manufacturing, factory, quality control, production, solar energy products'
+        },
+        '/team': {
+          title: 'Our Team — Meet the Experts',
+          description: 'Meet the experienced team behind House Plus Group. Our leaders bring decades of expertise in manufacturing and international trade.',
+          keywords: 'team, leadership, expertise, manufacturing professionals'
+        },
+        '/services': {
+          title: 'Services — OEM, ODM & Custom Solutions',
+          description: 'House Plus Group offers comprehensive services including OEM, ODM, custom manufacturing, and supply chain solutions for global buyers.',
+          keywords: 'OEM, ODM, custom manufacturing, supply chain, wholesale'
+        },
+        '/faq': {
+          title: 'FAQ — Frequently Asked Questions',
+          description: 'Find answers to common questions about House Plus Group\'s products, services, ordering process, and shipping.',
+          keywords: 'FAQ, frequently asked questions, help, support'
+        },
+        '/news': {
+          title: 'News & Updates — Latest from House Plus Group',
+          description: 'Stay updated with the latest news, announcements, and industry insights from House Plus Group.',
+          keywords: 'news, updates, announcements, industry insights'
+        },
+        '/careers': {
+          title: 'Careers — Join Our Team',
+          description: 'Explore career opportunities at House Plus Group. We are looking for talented professionals to join our growing team.',
+          keywords: 'careers, jobs, employment, opportunities'
+        },
+        '/contact': {
+          title: 'Contact Us — Get in Touch',
+          description: 'Contact House Plus Group for inquiries, quotations, or partnership opportunities. We are here to help.',
+          keywords: 'contact, support, inquiries, quotations'
+        },
+        '/privacy': {
+          title: 'Privacy Policy — House Plus Group',
+          description: 'Read our privacy policy to understand how House Plus Group collects, uses, and protects your personal information.',
+          keywords: 'privacy policy, data protection, personal information'
+        },
+        '/terms': {
+          title: 'Terms of Service — House Plus Group',
+          description: 'Read our terms of service to understand the rules and conditions for using House Plus Group\'s website and services.',
+          keywords: 'terms of service, terms and conditions, legal'
+        }
+      };
+
+      // Get current path
+      const currentPath = window.location.pathname;
+      const metadata = pageMetadata[currentPath] || pageMetadata['/'];
       
-      // If the path doesn't end with index.html, redirect to index.html
-      // This allows GitHub Pages to serve the correct file
-      if (!pathname.endsWith('index.html') && !pathname.endsWith('/')) {
-        // Add trailing slash for consistency
-        window.location.replace(pathname + '/');
+      // Update document title
+      document.title = metadata.title;
+      
+      // Update or create meta tags
+      function updateMetaTag(name, content, isProperty = false) {
+        const attr = isProperty ? 'property' : 'name';
+        let tag = document.querySelector(`meta[${attr}="${name}"]`);
+        if (!tag) {
+          tag = document.createElement('meta');
+          tag.setAttribute(attr, name);
+          document.head.appendChild(tag);
+        }
+        tag.setAttribute('content', content);
       }
+      
+      updateMetaTag('title', metadata.title);
+      updateMetaTag('description', metadata.description);
+      updateMetaTag('keywords', metadata.keywords);
+      updateMetaTag('og:title', metadata.title, true);
+      updateMetaTag('og:description', metadata.description, true);
+      updateMetaTag('twitter:title', metadata.title);
+      updateMetaTag('twitter:description', metadata.description);
+      
+      // Update canonical URL
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.rel = 'canonical';
+        document.head.appendChild(canonical);
+      }
+      canonical.href = 'https://www.houseplus.com.ng' + currentPath;
     </script>
+
+    <!-- Primary Meta Tags -->
+    <title>House Plus Group — Solar Energy, Home Appliances & 3C Electronics Manufacturer</title>
+    <meta name="title" content="House Plus Group — Solar Energy, Home Appliances & 3C Electronics Manufacturer" />
+    <meta name="description" content="House Plus Group is a China-based manufacturer and supplier of solar panels, inverters, lithium batteries, home appliances, and 3C electronics. Factory direct pricing, OEM/ODM available. Serving Africa and global markets." />
+    <meta name="keywords" content="House Plus Group, solar panels, inverters, lithium batteries, home appliances, 3C electronics, China manufacturer, Nigeria, Africa, OEM ODM, solar energy, air fryer, smart watch, power bank" />
+    <meta name="author" content="House Plus Group" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.houseplus.com.ng/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.houseplus.com.ng/" />
+    <meta property="og:title" content="House Plus Group — Solar Energy, Home Appliances & 3C Electronics Manufacturer" />
+    <meta property="og:description" content="Professional Chinese manufacturer of solar energy products, home appliances, and 3C electronics. Factory direct pricing. Serving Africa and global markets." />
+    <meta property="og:image" content="https://www.houseplus-ch.com/og-image.jpg" />
+    <meta property="og:site_name" content="House Plus Group" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://www.houseplus.com.ng/" />
+    <meta name="twitter:title" content="House Plus Group — Solar Energy, Home Appliances & 3C Electronics" />
+    <meta name="twitter:description" content="Professional Chinese manufacturer of solar energy products, home appliances, and 3C electronics. Factory direct pricing." />
+    <meta name="twitter:image" content="https://www.houseplus-ch.com/og-image.jpg" />
+
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="NG" />
+    <meta name="geo.placename" content="Lagos, Nigeria" />
+
+    <!-- Hreflang for multilingual -->
+    <link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/" />
+    <link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/?lang=zh" />
+    <link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/?lang=fr" />
+    <link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/?lang=ru" />
+    <link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/?lang=es" />
+    <link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/?lang=ar" />
+    <link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Schema.org Organization Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "House Plus Group",
+      "alternateName": ["House Plus Ltd", "HousePlus", "House Plus Nigeria Factory"],
+      "url": "https://www.houseplus.com.ng",
+      "logo": "https://www.houseplus.com.ng/logo.png",
+      "description": "China-based manufacturer and supplier of solar energy products, home appliances, and 3C electronics. Serving Africa and global markets.",
+      "email": "jack@houseplus-ch.com",
+      "telephone": ["+2349078080738", "+8615578119543"],
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "8 Eso Cl, Ikeja GRA",
+          "addressLocality": "Ikeja",
+          "addressRegion": "Lagos",
+          "postalCode": "101233",
+          "addressCountry": "NG"
+        }
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+2349078080738",
+          "contactType": "sales",
+          "availableLanguage": ["English", "Chinese"]
+        }
+      ],
+      "sameAs": [
+        "https://www.houseplus.ltd/",
+        "https://www.houseplus.com.ng/",
+        "https://houseplus.com.ng/"
+      ]
+    }
+    </script>
+    <script type="module" crossorigin src="/assets/index-CDDJ85zV.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DdrY-X2A.css">
+    <script src="/__manus__/debug-collector.js" defer></script>
   </head>
+
   <body>
     <div id="root"></div>
-    <script type="module" src="/assets/index-CDDJ85zV.js"></script>
-    <link rel="stylesheet" href="/assets/index-DdrY-X2A.css">
   </body>
 </html>
