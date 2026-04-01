@@ -1,0 +1,6 @@
+import{c as g,d as v,r as p}from"./index-DrCj4GNU.js";/**
+ * @license lucide-react v0.453.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const E=g("Award",[["path",{d:"m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526",key:"1yiouv"}],["circle",{cx:"12",cy:"8",r:"6",key:"1vp47v"}]]),w={some:0,all:1};function I(s,r,{root:i,margin:a,amount:t="some"}={}){const f=v(s),n=new WeakMap,u=c=>{c.forEach(e=>{const l=n.get(e.target);if(e.isIntersecting!==!!l)if(e.isIntersecting){const d=r(e.target,e);typeof d=="function"?n.set(e.target,d):o.unobserve(e.target)}else typeof l=="function"&&(l(e),n.delete(e.target))})},o=new IntersectionObserver(u,{root:i,rootMargin:a,threshold:typeof t=="number"?t:w[t]});return f.forEach(c=>o.observe(c)),()=>o.disconnect()}function b(s,{root:r,margin:i,amount:a,once:t=!1,initial:f=!1}={}){const[n,u]=p.useState(f);return p.useEffect(()=>{if(!s.current||t&&n)return;const o=()=>(u(!0),t?void 0:()=>u(!1)),c={root:r&&r.current||void 0,margin:i,amount:a};return I(s.current,o,c)},[r,s,i,t,a]),n}export{E as A,b as u};
