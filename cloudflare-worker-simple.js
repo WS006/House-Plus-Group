@@ -1,3 +1,14 @@
+// Security headers configuration
+const SECURITY_HEADERS = {
+  'X-Frame-Options': 'DENY',
+  'X-Content-Type-Options': 'nosniff',
+  'X-XSS-Protection': '1; mode=block',
+  'Referrer-Policy': 'strict-origin-when-cross-origin',
+  'Permissions-Policy': 'geolocation=(), microphone=(), camera=()',
+  'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://d2xsxph8kpxj0f.cloudfront.net https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https:; frame-ancestors 'none'",
+  'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
+};
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -35,13 +46,18 @@ export default {
       const response = await fetch(indexUrl);
       
       if (response.status === 200) {
+        const headers = new Headers(response.headers);
+        // Add security headers
+        Object.entries(SECURITY_HEADERS).forEach(([key, value]) => {
+          headers.set(key, value);
+        });
+        // Set cache control
+        headers.set('Cache-Control', 'public, max-age=3600, must-revalidate');
+        headers.set('Content-Type', 'text/html; charset=utf-8');
+        
         return new Response(response.body, {
           status: 200,
-          headers: {
-            'Content-Type': 'text/html; charset=utf-8',
-            'Cache-Control': 'public, max-age=3600',
-            'X-Content-Type-Options': 'nosniff',
-          },
+          headers,
         });
       }
       
