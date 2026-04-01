@@ -174,6 +174,28 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    // Optimize CSS and JS bundling
+    rollupOptions: {
+      output: {
+        // Separate CSS into single file for better caching
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'framer-motion', 'wouter'],
+        },
+      },
+    },
+    // Enable minification
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true, // Remove console.log in production
+      },
+    },
+    // CSS code splitting
+    cssCodeSplit: true,
+    // Source maps for production debugging
+    sourcemap: false,
+    // Chunk size warnings
+    chunkSizeWarningLimit: 500,
   },
   server: {
     port: 3000,
