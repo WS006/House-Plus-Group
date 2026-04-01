@@ -14,7 +14,7 @@
               decoded.pathname + decoded.search + decoded.hash
           );
         } else {
-          var path = l.pathname.split('/').slice(1).map(function(decodeURIComponent));
+          var path = l.pathname.split('/').slice(1).map(decodeURIComponent);
           l.replace(
               l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
               l.pathname.split('/').slice(0, 1).concat('index.html').join('/') +

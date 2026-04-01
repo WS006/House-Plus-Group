@@ -37,3 +37,14 @@
 - [x] 添加客户推荐和案例研究
 - [x] 优化页面 SEO 元数据和结构化数据 - 已常用 generateOrganizationSchema
 - [x] 部署并测试页面 - 已推送到 GitHub
+
+
+## Cloudflare Worker SPA 路由配置 (2026-03-31)
+
+- [ ] 登录 Cloudflare Dashboard
+- [ ] 创建新 Worker 脚本（houseplus-spa-router）
+- [ ] 复制 cloudflare-worker.js 中的代码到 Worker 编辑器
+- [ ] 配置 Worker 路由（www.houseplus.com.ng/*）
+- [ ] 等待配置生效（1-2 分钟）
+- [ ] 测试 /privacy、/terms、/about 页面是否正常加载
+- [ ] 验证 HTTP 状态码为 200（不是 404）
