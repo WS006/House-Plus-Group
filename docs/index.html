@@ -4,6 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
 
+    <!-- SPA Route Recovery Script - Handles GitHub Pages 404 redirects -->
+    <script>
+      // GitHub Pages SPA routing: When a user visits a sub-route directly,
+      // GitHub Pages returns 404.html. This script restores the original URL
+      // and lets React Router handle the navigation.
+      (function() {
+        // Check if we came from a GitHub Pages 404 redirect
+        const redirect = new URLSearchParams(window.location.search).get('redirect');
+        if (redirect) {
+          // Restore the original URL without the redirect parameter
+          window.history.replaceState(null, '', decodeURIComponent(redirect));
+        }
+      })();
+    </script>
+
     <!-- Dynamic Meta Tags Script - Updates based on current route -->
     <script>
       // Normalize path by removing trailing slash (except for root)
