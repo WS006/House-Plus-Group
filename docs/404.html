@@ -2,30 +2,25 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>HousePlus - SPA</title>
+    <title>Loading...</title>
     <script type="text/javascript">
-      // Single Page App for GitHub Pages
-      (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
-            return s.replace(/\+/g, ' ');
-          }).join('?');
-          window.history.replaceState(null, null,
-              decoded.pathname + decoded.search + decoded.hash
-          );
-        } else {
-          var path = l.pathname.split('/').slice(1).map(decodeURIComponent);
-          l.replace(
-              l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-              l.pathname.split('/').slice(0, 1).concat('index.html').join('/') +
-              '?/' + path.join('/').replace(/&/g, '~~~and~~~') +
-              (l.search ? '&' + l.search.slice(1).replace(/&/g, '~~~and~~~') : '') +
-              l.hash
-          );
-        }
-      })(window.location);
+      // SPA Router for GitHub Pages
+      // This script handles all routes by serving index.html
+      // The React Router will handle the actual routing in the browser
+      
+      var pathname = window.location.pathname;
+      
+      // If the path doesn't end with index.html, redirect to index.html
+      // This allows GitHub Pages to serve the correct file
+      if (!pathname.endsWith('index.html') && !pathname.endsWith('/')) {
+        // Add trailing slash for consistency
+        window.location.replace(pathname + '/');
+      }
     </script>
   </head>
   <body>
+    <div id="root"></div>
+    <script type="module" src="/assets/index-CDDJ85zV.js"></script>
+    <link rel="stylesheet" href="/assets/index-DdrY-X2A.css">
   </body>
 </html>
