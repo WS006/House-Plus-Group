@@ -140,6 +140,40 @@
         document.head.appendChild(canonical);
       }
       canonical.href = metadata.canonical;
+      
+      // Generate breadcrumb schema based on current path
+      (function() {
+        const pathParts = currentPath.split('/').filter(Boolean);
+        const breadcrumbItems = [
+          {
+            position: 1,
+            name: 'Home',
+            item: 'https://www.houseplus.com.ng/'
+          }
+        ];
+        
+        let builtPath = '';
+        pathParts.forEach((part, index) => {
+          builtPath += '/' + part;
+          const pageTitle = pageMetadata[builtPath]?.title || part.charAt(0).toUpperCase() + part.slice(1);
+          breadcrumbItems.push({
+            position: index + 2,
+            name: pageTitle.split(' — ')[0],
+            item: 'https://www.houseplus.com.ng' + builtPath
+          });
+        });
+        
+        const breadcrumbSchema = {
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          'itemListElement': breadcrumbItems
+        };
+        
+        const breadcrumbScript = document.getElementById('breadcrumb-schema');
+        if (breadcrumbScript) {
+          breadcrumbScript.textContent = JSON.stringify(breadcrumbSchema, null, 2);
+        }
+      })();
     </script>
 
     <!-- Primary Meta Tags -->
@@ -190,6 +224,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Dynamic Breadcrumb Schema Markup -->
+    <script id="breadcrumb-schema" type="application/ld+json">
+    {}
+    </script>
 
     <!-- Schema.org Organization Markup -->
     <script type="application/ld+json">

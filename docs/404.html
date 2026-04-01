@@ -26,6 +26,11 @@
       })();
     </script>
 
+    <!-- Dynamic Breadcrumb Schema Markup -->
+    <script id="breadcrumb-schema" type="application/ld+json">
+    {}
+    </script>
+
     <!-- Dynamic Meta Tags Script - Updates based on current route -->
     <script>
       // Normalize path by removing trailing slash (except for root)
@@ -147,6 +152,40 @@
         document.head.appendChild(canonical);
       }
       canonical.href = metadata.canonical;
+      
+      // Generate breadcrumb schema based on current path
+      (function() {
+        const pathParts = currentPath.split('/').filter(Boolean);
+        const breadcrumbItems = [
+          {
+            position: 1,
+            name: 'Home',
+            item: 'https://www.houseplus.com.ng/'
+          }
+        ];
+        
+        let builtPath = '';
+        pathParts.forEach((part, index) => {
+          builtPath += '/' + part;
+          const pageTitle = pageMetadata[builtPath]?.title || part.charAt(0).toUpperCase() + part.slice(1);
+          breadcrumbItems.push({
+            position: index + 2,
+            name: pageTitle.split(' — ')[0],
+            item: 'https://www.houseplus.com.ng' + builtPath
+          });
+        });
+        
+        const breadcrumbSchema = {
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          'itemListElement': breadcrumbItems
+        };
+        
+        const breadcrumbScript = document.getElementById('breadcrumb-schema');
+        if (breadcrumbScript) {
+          breadcrumbScript.textContent = JSON.stringify(breadcrumbSchema, null, 2);
+        }
+      })();
     </script>
 
     <!-- Primary Meta Tags -->
