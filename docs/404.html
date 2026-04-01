@@ -6,74 +6,90 @@
 
     <!-- Dynamic Meta Tags Script - Updates based on current route -->
     <script>
-      // This script detects the current route and updates meta tags accordingly
-      // This allows Google to see different meta tags for different pages
-      
+      // Normalize path by removing trailing slash (except for root)
+      function normalizePath(path) {
+        if (path === '/') return '/';
+        return path.replace(/\/$/, '');
+      }
+
+      // Page metadata for SEO
       const pageMetadata = {
         '/': {
           title: 'House Plus Group — Solar Energy, Home Appliances & 3C Electronics Manufacturer',
           description: 'House Plus Group is a China-based manufacturer and supplier of solar panels, inverters, lithium batteries, home appliances, and 3C electronics. Factory direct pricing, OEM/ODM available. Serving Africa and global markets.',
-          keywords: 'House Plus Group, solar panels, inverters, lithium batteries, home appliances, 3C electronics, China manufacturer, Nigeria, Africa, OEM ODM, solar energy, air fryer, smart watch, power bank'
+          keywords: 'House Plus Group, solar panels, inverters, lithium batteries, home appliances, 3C electronics, China manufacturer, Nigeria, Africa, OEM ODM, solar energy, air fryer, smart watch, power bank',
+          canonical: 'https://www.houseplus.com.ng/'
         },
         '/about': {
           title: 'About House Plus Group — Our Story & Mission',
           description: 'Learn about House Plus Group\'s journey, mission, and values. We are a trusted manufacturer of solar energy, home appliances, and 3C electronics serving global markets.',
-          keywords: 'House Plus Group about, company mission, manufacturing, solar energy, home appliances'
+          keywords: 'House Plus Group about, company mission, manufacturing, solar energy, home appliances',
+          canonical: 'https://www.houseplus.com.ng/about'
         },
         '/products': {
           title: 'Products — Solar Panels, Home Appliances & 3C Electronics',
           description: 'Browse our complete range of products including solar panels, inverters, lithium batteries, home appliances, and 3C electronics. Factory direct pricing available.',
-          keywords: 'solar panels, inverters, lithium batteries, home appliances, 3C electronics, air fryer, smart watch, power bank'
+          keywords: 'solar panels, inverters, lithium batteries, home appliances, 3C electronics, air fryer, smart watch, power bank',
+          canonical: 'https://www.houseplus.com.ng/products'
         },
         '/factory': {
           title: 'Our Factory — Manufacturing Excellence',
           description: 'Discover House Plus Group\'s state-of-the-art manufacturing facility. We produce solar energy products, home appliances, and 3C electronics with strict quality control.',
-          keywords: 'manufacturing, factory, quality control, production, solar energy products'
+          keywords: 'manufacturing, factory, quality control, production, solar energy products',
+          canonical: 'https://www.houseplus.com.ng/factory'
         },
         '/team': {
           title: 'Our Team — Meet the Experts',
           description: 'Meet the experienced team behind House Plus Group. Our leaders bring decades of expertise in manufacturing and international trade.',
-          keywords: 'team, leadership, expertise, manufacturing professionals'
+          keywords: 'team, leadership, expertise, manufacturing professionals',
+          canonical: 'https://www.houseplus.com.ng/team'
         },
         '/services': {
           title: 'Services — OEM, ODM & Custom Solutions',
           description: 'House Plus Group offers comprehensive services including OEM, ODM, custom manufacturing, and supply chain solutions for global buyers.',
-          keywords: 'OEM, ODM, custom manufacturing, supply chain, wholesale'
+          keywords: 'OEM, ODM, custom manufacturing, supply chain, wholesale',
+          canonical: 'https://www.houseplus.com.ng/services'
         },
         '/faq': {
           title: 'FAQ — Frequently Asked Questions',
           description: 'Find answers to common questions about House Plus Group\'s products, services, ordering process, and shipping.',
-          keywords: 'FAQ, frequently asked questions, help, support'
+          keywords: 'FAQ, frequently asked questions, help, support',
+          canonical: 'https://www.houseplus.com.ng/faq'
         },
         '/news': {
           title: 'News & Updates — Latest from House Plus Group',
           description: 'Stay updated with the latest news, announcements, and industry insights from House Plus Group.',
-          keywords: 'news, updates, announcements, industry insights'
+          keywords: 'news, updates, announcements, industry insights',
+          canonical: 'https://www.houseplus.com.ng/news'
         },
         '/careers': {
           title: 'Careers — Join Our Team',
           description: 'Explore career opportunities at House Plus Group. We are looking for talented professionals to join our growing team.',
-          keywords: 'careers, jobs, employment, opportunities'
+          keywords: 'careers, jobs, employment, opportunities',
+          canonical: 'https://www.houseplus.com.ng/careers'
         },
         '/contact': {
           title: 'Contact Us — Get in Touch',
           description: 'Contact House Plus Group for inquiries, quotations, or partnership opportunities. We are here to help.',
-          keywords: 'contact, support, inquiries, quotations'
+          keywords: 'contact, support, inquiries, quotations',
+          canonical: 'https://www.houseplus.com.ng/contact'
         },
         '/privacy': {
           title: 'Privacy Policy — House Plus Group',
           description: 'Read our privacy policy to understand how House Plus Group collects, uses, and protects your personal information.',
-          keywords: 'privacy policy, data protection, personal information'
+          keywords: 'privacy policy, data protection, personal information',
+          canonical: 'https://www.houseplus.com.ng/privacy'
         },
         '/terms': {
           title: 'Terms of Service — House Plus Group',
           description: 'Read our terms of service to understand the rules and conditions for using House Plus Group\'s website and services.',
-          keywords: 'terms of service, terms and conditions, legal'
+          keywords: 'terms of service, terms and conditions, legal',
+          canonical: 'https://www.houseplus.com.ng/terms'
         }
       };
 
-      // Get current path
-      const currentPath = window.location.pathname;
+      // Get current path and normalize it
+      const currentPath = normalizePath(window.location.pathname);
       const metadata = pageMetadata[currentPath] || pageMetadata['/'];
       
       // Update document title
@@ -91,11 +107,13 @@
         tag.setAttribute('content', content);
       }
       
+      // Update all meta tags
       updateMetaTag('title', metadata.title);
       updateMetaTag('description', metadata.description);
       updateMetaTag('keywords', metadata.keywords);
       updateMetaTag('og:title', metadata.title, true);
       updateMetaTag('og:description', metadata.description, true);
+      updateMetaTag('og:url', metadata.canonical, true);
       updateMetaTag('twitter:title', metadata.title);
       updateMetaTag('twitter:description', metadata.description);
       
@@ -106,7 +124,7 @@
         canonical.rel = 'canonical';
         document.head.appendChild(canonical);
       }
-      canonical.href = 'https://www.houseplus.com.ng' + currentPath;
+      canonical.href = metadata.canonical;
     </script>
 
     <!-- Primary Meta Tags -->
@@ -115,7 +133,7 @@
     <meta name="description" content="House Plus Group is a China-based manufacturer and supplier of solar panels, inverters, lithium batteries, home appliances, and 3C electronics. Factory direct pricing, OEM/ODM available. Serving Africa and global markets." />
     <meta name="keywords" content="House Plus Group, solar panels, inverters, lithium batteries, home appliances, 3C electronics, China manufacturer, Nigeria, Africa, OEM ODM, solar energy, air fryer, smart watch, power bank" />
     <meta name="author" content="House Plus Group" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <link rel="canonical" href="https://www.houseplus.com.ng/" />
 
     <!-- Open Graph / Facebook -->
@@ -124,6 +142,8 @@
     <meta property="og:title" content="House Plus Group — Solar Energy, Home Appliances & 3C Electronics Manufacturer" />
     <meta property="og:description" content="Professional Chinese manufacturer of solar energy products, home appliances, and 3C electronics. Factory direct pricing. Serving Africa and global markets." />
     <meta property="og:image" content="https://www.houseplus-ch.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="House Plus Group" />
     <meta property="og:locale" content="en_US" />
 
