@@ -4,7 +4,7 @@ export default {
     const pathname = url.pathname;
     
     // GitHub Pages 源地址
-    const githubPagesUrl = 'https://ws006.github.io/houseplus-website';
+    const githubPagesUrl = 'https://ws006.github.io/House-Plus-Group';
     
     // 静态文件扩展名列表（这些文件直接从 GitHub Pages 获取）
     const staticExtensions = [

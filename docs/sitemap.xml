@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:geo="http://www.google.com/geo/schemas/sitemap/1.0">
+
+  <!-- Homepage - Highest Priority -->
+  <url>
+    <loc>https://www.houseplus.com.ng/</loc>
+    <lastmod>2026-03-31T06:38:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <geo:location>
+      <geo:format>kml</geo:format>
+      <geo:latitude>6.6349</geo:latitude>
+      <geo:longitude>3.3519</geo:longitude>
+    </geo:location>
+    <!-- Multilingual versions -->
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/"/>
+  </url>
+
+  <!-- About Page -->
+  <url>
+    <loc>https://www.houseplus.com.ng/about</loc>
+    <lastmod>2026-03-31T06:38:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <geo:location>
+      <geo:latitude>6.6349</geo:latitude>
+      <geo:longitude>3.3519</geo:longitude>
+    </geo:location>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/about?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/about?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/about?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/about"/>
+  </url>
+
+  <!-- Products Page - High Priority -->
+  <url>
+    <loc>https://www.houseplus.com.ng/products</loc>
+    <lastmod>2026-03-31T06:38:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <geo:location>
+      <geo:latitude>6.6349</geo:latitude>
+      <geo:longitude>3.3519</geo:longitude>
+    </geo:location>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/products?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/products?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/products"/>
+  </url>
+
+  <!-- Factory Page - GEO Optimized -->
+  <url>
+    <loc>https://www.houseplus.com.ng/factory</loc>
+    <lastmod>2026-03-31T06:38:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <geo:location>
+      <geo:latitude>6.6349</geo:latitude>
+      <geo:longitude>3.3519</geo:longitude>
+    </geo:location>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/factory?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/factory"/>
+  </url>
+
+  <!-- Team Page -->
+  <url>
+    <loc>https://www.houseplus.com.ng/team</loc>
+    <lastmod>2026-03-31T06:38:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+    <geo:location>
+      <geo:latitude>6.6349</geo:latitude>
+      <geo:longitude>3.3519</geo:longitude>
+    </geo:location>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/team?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/team"/>
+  </url>
+
+  <!-- Services Page -->
+  <url>
+    <loc>https://www.houseplus.com.ng/services</loc>
+    <lastmod>2026-03-31T06:38:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+    <geo:location>
+      <geo:latitude>6.6349</geo:latitude>
+      <geo:longitude>3.3519</geo:longitude>
+    </geo:location>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/services?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/services"/>
+  </url>
+
+  <!-- FAQ Page -->
+  <url>
+    <loc>https://www.houseplus.com.ng/faq</loc>
+    <lastmod>2026-03-31T06:38:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+    <geo:location>
+      <geo:latitude>6.6349</geo:latitude>
+      <geo:longitude>3.3519</geo:longitude>
+    </geo:location>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/faq?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/faq"/>
+  </url>
+
+  <!-- News Page - Updated Frequently -->
+  <url>
+    <loc>https://www.houseplus.com.ng/news</loc>
+    <lastmod>2026-03-31T06:38:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+    <geo:location>
+      <geo:latitude>6.6349</geo:latitude>
+      <geo:longitude>3.3519</geo:longitude>
+    </geo:location>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/news?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/news"/>
+  </url>
+
+  <!-- Careers Page -->
+  <url>
+    <loc>https://www.houseplus.com.ng/careers</loc>
+    <lastmod>2026-03-31T06:38:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.60</priority>
+    <geo:location>
+      <geo:latitude>6.6349</geo:latitude>
+      <geo:longitude>3.3519</geo:longitude>
+    </geo:location>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/careers?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/careers"/>
+  </url>
+
+  <!-- Contact Page - Important for Local SEO -->
+  <url>
+    <loc>https://www.houseplus.com.ng/contact</loc>
+    <lastmod>2026-03-31T06:38:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <geo:location>
+      <geo:latitude>6.6349</geo:latitude>
+      <geo:longitude>3.3519</geo:longitude>
+    </geo:location>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/contact?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/contact"/>
+  </url>
+
+</urlset>
