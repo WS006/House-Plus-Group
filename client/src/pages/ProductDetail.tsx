@@ -78,8 +78,9 @@ export default function ProductDetail() {
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 mb-4">
               <img
                 src={product.images[activeImg] || product.image}
-                alt={getName(product)}
+                alt={`${getName(product)} - Product Image`}
                 className="w-full h-80 sm:h-96 object-cover"
+                loading="lazy"
               />
             </div>
             {product.images.length > 1 && (
@@ -92,7 +93,7 @@ export default function ProductDetail() {
                       activeImg === i ? 'border-[#f59e0b]' : 'border-gray-200 hover:border-gray-400'
                     }`}
                   >
-                    <img src={img} alt="" className="w-full h-full object-cover" />
+                    <img src={img} alt={`${getName(product)} - Thumbnail ${i + 1}`} className="w-full h-full object-cover" loading="lazy" />
                   </button>
                 ))}
               </div>

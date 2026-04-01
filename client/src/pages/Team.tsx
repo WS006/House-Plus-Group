@@ -69,7 +69,7 @@ export default function Team() {
           {TEAM.map((member, i) => (
             <div key={i} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="relative h-56 overflow-hidden">
-                <img src={member.avatar} alt={member.name} className="w-full h-full object-cover" />
+                <img src={member.avatar} alt={`${member.name} - ${member.role}`} className="w-full h-full object-cover" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f2d5e]/60 to-transparent" />
                 <div className="absolute bottom-4 left-4">
                   <h3 className="text-white font-black text-xl">{member.name}</h3>

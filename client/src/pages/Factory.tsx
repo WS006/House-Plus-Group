@@ -63,8 +63,9 @@ export default function Factory() {
       <div className="relative h-80 sm:h-96 overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=1400&q=80"
-          alt="House Plus Factory"
+          alt="House Plus Factory - Modern Manufacturing Facility"
           className="w-full h-full object-cover"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-[#0f2d5e]/50 flex items-center justify-center">
           <div className="text-center text-white">
