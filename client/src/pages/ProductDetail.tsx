@@ -6,8 +6,9 @@ import Breadcrumb from '@/components/Breadcrumb';
 import InquiryModal from '@/components/InquiryModal';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Product, favoritesStore, productsStore } from '@/lib/store';
+import { addPageSchema, generateProductSchema } from '@/lib/seo';
 import { ChevronLeft, ChevronRight, Heart, Package, Share2, Shield, Truck, Zap } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'wouter';
 
 export default function ProductDetail() {
@@ -18,6 +19,58 @@ export default function ProductDetail() {
   const [isFav, setIsFav] = useState(() => favoritesStore.isFavorite(id || ''));
 
   const product = productsStore.getById(id || '');
+
+  const getName = (p: Product) => {
+    const map: Record<string, string> = { en: p.nameEn, zh: p.nameZh, fr: p.nameFr, ru: p.nameRu, es: p.nameEs, ar: p.nameAr };
+    return map[language] || p.nameEn;
+  };
+  const getDesc = (p: Product) => {
+    const map: Record<string, string> = { en: p.descEn, zh: p.descZh, fr: p.descFr, ru: p.descRu, es: p.descEs, ar: p.descAr };
+    return map[language] || p.descEn;
+  };
+
+  useEffect(() => {
+    if (product) {
+      const productName = getName(product);
+      const productDesc = getDesc(product);
+      
+      // Update Page Meta
+      document.title = `${productName} - HousePlus Group Nigeria Factory | Wholesale Manufacturer`;
+      
+      // Inject Product Schema
+      const productSchema = generateProductSchema({
+        name: productName,
+        description: productDesc,
+        image: product.image,
+      });
+      addPageSchema(productSchema);
+
+      // Inject FAQ Schema for Product
+      const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": `What is the MOQ for ${productName}?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `The minimum order quantity for ${productName} is ${product.moq}.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `How long is the delivery for ${productName}?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `The standard delivery time for ${productName} is ${product.delivery}.`
+            }
+          }
+        ]
+      };
+      addPageSchema(faqSchema);
+    }
+  }, [product, language]);
 
   if (!product) {
     return (
@@ -32,15 +85,6 @@ export default function ProductDetail() {
       </div>
     );
   }
-
-  const getName = (p: Product) => {
-    const map: Record<string, string> = { en: p.nameEn, zh: p.nameZh, fr: p.nameFr, ru: p.nameRu, es: p.nameEs, ar: p.nameAr };
-    return map[language] || p.nameEn;
-  };
-  const getDesc = (p: Product) => {
-    const map: Record<string, string> = { en: p.descEn, zh: p.descZh, fr: p.descFr, ru: p.descRu, es: p.descEs, ar: p.descAr };
-    return map[language] || p.descEn;
-  };
 
   const toggleFav = () => {
     favoritesStore.toggle(product.id);
@@ -78,7 +122,7 @@ export default function ProductDetail() {
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 mb-4">
               <img
                 src={product.images[activeImg] || product.image}
-                alt={`${getName(product)} - Product Image`}
+                alt={`${getName(product)} - HousePlus Group Nigeria Factory Product`}
                 className="w-full h-80 sm:h-96 object-cover"
                 loading="lazy"
               />
@@ -93,7 +137,7 @@ export default function ProductDetail() {
                       activeImg === i ? 'border-[#f59e0b]' : 'border-gray-200 hover:border-gray-400'
                     }`}
                   >
-                    <img src={img} alt={`${getName(product)} - Thumbnail ${i + 1}`} className="w-full h-full object-cover" loading="lazy" />
+                    <img src={img} alt={`${getName(product)} - HousePlus Group Nigeria Factory Thumbnail ${i + 1}`} className="w-full h-full object-cover" loading="lazy" />
                   </button>
                 ))}
               </div>
@@ -195,7 +239,7 @@ export default function ProductDetail() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {relatedProducts.map(p => (
                 <Link key={p.id} href={`/products/${p.id}`} className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-all group">
-                  <img src={p.image} alt={getName(p)} className="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <img src={p.image} alt={`${getName(p)} - HousePlus Group Nigeria Factory Related Product`} className="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-300" />
                   <div className="p-3">
                     <h3 className="text-sm font-semibold text-[#0f2d5e] line-clamp-2 group-hover:text-[#f59e0b] transition-colors">{getName(p)}</h3>
                     <div className="text-xs text-gray-400 mt-1">MOQ: {p.moq}</div>

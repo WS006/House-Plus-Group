@@ -72,7 +72,7 @@ export default function Navbar() {
             <Link href="/" className="flex items-center gap-2 flex-shrink-0">
               <img 
                 src="https://d2xsxph8kpxj0f.cloudfront.net/310519663457782054/fA3FQLnTsLWN8wdASzWxSY/HousePlusGroupLogo_9e1cc7f4.png" 
-                alt="House Plus Group"
+                alt="HousePlus Group Nigeria Factory"
                 className="h-12 w-auto"
               />
             </Link>

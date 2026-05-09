@@ -6,6 +6,7 @@
 import Breadcrumb from '@/components/Breadcrumb';
 import InquiryModal from '@/components/InquiryModal';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { addPageSchema } from '@/lib/seo';
 import { motion, useInView } from 'framer-motion';
 import { Award, CheckCircle, Globe, Shield, Target, TrendingUp, Users, Zap, Star, MapPin, Briefcase, Heart } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
@@ -124,6 +125,39 @@ export default function About() {
     clearSchemaScripts();
     const schema = generateOrganizationSchema();
     injectSchema(schema);
+
+    // Inject FAQ Schema for About Page
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Where is HousePlus Group Nigeria Factory located?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our factory and office are located at 8 Eso Cl, Ikeja GRA, Lagos, Nigeria."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What products does HousePlus Group manufacture?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We specialize in solar energy solutions (panels, inverters, batteries), home appliances (air fryers, blenders), and 3C electronics (smart watches, power banks)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer OEM/ODM services?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we provide comprehensive OEM/ODM manufacturing services for global clients, including custom branding and specifications."
+          }
+        }
+      ]
+    };
+    addPageSchema(faqSchema);
   }, []);
 
   return (
@@ -148,7 +182,7 @@ export default function About() {
               </div>
               <h2 className="text-3xl font-black text-[#0f2d5e] mb-6">House Plus Group — Bridging China & Africa</h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
-                <p>House Plus Group Nigeria Factory (also known as House Plus Ltd) is a China-based manufacturer and supplier specializing in a broad range of consumer electronics (3C goods), solar energy solutions, and household appliances.</p>
+                <p>HousePlus Group Nigeria Factory is a leading manufacturer and supplier specializing in solar energy solutions, home appliances, and 3C electronics. Based in Lagos, Nigeria, we serve clients across Africa and global markets with factory-direct pricing and reliable quality.</p>
                 <p>With over 10 years of manufacturing experience, we have built a reputation for delivering high-quality, competitively priced products directly from our factory to buyers worldwide — with a special focus on the African market.</p>
                 <p>Our Nigeria offices in Lagos serve as the bridge between Chinese manufacturing excellence and Africa's growing consumer demand, providing local support, warehousing, and after-sales service.</p>
                 <p className="font-semibold text-[#0f2d5e]">Founded on principles of integrity, innovation, and partnership, we are committed to empowering African businesses and consumers with access to world-class products at factory-direct prices.</p>

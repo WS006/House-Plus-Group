@@ -1,7 +1,6 @@
-# House Plus Group - robots.txt
+# HousePlus Group Nigeria Factory - robots.txt
 # SEO Optimization for Search Engines
 
-# Allow all bots to crawl the site
 User-agent: *
 Allow: /
 Disallow: /admin/
@@ -9,16 +8,6 @@ Disallow: /private/
 Disallow: /*.json$
 Disallow: /*?*sort=
 Disallow: /*?*filter=
-
-# Specific rules for Google
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 0
-
-# Specific rules for Bing
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 1
 
 # Block bad bots
 User-agent: MJ12bot
@@ -30,12 +19,11 @@ Disallow: /
 User-agent: SemrushBot
 Disallow: /
 
+User-agent: DotBot
+Disallow: /
+
+User-agent: Rogerbot
+Disallow: /
+
 # Sitemap location
 Sitemap: https://www.houseplus.com.ng/sitemap.xml
-
-# Crawl delay for other bots
-Crawl-delay: 1
-Request-rate: 30/60
-
-# Host preference
-Host: https://www.houseplus.com.ng

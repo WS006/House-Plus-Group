@@ -5,6 +5,7 @@
 import Breadcrumb from '@/components/Breadcrumb';
 import InquiryModal from '@/components/InquiryModal';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { addPageSchema } from '@/lib/seo';
 import { motion, useInView } from 'framer-motion';
 import { Award, CheckCircle, Factory as FactoryIcon, Settings, Shield, TrendingUp, Zap } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
@@ -46,6 +47,31 @@ export default function Factory() {
     clearSchemaScripts();
     const schema = generateLocalBusinessSchema();
     injectSchema(schema);
+
+    // Inject FAQ Schema for Factory Page
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I visit the HousePlus Group Nigeria Factory?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we welcome factory visits. Please contact us in advance to schedule your visit to our Lagos facility."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What certifications does the factory have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our manufacturing processes are CE, RoHS, FCC, ISO 9001:2015, and SONCAP certified."
+          }
+        }
+      ]
+    };
+    addPageSchema(faqSchema);
   }, []);
 
   return (
@@ -63,7 +89,7 @@ export default function Factory() {
       <div className="relative h-80 sm:h-96 overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=1400&q=80"
-          alt="House Plus Factory - Modern Manufacturing Facility"
+          alt="HousePlus Group Nigeria Factory - Modern Manufacturing Facility"
           className="w-full h-full object-cover"
           loading="lazy"
         />

@@ -96,8 +96,8 @@ export default function Home() {
   useEffect(() => {
     clearSchemaScripts();
     injectSchema(generateWebPageSchema({
-      pageTitle: 'House Plus Group — Solar Energy, Home Appliances & 3C Electronics Manufacturer',
-      pageDescription: 'House Plus Group is a China-based manufacturer and supplier of solar panels, inverters, lithium batteries, home appliances, and 3C electronics. Factory direct pricing, OEM/ODM available. Serving Africa and global markets.',
+      pageTitle: 'HousePlus Group Nigeria Factory | Solar Panels, Home Appliances & 3C Electronics for Africa',
+      pageDescription: 'HousePlus Group Nigeria Factory is a leading manufacturer and supplier of solar panels, inverters, lithium batteries, home appliances, and 3C electronics. Factory direct pricing, OEM/ODM available. Serving Nigeria, Africa and global markets.',
       pageUrl: 'https://www.houseplus.com.ng/',
       imageUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663457782054/fA3FQLnTsLWN8wdASzWxSY/hero-solar-9WdVUX6sZBGChCdiLZdas5.webp'
     }));
@@ -130,7 +130,7 @@ export default function Home() {
           >
             <img
               src={HERO_SLIDES[currentSlide].image}
-              alt={t(HERO_SLIDES[currentSlide].titleKey)}
+              alt={`${t(HERO_SLIDES[currentSlide].titleKey)} - HousePlus Group Nigeria Factory`}
               className="w-full h-full object-cover"
               loading="eager"
             />

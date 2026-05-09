@@ -35,12 +35,12 @@ export const translations = {
 
     // Hero
     hero_slide1_title: 'One-Stop Solar & Home Appliances Solution',
-    hero_slide1_subtitle: 'Professional Chinese Manufacturer & Supplier for Africa and Global Markets',
+    hero_slide1_subtitle: 'Professional Nigeria Factory & Supplier for Africa and Global Markets',
     hero_slide1_btn: 'Explore Products',
     hero_slide2_title: 'High-Quality 3C Electronics & Gadgets',
     hero_slide2_subtitle: 'SD Cards, Smart Watches, Earphones, Power Banks & More',
     hero_slide2_btn: 'View Catalog',
-    hero_slide3_title: 'Factory Direct — Best Price Guaranteed',
+    hero_slide3_title: 'Nigeria Factory Direct — Best Price Guaranteed',
     hero_slide3_subtitle: 'ISO-Certified Manufacturing | OEM/ODM Available | Fast Delivery',
     hero_slide3_btn: 'Contact Us',
 
@@ -61,7 +61,7 @@ export const translations = {
     // About
     about_title: 'About House Plus Group',
     about_subtitle: 'Your Trusted Chinese Manufacturer & Supplier',
-    about_desc: 'House Plus Group Nigeria Factory (also known as House Plus Ltd) is a China-based manufacturer and supplier specializing in consumer electronics (3C goods), solar energy solutions, and household appliances. We serve clients across Africa, the Middle East, and global markets with factory-direct pricing and reliable quality.',
+    about_desc: 'HousePlus Group Nigeria Factory is a leading manufacturer and supplier specializing in solar energy solutions, home appliances, and 3C electronics. Based in Lagos, Nigeria, we serve clients across Africa and global markets with factory-direct pricing and reliable quality.',
     about_mission: 'Our Mission',
     about_mission_desc: 'To provide high-quality, affordable products that improve lives across Africa and beyond.',
     about_vision: 'Our Vision',
@@ -187,12 +187,12 @@ export const translations = {
     inquiry_success: 'Inquiry sent! We will contact you soon.',
 
     // Footer
-    footer_desc: 'Professional Chinese manufacturer and supplier of solar energy products, home appliances, and 3C electronics. Serving Africa and global markets.',
+    footer_desc: 'HousePlus Group Nigeria Factory is a professional manufacturer and supplier of solar energy products, home appliances, and 3C electronics. Serving Africa and global markets.',
     footer_quick_links: 'Quick Links',
     footer_products: 'Products',
     footer_contact: 'Contact Info',
     footer_follow: 'Follow Us',
-    footer_rights: 'All Rights Reserved',
+    footer_rights: 'All Rights Reserved. | RC: XXXXXXX',
     footer_privacy: 'Privacy Policy',
     footer_terms: 'Terms of Service',
     footer_sitemap: 'Sitemap',

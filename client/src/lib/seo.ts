@@ -14,9 +14,9 @@ export interface PageMetadata {
 
 export const pageMetadata: Record<string, PageMetadata> = {
   home: {
-    title: "House Plus Group — Solar Energy, Home Appliances & 3C Electronics Manufacturer",
-    description: "House Plus Group is a China-based manufacturer and supplier of solar panels, inverters, lithium batteries, home appliances, and 3C electronics. Factory direct pricing, OEM/ODM available. Serving Africa and global markets.",
-    keywords: "House Plus Group, solar panels, inverters, lithium batteries, home appliances, 3C electronics, China manufacturer, Nigeria, Africa, OEM ODM, solar energy, air fryer, smart watch, power bank",
+    title: "HousePlus Group Nigeria Factory | Solar Panels, Home Appliances & 3C Electronics for Africa",
+    description: "HousePlus Group Nigeria Factory is a leading manufacturer and supplier of solar panels, inverters, lithium batteries, home appliances, and 3C electronics. Factory direct pricing, OEM/ODM available. Serving Nigeria, Africa and global markets.",
+    keywords: "HousePlus Group Nigeria Factory, HousePlus Group, solar panels, inverters, lithium batteries, home appliances, 3C electronics, Nigeria manufacturer, Lagos factory, Africa, OEM ODM, solar energy, air fryer, smart watch, power bank",
     canonical: "https://www.houseplus.com.ng/",
   },
   about: {
@@ -193,11 +193,11 @@ export function generateProductSchema(product: {
     image: product.image || "https://www.houseplus.com.ng/logo.png",
     brand: {
       "@type": "Brand",
-      name: "House Plus Group",
+      name: "HousePlus Group Nigeria Factory",
     },
     manufacturer: {
       "@type": "Organization",
-      name: "House Plus Group",
+      name: "HousePlus Group Nigeria Factory",
     },
     ...(product.price && {
       offers: {
@@ -241,7 +241,7 @@ export function generateArticleSchema(article: {
     dateModified: article.dateModified || article.datePublished,
     publisher: {
       "@type": "Organization",
-      name: "House Plus Group",
+      name: "HousePlus Group Nigeria Factory",
       logo: {
         "@type": "ImageObject",
         url: "https://www.houseplus.com.ng/logo.png",

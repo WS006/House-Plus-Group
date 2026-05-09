@@ -43,7 +43,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <img 
               src="https://d2xsxph8kpxj0f.cloudfront.net/310519663457782054/fA3FQLnTsLWN8wdASzWxSY/HousePlusGroupLogo_9e1cc7f4.png" 
-              alt="House Plus Group"
+              alt="HousePlus Group Nigeria Factory"
               className="h-14 w-auto mb-4"
             />
             <p className="text-white/60 text-sm leading-relaxed mb-5">
@@ -188,7 +188,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-white/40 text-xs text-center sm:text-left">
-              © {currentYear} House Plus Group. {t('footer_rights')}
+              &copy; {currentYear} HousePlus Group Nigeria Factory. {t('footer_rights')}
             </p>
             <div className="flex items-center gap-4">
               <Link href="/privacy" className="text-white/40 hover:text-white/60 text-xs transition-colors">
