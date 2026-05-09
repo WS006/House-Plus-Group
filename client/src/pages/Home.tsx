@@ -400,10 +400,10 @@ export default function Home() {
                 Why Choose Us
               </div>
               <h2 className="text-3xl sm:text-4xl font-black text-[#0f2d5e] mb-6">
-                Your Trusted Partner in China Manufacturing
+                Your Trusted Partner in Nigeria Manufacturing
               </h2>
               <p className="text-gray-500 mb-8 leading-relaxed">
-                House Plus Group has been serving global markets for over 10 years, providing factory-direct products with uncompromising quality and competitive pricing.
+                HousePlus Group Nigeria Factory has been serving Africa and global markets for over 10 years, providing factory-direct products with uncompromising quality and competitive pricing from our Lagos facility.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
@@ -431,14 +431,14 @@ export default function Home() {
               <div className="relative">
                 <img
                   src="https://d2xsxph8kpxj0f.cloudfront.net/310519663457782054/fA3FQLnTsLWN8wdASzWxSY/about-team-jJL8e3Sfsi9U6dH7YCRUAi.webp"
-                  alt="House Plus Team"
+                  alt="HousePlus Group Nigeria Factory Team"
                   className="rounded-2xl shadow-2xl w-full object-cover h-[450px]"
                   loading="lazy"
                 />
                 {/* Floating card */}
                 <div className="absolute -bottom-6 -left-6 bg-[#0f2d5e] text-white p-5 rounded-2xl shadow-xl max-w-[200px]">
                   <div className="text-3xl font-black text-[#f59e0b]">10+</div>
-                  <div className="text-sm text-white/80">Years of Excellence in Manufacturing</div>
+                  <div className="text-sm text-white/80">Years of Excellence in Nigeria Manufacturing</div>
                 </div>
                 <div className="absolute -top-6 -right-6 bg-[#f59e0b] text-[#0f2d5e] p-4 rounded-2xl shadow-xl">
                   <div className="text-2xl font-black">50+</div>
