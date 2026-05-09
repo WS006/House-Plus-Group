@@ -89,7 +89,7 @@ export default function Factory() {
       <div className="relative h-80 sm:h-96 overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=1400&q=80"
-          alt="HousePlus Group Nigeria Factory - Modern Manufacturing Facility"
+          alt="HousePlus Group Nigeria Factory - Professional Solar & Home Appliance Manufacturing Facility"
           className="w-full h-full object-cover"
           loading="lazy"
         />

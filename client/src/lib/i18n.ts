@@ -34,14 +34,14 @@ export const translations = {
     nav_get_quote: 'Get a Quote',
 
     // Hero
-    hero_slide1_title: 'One-Stop Solar & Home Appliances Solution',
-    hero_slide1_subtitle: 'Professional Nigeria Factory & Supplier for Africa and Global Markets',
+    hero_slide1_title: 'Nigeria Factory Direct Solar & Home Appliances',
+    hero_slide1_subtitle: 'HousePlus Group Nigeria Factory — Leading Manufacturer for Africa & Global Markets',
     hero_slide1_btn: 'Explore Products',
-    hero_slide2_title: 'High-Quality 3C Electronics & Gadgets',
-    hero_slide2_subtitle: 'SD Cards, Smart Watches, Earphones, Power Banks & More',
+    hero_slide2_title: 'Premium 3C Electronics & Smart Gadgets',
+    hero_slide2_subtitle: 'High-Quality SD Cards, Smart Watches & Power Banks Direct from Our Factory',
     hero_slide2_btn: 'View Catalog',
-    hero_slide3_title: 'Nigeria Factory Direct — Best Price Guaranteed',
-    hero_slide3_subtitle: 'ISO-Certified Manufacturing | OEM/ODM Available | Fast Delivery',
+    hero_slide3_title: 'HousePlus Group Nigeria Factory — Best Price Guaranteed',
+    hero_slide3_subtitle: 'ISO-Certified Local Manufacturing | OEM/ODM Available | Fast Delivery',
     hero_slide3_btn: 'Contact Us',
 
     // Stats
@@ -59,9 +59,9 @@ export const translations = {
     industry_3c_desc: 'SD cards, smart watches, earphones, power banks, USB cables, Bluetooth speakers',
 
     // About
-    about_title: 'About House Plus Group',
-    about_subtitle: 'Your Trusted Chinese Manufacturer & Supplier',
-    about_desc: 'HousePlus Group Nigeria Factory is a leading manufacturer and supplier specializing in solar energy solutions, home appliances, and 3C electronics. Based in Lagos, Nigeria, we serve clients across Africa and global markets with factory-direct pricing and reliable quality.',
+    about_title: 'About HousePlus Group Nigeria Factory',
+    about_subtitle: 'Your Trusted Local Manufacturer & Global Supplier',
+    about_desc: 'HousePlus Group Nigeria Factory is a premier manufacturer specializing in solar energy solutions, home appliances, and 3C electronics. With our advanced factory in Lagos, Nigeria, we provide high-quality products, OEM/ODM services, and factory-direct pricing to Africa and the world.',
     about_mission: 'Our Mission',
     about_mission_desc: 'To provide high-quality, affordable products that improve lives across Africa and beyond.',
     about_vision: 'Our Vision',

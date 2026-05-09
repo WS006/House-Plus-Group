@@ -55,7 +55,7 @@ export default function ProductDetail() {
             "name": `What is the MOQ for ${productName}?`,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": `The minimum order quantity for ${productName} is ${product.moq}.`
+              "text": `The minimum order quantity for ${productName} is ${product.moq}. HousePlus Group Nigeria Factory provides competitive wholesale pricing.`
             }
           },
           {
@@ -63,7 +63,7 @@ export default function ProductDetail() {
             "name": `How long is the delivery for ${productName}?`,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": `The standard delivery time for ${productName} is ${product.delivery}.`
+              "text": `The standard delivery time for ${productName} is ${product.delivery}. We ensure fast shipping from our Nigeria Factory.`
             }
           }
         ]

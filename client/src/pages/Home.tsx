@@ -400,10 +400,10 @@ export default function Home() {
                 Why Choose Us
               </div>
               <h2 className="text-3xl sm:text-4xl font-black text-[#0f2d5e] mb-6">
-                Your Trusted Partner in Nigeria Manufacturing
+                HousePlus Group Nigeria Factory — Your Trusted Local Partner
               </h2>
               <p className="text-gray-500 mb-8 leading-relaxed">
-                HousePlus Group Nigeria Factory has been serving Africa and global markets for over 10 years, providing factory-direct products with uncompromising quality and competitive pricing from our Lagos facility.
+                HousePlus Group Nigeria Factory has been serving Africa and global markets for over 10 years. We provide premium solar energy products, home appliances, and 3C electronics direct from our Lagos manufacturing facility with uncompromising quality.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
@@ -469,10 +469,10 @@ export default function Home() {
               <span className="w-8 h-0.5 bg-[#f59e0b]" />
             </div>
             <h2 className="text-3xl sm:text-4xl font-black text-white mb-6">
-              Serving Africa's Growing Market
+              Empowering Nigeria & Africa's Growth
             </h2>
             <p className="text-white/70 max-w-2xl mx-auto mb-10 text-lg leading-relaxed">
-              With offices in Lagos, Nigeria and manufacturing in China, House Plus Group bridges the gap between quality Chinese manufacturing and Africa's booming consumer market.
+              HousePlus Group Nigeria Factory bridges the gap between manufacturing excellence and Africa's booming market. Our Lagos factory provides local jobs and high-quality products for the continent.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-6 py-4 text-center">

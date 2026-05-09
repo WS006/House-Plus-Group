@@ -180,12 +180,12 @@ export default function About() {
                 <span className="w-8 h-0.5 bg-[#f59e0b]" />
                 Our Story
               </div>
-              <h2 className="text-3xl font-black text-[#0f2d5e] mb-6">House Plus Group — Bridging China & Africa</h2>
+              <h2 className="text-3xl font-black text-[#0f2d5e] mb-6">HousePlus Group Nigeria Factory — Manufacturing Excellence</h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
-                <p>HousePlus Group Nigeria Factory is a leading manufacturer and supplier specializing in solar energy solutions, home appliances, and 3C electronics. Based in Lagos, Nigeria, we serve clients across Africa and global markets with factory-direct pricing and reliable quality.</p>
-                <p>With over 10 years of manufacturing experience, we have built a reputation for delivering high-quality, competitively priced products directly from our factory to buyers worldwide — with a special focus on the African market.</p>
-                <p>Our Nigeria offices in Lagos serve as the bridge between Chinese manufacturing excellence and Africa's growing consumer demand, providing local support, warehousing, and after-sales service.</p>
-                <p className="font-semibold text-[#0f2d5e]">Founded on principles of integrity, innovation, and partnership, we are committed to empowering African businesses and consumers with access to world-class products at factory-direct prices.</p>
+                <p>HousePlus Group Nigeria Factory is a premier manufacturer and supplier specializing in solar energy solutions, home appliances, and 3C electronics. With our strategic factory in Lagos, Nigeria, we serve clients across Africa and global markets with factory-direct pricing and reliable quality.</p>
+                <p>With over 10 years of manufacturing experience, we have built a reputation for delivering high-quality, competitively priced products directly from our Nigeria factory to buyers worldwide — with a special focus on the African market.</p>
+                <p>Our Nigeria facility in Lagos serves as the core hub for manufacturing excellence, providing local support, efficient production, and rapid after-sales service to our partners.</p>
+                <p className="font-semibold text-[#0f2d5e]">Founded on principles of integrity, innovation, and partnership, we are committed to empowering African businesses and consumers with access to world-class products manufactured right here in Nigeria.</p>
               </div>
               <div className="mt-8 flex flex-wrap gap-3">
                 <button onClick={() => setInquiryOpen(true)} className="bg-[#f59e0b] hover:bg-[#d97706] text-[#0f2d5e] font-bold px-6 py-3 rounded-xl transition-colors">

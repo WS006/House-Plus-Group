@@ -25,5 +25,8 @@ Disallow: /
 User-agent: Rogerbot
 Disallow: /
 
+# GEO/SEO Optimization
+Crawl-delay: 10
+
 # Sitemap location
 Sitemap: https://www.houseplus.com.ng/sitemap.xml

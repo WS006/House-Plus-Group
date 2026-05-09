@@ -26,10 +26,10 @@ export function generateOrganizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "House Plus Group",
-    "alternateName": ["House Plus Ltd", "HousePlus", "House Plus Nigeria Factory"],
+    "name": "HousePlus Group Nigeria Factory",
+    "alternateName": ["HousePlus Group", "HousePlus", "HousePlus Group Nigeria Factory"],
     "url": "https://www.houseplus.com.ng",
-    "logo": "https://www.houseplus.com.ng/logo.png",
+    "logo": "https://cdn.houseplus.com.ng/logo-houseplus-group.png",
     "description": "China-based manufacturer and supplier of solar energy products, home appliances, and 3C electronics. Serving Africa and global markets.",
     "email": "jack@houseplus-ch.com",
     "telephone": ["+2349078080738", "+8615578119543"],
@@ -52,10 +52,9 @@ export function generateOrganizationSchema() {
       }
     ],
     "sameAs": [
-      "https://www.facebook.com/houseplusgroup",
+      "https://www.facebook.com/HousePlusNigeria",
       "https://www.instagram.com/houseplusgroup",
-      "https://www.linkedin.com/company/house-plus-group",
-      "https://twitter.com/houseplusgroup"
+      "https://www.linkedin.com/company/houseplus-group"
     ]
   };
 }
@@ -73,15 +72,15 @@ export function generateWebPageSchema(config: SchemaConfig) {
     "image": config.imageUrl || "https://www.houseplus.com.ng/og-image.jpg",
     "isPartOf": {
       "@type": "WebSite",
-      "name": "House Plus Group",
+      "name": "HousePlus Group Nigeria Factory",
       "url": "https://www.houseplus.com.ng"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "House Plus Group",
+      "name": "HousePlus Group Nigeria Factory",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.houseplus.com.ng/logo.png"
+        "url": "https://cdn.houseplus.com.ng/logo-houseplus-group.png"
       }
     }
   };
@@ -99,11 +98,11 @@ export function generateProductSchema(config: SchemaConfig) {
     "image": config.imageUrl || "https://www.houseplus.com.ng/og-image.jpg",
     "brand": {
       "@type": "Brand",
-      "name": "House Plus Group"
+      "name": "HousePlus Group Nigeria Factory"
     },
     "manufacturer": {
       "@type": "Organization",
-      "name": "House Plus Group",
+      "name": "HousePlus Group Nigeria Factory",
       "url": "https://www.houseplus.com.ng"
     },
     "url": config.pageUrl
@@ -144,14 +143,14 @@ export function generateArticleSchema(config: SchemaConfig) {
     "dateModified": config.articleModifiedDate || new Date().toISOString(),
     "author": {
       "@type": "Organization",
-      "name": config.articleAuthor || "House Plus Group"
+      "name": config.articleAuthor || "HousePlus Group Nigeria Factory"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "House Plus Group",
+      "name": "HousePlus Group Nigeria Factory",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.houseplus.com.ng/logo.png"
+        "url": "https://cdn.houseplus.com.ng/logo-houseplus-group.png"
       }
     }
   };
@@ -180,8 +179,8 @@ export function generateLocalBusinessSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "House Plus Group Nigeria",
-    "image": "https://www.houseplus.com.ng/logo.png",
+    "name": "HousePlus Group Nigeria Factory",
+    "image": "https://cdn.houseplus.com.ng/logo-houseplus-group.png",
     "description": "China-based manufacturer with Nigeria office providing solar energy products, home appliances, and 3C electronics.",
     "address": {
       "@type": "PostalAddress",
@@ -223,7 +222,7 @@ export function generateServiceSchema(serviceName: string, serviceDescription: s
     "url": serviceUrl,
     "provider": {
       "@type": "Organization",
-      "name": "House Plus Group",
+      "name": "HousePlus Group Nigeria Factory",
       "url": "https://www.houseplus.com.ng"
     },
     "areaServed": ["NG", "Africa", "Global"]
@@ -260,7 +259,7 @@ export function generatePersonSchema(name: string, title: string, imageUrl?: str
     "image": imageUrl || "https://www.houseplus.com.ng/default-avatar.jpg",
     "worksFor": {
       "@type": "Organization",
-      "name": "House Plus Group"
+      "name": "HousePlus Group Nigeria Factory"
     }
   };
 }
@@ -277,9 +276,9 @@ export function generateJobPostingSchema(jobTitle: string, jobDescription: strin
     "url": jobUrl,
     "hiringOrganization": {
       "@type": "Organization",
-      "name": "House Plus Group",
+      "name": "HousePlus Group Nigeria Factory",
       "sameAs": "https://www.houseplus.com.ng",
-      "logo": "https://www.houseplus.com.ng/logo.png"
+      "logo": "https://cdn.houseplus.com.ng/logo-houseplus-group.png"
     },
     "jobLocation": {
       "@type": "Place",
