@@ -155,7 +155,7 @@ for (const p of products) {
       name: p.nameEn,
       description: p.descEn,
       image: SITE + p.image,
-      url: SITE + url,
+      url: SITE + url + '/',
       brand: { '@type': 'Brand', name: 'HousePlus Group Nigerian Factory' },
       manufacturer: {
         '@type': 'Organization',
