@@ -79,7 +79,9 @@ function hreflang(url) {
 
 // Replace the whole block of default meta so each route gets its own values.
 function render(url, { title, description, image, jsonLd }) {
-  const canonical = SITE + url;
+  // GitHub Pages serves directory indexes at a trailing-slash URL, so the
+  // canonical must match the URL that is actually returned to crawlers.
+  const canonical = SITE + (url === '/' ? '/' : url + '/');
   const ogImage = SITE + (image || '/images/logo-houseplus-group.svg');
   let html = shell;
 
