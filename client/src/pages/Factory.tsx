@@ -71,7 +71,7 @@ export default function Factory() {
         }
       ]
     };
-    addPageSchema(faqSchema);
+    addPageSchema(faqSchema, "faq");
   }, []);
 
   return (

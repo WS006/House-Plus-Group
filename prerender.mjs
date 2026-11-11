@@ -122,7 +122,7 @@ function render(url, { title, description, image, jsonLd }) {
     <!-- Hreflang for multilingual -->
     ${hreflang(url)}
 
-    ${jsonLd ? `<script type="application/ld+json">\n    ${JSON.stringify(jsonLd, null, 2).split('\n').join('\n    ')}\n    </script>\n\n    ` : ''}`;
+    ${jsonLd ? `<script type="application/ld+json" data-schema-key="product">\n    ${JSON.stringify(jsonLd, null, 2).split('\n').join('\n    ')}\n    </script>\n\n    ` : ''}`;
 
   html = html.slice(0, start) + block + html.slice(end);
   return html;

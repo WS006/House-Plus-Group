@@ -35,7 +35,9 @@ export default function ProductDetail() {
       const productDesc = getDesc(product);
       
       // Update Page Meta
-      document.title = `${productName} - HousePlus Group Nigerian Factory | Wholesale Manufacturer`;
+      // Keep this in sync with the title produced by prerender.mjs so the
+      // hydrated page does not disagree with the static HTML crawlers index.
+      document.title = `${productName} — HousePlus Group Nigerian Factory`;
       
       // Inject Product Schema
       const productSchema = generateProductSchema({
@@ -43,7 +45,7 @@ export default function ProductDetail() {
         description: productDesc,
         image: product.image,
       });
-      addPageSchema(productSchema);
+      addPageSchema(productSchema, "product");
 
       // Inject FAQ Schema for Product
       const faqSchema = {
@@ -68,7 +70,7 @@ export default function ProductDetail() {
           }
         ]
       };
-      addPageSchema(faqSchema);
+      addPageSchema(faqSchema, "product-faq");
     }
   }, [product, language]);
 

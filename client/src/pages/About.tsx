@@ -157,7 +157,7 @@ export default function About() {
         }
       ]
     };
-    addPageSchema(faqSchema);
+    addPageSchema(faqSchema, "faq");
   }, []);
 
   return (

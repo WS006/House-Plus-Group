@@ -151,8 +151,16 @@ function updateMetaTag(
 
 /**
  * 更新 Canonical 链接
+ * GitHub Pages 以目录形式提供页面（/about/），canonical 需统一带尾斜杠，
+ * 否则预渲染 HTML 与客户端 hydration 后的 canonical 会互相冲突。
  */
 function updateCanonicalLink(href: string) {
+  const normalized = href.replace(/\/+$/, "");
+  const finalHref =
+    normalized === "" || normalized === "https://www.houseplus.com.ng"
+      ? "https://www.houseplus.com.ng/"
+      : normalized + "/";
+
   let link = document.querySelector('link[rel="canonical"]');
 
   if (!link) {
@@ -161,17 +169,25 @@ function updateCanonicalLink(href: string) {
     document.head.appendChild(link);
   }
 
-  link.setAttribute("href", href);
+  link.setAttribute("href", finalHref);
 }
 
 /**
  * 为页面添加 Schema.org 结构化数据
+ * 相同 key 的脚本会被替换，避免切换语言或路由时重复注入
  */
-export function addPageSchema(schema: Record<string, any>) {
-  const script = document.createElement("script");
-  script.type = "application/ld+json";
+export function addPageSchema(schema: Record<string, any>, key = "default") {
+  const selector = `script[type="application/ld+json"][data-schema-key="${key}"]`;
+  const existing = document.querySelector<HTMLScriptElement>(selector);
+  const script = existing || document.createElement("script");
+
+  script.setAttribute("type", "application/ld+json");
+  script.setAttribute("data-schema-key", key);
   script.textContent = JSON.stringify(schema);
-  document.head.appendChild(script);
+
+  if (!existing) {
+    document.head.appendChild(script);
+  }
 }
 
 /**
