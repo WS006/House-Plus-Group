@@ -73,8 +73,9 @@ function escapeHtml(s) {
 }
 
 function hreflang(url) {
-  return LANGS.map(l => `<link rel="alternate" hreflang="${l}" href="${SITE}${url}?lang=${l}" />`)
-    .concat([`<link rel="alternate" hreflang="x-default" href="${SITE}${url}" />`]).join('\n    ');
+  const clean = url === '/' ? '/' : url.replace(/\/$/, '') + '/';
+  return LANGS.map(l => `<link rel="alternate" hreflang="${l}" href="${SITE}${clean}?lang=${l}" />`)
+    .concat([`<link rel="alternate" hreflang="x-default" href="${SITE}${clean}" />`]).join('\n    ');
 }
 
 // Replace the whole block of default meta so each route gets its own values.
@@ -85,7 +86,7 @@ function render(url, { title, description, image, jsonLd }) {
   const ogImage = SITE + (image || '/images/logo-houseplus-group.svg');
   let html = shell;
 
-  const start = html.indexOf('<title>');
+  const start = html.indexOf('<!-- Primary Meta Tags -->');
   const end = html.indexOf('<!-- Favicon -->');
   if (start === -1 || end === -1) throw new Error('meta block markers not found');
 
