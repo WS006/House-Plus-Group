@@ -43,8 +43,8 @@ export default function Products() {
       pageTitle: 'Products - House Plus Group',
       pageDescription: 'Browse our complete catalog of solar panels, inverters, lithium batteries, home appliances, and 3C electronics. Factory direct pricing with OEM/ODM options.',
       pageUrl: 'https://www.houseplus.com.ng/products'
-    }));
-    injectSchema(generateOrganizationSchema());
+    }), 'webpage');
+    // Organization markup is provided site-wide by index.html.
   }, []);
 
   const allProducts = productsStore.getAll();

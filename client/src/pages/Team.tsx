@@ -51,7 +51,7 @@ export default function Team() {
     clearSchemaScripts();
     // 为主要联系人 Jack 添加 Person Schema
     const jackSchema = generatePersonSchema('Jack', 'Sales Director & Key Account Manager', 'https://www.houseplus.com.ng/images/team/jack.jpg');
-    injectSchema(jackSchema);
+    injectSchema(jackSchema, 'team');
   }, []);
 
   return (

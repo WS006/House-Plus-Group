@@ -28,7 +28,7 @@ export default function Services() {
     clearSchemaScripts();
     // 为 OEM/ODM 服务添加 Service Schema
     const oemSchema = generateServiceSchema('OEM/ODM Services', 'Custom manufacturing and original design manufacturing services for solar energy, home appliances, and 3C electronics', 'https://www.houseplus.com.ng/services');
-    injectSchema(oemSchema);
+    injectSchema(oemSchema, 'service');
   }, []);
 
   const SERVICES = [

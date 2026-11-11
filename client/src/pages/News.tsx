@@ -83,7 +83,7 @@ export default function News() {
       articlePublishedDate: new Date(latestArticle.date).toISOString(),
       articleAuthor: 'House Plus Group'
     });
-    injectSchema(articleSchema);
+    injectSchema(articleSchema, 'article');
   }, []);
 
   return (

@@ -100,8 +100,9 @@ export default function Home() {
       pageDescription: 'HousePlus Group Nigerian Factory is the Nigerian branch of HousePlus Group and a leading supplier of solar panels, inverters, lithium batteries, home appliances, and 3C electronics. Factory direct pricing, OEM/ODM available. Serving Nigeria, Africa and global markets.',
       pageUrl: 'https://www.houseplus.com.ng/',
       imageUrl: 'https://www.houseplus.com.ng/images/hero-solar.jpg'
-    }));
-    injectSchema(generateOrganizationSchema());
+    }), 'webpage');
+    // The site-wide Organization block already ships in index.html under the
+    // "organization" key, so Home must not inject a second copy.
   }, []);
 
   // Auto-play carousel

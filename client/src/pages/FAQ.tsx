@@ -30,7 +30,7 @@ export default function FAQ() {
     clearSchemaScripts();
     const faqData = FAQS.map(faq => ({ question: faq.q, answer: faq.a }));
     const faqSchema = generateFAQPageSchema(faqData);
-    injectSchema(faqSchema);
+    injectSchema(faqSchema, 'faq');
   }, [FAQS]);
 
   return (

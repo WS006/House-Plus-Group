@@ -19,7 +19,7 @@ export default function Contact() {
   useEffect(() => {
     clearSchemaScripts();
     const contactSchema = generateContactPointSchema();
-    injectSchema(contactSchema);
+    injectSchema(contactSchema, 'contact');
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {

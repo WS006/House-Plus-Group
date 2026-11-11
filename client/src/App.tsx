@@ -1,6 +1,6 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Route, Switch } from "wouter";
+import { useLocation, Route, Switch } from "wouter";
 import { useEffect, lazy, Suspense } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import CustomerService from "./components/CustomerService";
 import CookieBanner from "./components/CookieBanner";
+import { applyRouteSeo } from "./lib/seo";
 
 // Lazy load page components for code splitting
 const Home = lazy(() => import("./pages/Home"));
@@ -55,6 +56,8 @@ function AdminLayout({ children }: { children: React.ReactNode }) {
 }
 
 function Router() {
+  const [location] = useLocation();
+
   // GitHub Pages SPA routing fix
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -70,6 +73,13 @@ function Router() {
       window.history.replaceState(null, '', '/' + p);
     }
   }, []);
+
+  // Keep title / description / canonical / structured data in sync on
+  // client-side navigation. Without this, every SPA route change keeps the
+  // metadata of the page that was loaded first.
+  useEffect(() => {
+    applyRouteSeo(location);
+  }, [location]);
 
   return (
     <Suspense fallback={<PageLoader />}>

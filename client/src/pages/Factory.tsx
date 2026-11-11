@@ -45,8 +45,10 @@ export default function Factory() {
   
   useEffect(() => {
     clearSchemaScripts();
+    // Factory-specific LocalBusiness markup; the site-wide Organization block
+    // from index.html is kept, so use a distinct key.
     const schema = generateLocalBusinessSchema();
-    injectSchema(schema);
+    injectSchema(schema, 'localbusiness');
 
     // Inject FAQ Schema for Factory Page
     const faqSchema = {

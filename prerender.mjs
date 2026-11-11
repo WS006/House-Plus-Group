@@ -5,7 +5,6 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distPath = path.join(__dirname, 'dist', 'public');
 const SITE = 'https://www.houseplus.com.ng';
-const LANGS = ['en', 'zh', 'fr', 'ru', 'es', 'ar'];
 
 const products = JSON.parse(fs.readFileSync(path.join(__dirname, 'products.data.json'), 'utf8'));
 
@@ -19,52 +18,15 @@ const routes = [
   '/news', '/careers', '/contact', '/privacy', '/terms',
 ];
 
-const meta = {
-  '/about': {
-    title: 'About HousePlus Group Nigerian Factory — Manufacturing Excellence',
-    description: "HousePlus Group Nigerian Factory is the Nigerian branch and local entity of HousePlus Group. 10+ years of manufacturing experience supplying solar, appliances and 3C electronics to 50+ countries.",
-  },
-  '/products': {
-    title: 'Products — HousePlus Group Nigerian Factory | Solar, Appliances & 3C',
-    description: 'Browse the HousePlus Group Nigerian Factory catalogue: solar panels, inverters, lithium batteries, home appliances and 3C electronics. Factory direct pricing, OEM/ODM available.',
-  },
-  '/factory': {
-    title: 'Factory — HousePlus Group Nigerian Factory Manufacturing',
-    description: "Explore HousePlus Group's manufacturing facilities, ISO-certified production lines, quality control processes and OEM/ODM capacity for large-scale orders.",
-  },
-  '/team': {
-    title: 'Team — HousePlus Group Nigerian Factory Leadership',
-    description: 'Meet the HousePlus Group team: manufacturing, supply chain, quality assurance and customer service experts serving Nigeria, Africa and global buyers.',
-  },
-  '/services': {
-    title: 'Services — OEM/ODM, Customization & Logistics | HousePlus Group',
-    description: 'HousePlus Group services: OEM/ODM manufacturing, product customization, bulk orders, quality assurance, logistics support and 24/7 customer service for global buyers.',
-  },
-  '/faq': {
-    title: 'FAQ — HousePlus Group Nigerian Factory | Common Questions',
-    description: "Answers to common questions about HousePlus Group Nigerian Factory's products, MOQ, payment methods, delivery times, OEM/ODM services and shipping to Nigeria and Africa.",
-  },
-  '/news': {
-    title: 'News & Updates — HousePlus Group Nigerian Factory',
-    description: 'Latest news, announcements and market insights from HousePlus Group Nigerian Factory: new products, company milestones and solar industry trends in Africa.',
-  },
-  '/careers': {
-    title: 'Careers — Join the HousePlus Group Nigerian Factory Team',
-    description: 'Career opportunities at HousePlus Group Nigerian Factory in manufacturing, supply chain, sales and customer service. Join our growing Nigeria and China teams.',
-  },
-  '/contact': {
-    title: 'Contact HousePlus Group Nigerian Factory — Get in Touch',
-    description: 'Contact HousePlus Group Nigerian Factory for product inquiries, bulk orders or partnerships. Phone, email and WhatsApp support available for Nigeria and global buyers.',
-  },
-  '/privacy': {
-    title: 'Privacy Policy — HousePlus Group Nigerian Factory',
-    description: 'How HousePlus Group Nigerian Factory collects, uses and protects personal information, and the rights available to visitors and customers.',
-  },
-  '/terms': {
-    title: 'Terms of Service — HousePlus Group Nigerian Factory',
-    description: 'HousePlus Group Nigerian Factory terms of service covering product sales, shipping, returns, intellectual property and user responsibilities.',
-  },
-};
+// Single source of truth for per-route title/description, shared with the
+// client (client/src/lib/seo.ts) so the prerendered HTML and the hydrated SPA
+// never disagree about what a page is called.
+const meta = Object.fromEntries(
+  JSON.parse(fs.readFileSync(path.join(__dirname, 'routes.meta.json'), 'utf8')).map((r) => [
+    r.path,
+    { title: r.title, description: r.description },
+  ])
+);
 
 const shell = fs.readFileSync(path.join(distPath, 'index.html'), 'utf8');
 
@@ -72,11 +34,13 @@ function escapeHtml(s) {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
-function hreflang(url) {
-  const clean = url === '/' ? '/' : url.replace(/\/$/, '') + '/';
-  return LANGS.map(l => `<link rel="alternate" hreflang="${l}" href="${SITE}${clean}?lang=${l}" />`)
-    .concat([`<link rel="alternate" hreflang="x-default" href="${SITE}${clean}" />`]).join('\n    ');
-}
+// NOTE: this site is a single static document per route; translations are
+// applied client-side from the ?lang= query parameter. Publishing hreflang
+// alternates for those URLs would tell Google there are 6 localised copies of
+// every page while each URL canonicalises back to the English one — a
+// contradiction that gets the whole annotation set ignored (or worse, creates
+// 144 near-duplicate URLs). So no hreflang block is emitted; the canonical URL
+// is the only address search engines should index.
 
 // Replace the whole block of default meta so each route gets its own values.
 function render(url, { title, description, image, jsonLd }) {
@@ -119,9 +83,6 @@ function render(url, { title, description, image, jsonLd }) {
     <meta name="geo.position" content="6.5967;3.3421" />
     <meta name="ICBM" content="6.5967, 3.3421" />
 
-    <!-- Hreflang for multilingual -->
-    ${hreflang(url)}
-
     ${jsonLd ? `<script type="application/ld+json" data-schema-key="product">\n    ${JSON.stringify(jsonLd, null, 2).split('\n').join('\n    ')}\n    </script>\n\n    ` : ''}`;
 
   html = html.slice(0, start) + block + html.slice(end);
@@ -132,6 +93,41 @@ function write(route, html) {
   const dir = route === '/' ? distPath : path.join(distPath, route.slice(1));
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'index.html'), html, 'utf8');
+}
+
+/**
+ * GitHub Pages serves this file for unknown paths. It must not be indexed and
+ * must not claim a canonical URL, otherwise Google treats a soft 404 as a real
+ * page (and previously canonicalised it to the homepage).
+ */
+function writeNotFound() {
+  let html = shell;
+  const start = html.indexOf('<!-- Primary Meta Tags -->');
+  const end = html.indexOf('<!-- Favicon -->');
+  if (start === -1 || end === -1) throw new Error('meta block markers not found');
+
+  const block = `<!-- Primary Meta Tags -->
+    <title>Page Not Found — HousePlus Group Nigerian Factory</title>
+    <meta name="title" content="Page Not Found — HousePlus Group Nigerian Factory" />
+    <meta name="description" content="The page you are looking for does not exist. Browse HousePlus Group Nigerian Factory products, factory information, and contact details instead." />
+    <meta name="robots" content="noindex, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Page Not Found — HousePlus Group Nigerian Factory" />
+    <meta property="og:description" content="The page you are looking for does not exist." />
+    <meta property="og:image" content="${SITE}/images/logo-houseplus-group.svg" />
+    <meta property="og:site_name" content="HousePlus Group Nigerian Factory" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="NG" />
+    <meta name="geo.placename" content="Lagos, Nigeria" />
+
+    `;
+
+  html = html.slice(0, start) + block + html.slice(end);
+  fs.writeFileSync(path.join(distPath, '404.html'), html, 'utf8');
 }
 
 let count = 0;
@@ -170,4 +166,6 @@ for (const p of products) {
   count++;
 }
 
-console.log(`✓ prerendered ${count + 1} routes (incl. ${products.length} products)`);
+writeNotFound();
+
+console.log(`✓ prerendered ${count + 1} routes (incl. ${products.length} products) + 404`);

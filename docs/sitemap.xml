@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.houseplus.com.ng/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/" />
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/hero-solar.jpg</image:loc>
       <image:title>HousePlus Group Nigerian Factory - Solar Energy Solutions</image:title>
@@ -24,13 +16,6 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/about/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/about/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/about/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/about/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/about/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/about/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/about/" />
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/about-team.jpg</image:loc>
       <image:title>About HousePlus Group Nigerian Factory</image:title>
@@ -41,13 +26,6 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/products/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/products/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/products/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/products/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/products/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/products/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/products/" />
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/solar-panel.jpg</image:loc>
       <image:title>Solar, Home Appliance and 3C Product Catalogue</image:title>
@@ -58,13 +36,6 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/factory/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/factory/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/factory/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/factory/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/factory/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/factory/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/factory/" />
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/hero-factory.jpg</image:loc>
       <image:title>HousePlus Group Manufacturing and Quality Control</image:title>
@@ -75,13 +46,6 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/services/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/services/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/services/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/services/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/services/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/services/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/services/" />
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/africa-market.jpg</image:loc>
       <image:title>OEM/ODM, Sourcing and Logistics Services</image:title>
@@ -92,39 +56,18 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/faq/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/faq/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/faq/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/faq/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/faq/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/faq/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/faq/" />
   </url>
   <url>
     <loc>https://www.houseplus.com.ng/contact/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/contact/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/contact/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/contact/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/contact/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/contact/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/contact/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/contact/" />
   </url>
   <url>
     <loc>https://www.houseplus.com.ng/news/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/news/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/news/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/news/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/news/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/news/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/news/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/news/" />
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/hero-3c.jpg</image:loc>
       <image:title>HousePlus Group News and Updates</image:title>
@@ -135,26 +78,12 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/careers/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/careers/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/careers/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/careers/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/careers/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/careers/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/careers/" />
   </url>
   <url>
     <loc>https://www.houseplus.com.ng/team/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/team/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/team/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/team/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/team/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/team/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/team/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/team/" />
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/about-team.jpg</image:loc>
       <image:title>HousePlus Group Nigerian Factory Team</image:title>
@@ -165,39 +94,18 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/privacy/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/privacy/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/privacy/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/privacy/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/privacy/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/privacy/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/privacy/" />
   </url>
   <url>
     <loc>https://www.houseplus.com.ng/terms/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/terms/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/terms/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/terms/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/terms/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/terms/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/terms/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/terms/" />
   </url>
   <url>
     <loc>https://www.houseplus.com.ng/products/solar-panel-mono-400w/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/products/solar-panel-mono-400w/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/products/solar-panel-mono-400w/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/products/solar-panel-mono-400w/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/products/solar-panel-mono-400w/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/products/solar-panel-mono-400w/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/products/solar-panel-mono-400w/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/products/solar-panel-mono-400w/" />
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/solar-panel.jpg</image:loc>
       <image:title>400W Monocrystalline Solar Panel</image:title>
@@ -208,13 +116,6 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/products/solar-inverter-5kw/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/products/solar-inverter-5kw/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/products/solar-inverter-5kw/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/products/solar-inverter-5kw/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/products/solar-inverter-5kw/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/products/solar-inverter-5kw/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/products/solar-inverter-5kw/" />
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/solar-inverter.jpg</image:loc>
       <image:title>5KW Hybrid Solar Inverter</image:title>
@@ -225,13 +126,6 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/products/lithium-battery-100ah/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/products/lithium-battery-100ah/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/products/lithium-battery-100ah/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/products/lithium-battery-100ah/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/products/lithium-battery-100ah/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/products/lithium-battery-100ah/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/products/lithium-battery-100ah/" />
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/lithium-battery.jpg</image:loc>
       <image:title>100Ah LiFePO4 Lithium Battery</image:title>
@@ -242,13 +136,6 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/products/solar-street-light-100w/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/products/solar-street-light-100w/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/products/solar-street-light-100w/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/products/solar-street-light-100w/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/products/solar-street-light-100w/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/products/solar-street-light-100w/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/products/solar-street-light-100w/" />
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/solar-street-light.jpg</image:loc>
       <image:title>100W All-in-One Solar Street Light</image:title>
@@ -259,13 +146,6 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/products/air-fryer-5l/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/products/air-fryer-5l/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/products/air-fryer-5l/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/products/air-fryer-5l/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/products/air-fryer-5l/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/products/air-fryer-5l/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/products/air-fryer-5l/" />
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/air-fryer.jpg</image:loc>
       <image:title>5L Digital Air Fryer</image:title>
@@ -276,13 +156,6 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/products/blender-1200w/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/products/blender-1200w/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/products/blender-1200w/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/products/blender-1200w/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/products/blender-1200w/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/products/blender-1200w/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/products/blender-1200w/" />
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/blender.jpg</image:loc>
       <image:title>1200W Professional Blender</image:title>
@@ -293,13 +166,6 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/products/smart-watch-pro/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/products/smart-watch-pro/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/products/smart-watch-pro/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/products/smart-watch-pro/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/products/smart-watch-pro/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/products/smart-watch-pro/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/products/smart-watch-pro/" />
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/smart-watch.jpg</image:loc>
       <image:title>Smart Watch Pro - Health Monitor</image:title>
@@ -310,13 +176,6 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/products/tws-earphone/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/products/tws-earphone/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/products/tws-earphone/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/products/tws-earphone/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/products/tws-earphone/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/products/tws-earphone/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/products/tws-earphone/" />
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/tws-earbuds.jpg</image:loc>
       <image:title>TWS Bluetooth Earphones with ANC</image:title>
@@ -327,13 +186,6 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/products/power-bank-20000/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/products/power-bank-20000/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/products/power-bank-20000/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/products/power-bank-20000/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/products/power-bank-20000/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/products/power-bank-20000/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/products/power-bank-20000/" />
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/power-bank.jpg</image:loc>
       <image:title>20000mAh Solar Power Bank</image:title>
@@ -344,13 +196,6 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/products/sd-card-128gb/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/products/sd-card-128gb/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/products/sd-card-128gb/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/products/sd-card-128gb/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/products/sd-card-128gb/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/products/sd-card-128gb/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/products/sd-card-128gb/" />
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/sd-card.jpg</image:loc>
       <image:title>128GB High-Speed SD Memory Card</image:title>
@@ -361,13 +206,6 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/products/charge-controller-40a/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/products/charge-controller-40a/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/products/charge-controller-40a/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/products/charge-controller-40a/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/products/charge-controller-40a/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/products/charge-controller-40a/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/products/charge-controller-40a/" />
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/charge-controller.jpg</image:loc>
       <image:title>40A MPPT Solar Charge Controller</image:title>
@@ -378,13 +216,6 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.houseplus.com.ng/products/rice-cooker-5l/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.houseplus.com.ng/products/rice-cooker-5l/?lang=zh" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.houseplus.com.ng/products/rice-cooker-5l/?lang=fr" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.houseplus.com.ng/products/rice-cooker-5l/?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.houseplus.com.ng/products/rice-cooker-5l/?lang=es" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.houseplus.com.ng/products/rice-cooker-5l/?lang=ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.houseplus.com.ng/products/rice-cooker-5l/" />
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/rice-cooker.jpg</image:loc>
       <image:title>5L Digital Rice Cooker</image:title>

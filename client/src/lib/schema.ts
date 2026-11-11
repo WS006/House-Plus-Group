@@ -204,15 +204,26 @@ export function generateLocalBusinessSchema() {
 }
 
 /**
- * Inject schema into page head
+ * Inject schema into page head.
+ * Reuses the script registered under the same key so that navigating between
+ * routes (or re-running an effect) replaces the block instead of stacking
+ * duplicate JSON-LD blocks in <head>.
  */
-export function injectSchema(schema: any) {
+export function injectSchema(schema: any, key = 'default') {
   if (typeof document === 'undefined') return;
 
-  const script = document.createElement('script');
-  script.type = 'application/ld+json';
+  const selector = `script[type="application/ld+json"][data-schema-key="${key}"]`;
+  const existing = document.querySelector<HTMLScriptElement>(selector);
+  const script = existing || document.createElement('script');
+
+  script.setAttribute('type', 'application/ld+json');
+  script.setAttribute('data-schema-key', key);
+  script.setAttribute('data-schema-path', (window.location.pathname.replace(/\/+$/, '') || '/'));
   script.textContent = JSON.stringify(schema);
-  document.head.appendChild(script);
+
+  if (!existing) {
+    document.head.appendChild(script);
+  }
 }
 
 /**
@@ -321,14 +332,18 @@ export function generateContactPointSchema() {
 }
 
 /**
- * Remove existing schema scripts (to avoid duplicates)
+ * Remove page-level schema scripts (to avoid duplicates).
+ * The static Organization block declared in index.html is kept: it describes
+ * the site itself and is valid on every route.
  */
 export function clearSchemaScripts() {
   if (typeof document === 'undefined') return;
 
-  const scripts = document.head.querySelectorAll('script[type="application/ld+json"]');
+  const scripts = document.querySelectorAll<HTMLScriptElement>(
+    'head script[type="application/ld+json"][data-schema-key]'
+  );
   scripts.forEach(script => {
-    if (!script.textContent?.includes('Organization')) {
+    if (script.getAttribute('data-schema-key') !== 'organization') {
       script.remove();
     }
   });

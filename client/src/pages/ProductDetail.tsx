@@ -6,7 +6,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 import InquiryModal from '@/components/InquiryModal';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Product, favoritesStore, productsStore } from '@/lib/store';
-import { addPageSchema, generateProductSchema } from '@/lib/seo';
+import { addPageSchema, generateProductSchema, updateProductMeta } from '@/lib/seo';
 import { ChevronLeft, ChevronRight, Heart, Package, Share2, Shield, Truck, Zap } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'wouter';
@@ -37,7 +37,11 @@ export default function ProductDetail() {
       // Update Page Meta
       // Keep this in sync with the title produced by prerender.mjs so the
       // hydrated page does not disagree with the static HTML crawlers index.
-      document.title = `${productName} — HousePlus Group Nigerian Factory`;
+      updateProductMeta({
+        name: productName,
+        description: productDesc,
+        image: product.image,
+      });
       
       // Inject Product Schema
       const productSchema = generateProductSchema({

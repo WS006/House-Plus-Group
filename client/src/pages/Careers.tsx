@@ -37,7 +37,7 @@ export default function Careers() {
       firstJob.desc,
       'https://www.houseplus.com.ng/careers'
     );
-    injectSchema(jobSchema);
+    injectSchema(jobSchema, 'job');
   }, []);
 
   const handleApply = async (e: React.FormEvent) => {

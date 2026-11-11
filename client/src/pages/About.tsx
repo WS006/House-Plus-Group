@@ -11,7 +11,7 @@ import { motion, useInView } from 'framer-motion';
 import { Award, Building2, CheckCircle, Globe, Shield, Target, TrendingUp, Users, Zap, Star, MapPin, Briefcase, Heart } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'wouter';
-import { generateOrganizationSchema, injectSchema, clearSchemaScripts } from '@/lib/schema';
+import { clearSchemaScripts } from '@/lib/schema';
 
 function FadeIn({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -123,8 +123,6 @@ export default function About() {
 
   useEffect(() => {
     clearSchemaScripts();
-    const schema = generateOrganizationSchema();
-    injectSchema(schema);
 
     // Inject FAQ Schema for About Page
     const faqSchema = {
