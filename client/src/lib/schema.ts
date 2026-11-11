@@ -30,6 +30,11 @@ export function generateOrganizationSchema() {
     "alternateName": ["HousePlus Group Nigeria", "HousePlus Nigeria", "HousePlus Group Nigerian Factory"],
     "url": "https://www.houseplus.com.ng",
     "logo": "https://www.houseplus.com.ng/images/logo-houseplus-group.svg",
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "HousePlus Group",
+      "url": "https://www.houseplus-ch.com"
+    },
     "description": "Nigerian branch and local entity of HousePlus Group, supplying solar energy products, home appliances and 3C electronics across Nigeria, Africa and global markets. Group website: https://www.houseplus-ch.com",
     "email": "jack@houseplus-ch.com",
     "telephone": ["+2349078080738", "+8615578119543"],
