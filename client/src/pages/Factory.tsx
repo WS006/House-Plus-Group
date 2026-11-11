@@ -55,7 +55,7 @@ export default function Factory() {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Can I visit the HousePlus Group Nigeria Factory?",
+          "name": "Can I visit the HousePlus Group Nigerian Factory?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Yes, we welcome factory visits. Please contact us in advance to schedule your visit to our Lagos facility."
@@ -88,8 +88,8 @@ export default function Factory() {
       {/* Hero Image */}
       <div className="relative h-80 sm:h-96 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=1400&q=80"
-          alt="HousePlus Group Nigeria Factory - Professional Solar & Home Appliance Manufacturing Facility"
+          src="/images/hero-factory.jpg"
+          alt="HousePlus Group Nigerian Factory - Professional Solar & Home Appliance Manufacturing Facility"
           className="w-full h-full object-cover"
           loading="lazy"
         />

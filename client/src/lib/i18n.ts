@@ -34,13 +34,13 @@ export const translations = {
     nav_get_quote: 'Get a Quote',
 
     // Hero
-    hero_slide1_title: 'Nigeria Factory Direct Solar & Home Appliances',
-    hero_slide1_subtitle: 'HousePlus Group Nigeria Factory — Leading Manufacturer for Africa & Global Markets',
+    hero_slide1_title: 'Nigerian Factory Direct Solar & Home Appliances',
+    hero_slide1_subtitle: 'HousePlus Group Nigerian Factory — Leading Manufacturer for Africa & Global Markets',
     hero_slide1_btn: 'Explore Products',
     hero_slide2_title: 'Premium 3C Electronics & Smart Gadgets',
     hero_slide2_subtitle: 'High-Quality SD Cards, Smart Watches & Power Banks Direct from Our Factory',
     hero_slide2_btn: 'View Catalog',
-    hero_slide3_title: 'HousePlus Group Nigeria Factory — Best Price Guaranteed',
+    hero_slide3_title: 'HousePlus Group Nigerian Factory — Best Price Guaranteed',
     hero_slide3_subtitle: 'ISO-Certified Local Manufacturing | OEM/ODM Available | Fast Delivery',
     hero_slide3_btn: 'Contact Us',
 
@@ -59,9 +59,9 @@ export const translations = {
     industry_3c_desc: 'SD cards, smart watches, earphones, power banks, USB cables, Bluetooth speakers',
 
     // About
-    about_title: 'About HousePlus Group Nigeria Factory',
+    about_title: 'About HousePlus Group Nigerian Factory',
     about_subtitle: 'Your Trusted Local Manufacturer & Global Supplier',
-    about_desc: 'HousePlus Group Nigeria Factory is a premier manufacturer specializing in solar energy solutions, home appliances, and 3C electronics. With our advanced factory in Lagos, Nigeria, we provide high-quality products, OEM/ODM services, and factory-direct pricing to Africa and the world.',
+    about_desc: 'HousePlus Group Nigerian Factory is a premier manufacturer specializing in solar energy solutions, home appliances, and 3C electronics. With our advanced factory in Lagos, Nigeria, we provide high-quality products, OEM/ODM services, and factory-direct pricing to Africa and the world.',
     about_mission: 'Our Mission',
     about_mission_desc: 'To provide high-quality, affordable products that improve lives across Africa and beyond.',
     about_vision: 'Our Vision',
@@ -187,7 +187,9 @@ export const translations = {
     inquiry_success: 'Inquiry sent! We will contact you soon.',
 
     // Footer
-    footer_desc: 'HousePlus Group Nigeria Factory is a professional manufacturer and supplier of solar energy products, home appliances, and 3C electronics. Serving Africa and global markets.',
+    footer_desc: 'HousePlus Group Nigerian Factory is a professional manufacturer and supplier of solar energy products, home appliances, and 3C electronics. Serving Africa and global markets.',
+    group_affiliation_text: "HousePlus Group Nigerian Factory is the Nigerian branch and local entity of HousePlus Group. Official group website:",
+    group_affiliation_label: "houseplus-ch.com",
     footer_quick_links: 'Quick Links',
     footer_products: 'Products',
     footer_contact: 'Contact Info',
@@ -401,6 +403,8 @@ export const translations = {
     inquiry_success: '询盘已发送！我们将尽快与您联系。',
 
     footer_desc: '专业的中国太阳能产品、家用电器和3C电子产品制造商与供应商，服务非洲及全球市场。',
+    group_affiliation_text: "HousePlus Group Nigerian Factory 是 HousePlus Group 集团的尼日利亚分支机构及本地实体。集团官方主站：",
+    group_affiliation_label: "houseplus-ch.com",
     footer_quick_links: '快速链接',
     footer_products: '产品',
     footer_contact: '联系方式',
@@ -494,7 +498,7 @@ export const translations = {
 
     about_title: 'À Propos de House Plus Group',
     about_subtitle: 'Votre Fabricant Chinois de Confiance',
-    about_desc: 'House Plus Group Nigeria Factory est un fabricant et fournisseur basé en Chine, spécialisé dans l\'électronique grand public (produits 3C), les solutions d\'énergie solaire et les appareils électroménagers.',
+    about_desc: 'HousePlus Group Nigerian Factory est un fabricant et fournisseur basé en Chine, spécialisé dans l\'électronique grand public (produits 3C), les solutions d\'énergie solaire et les appareils électroménagers.',
     about_mission: 'Notre Mission',
     about_mission_desc: 'Fournir des produits de haute qualité et abordables qui améliorent la vie en Afrique et au-delà.',
     about_vision: 'Notre Vision',
@@ -611,6 +615,8 @@ export const translations = {
     inquiry_success: 'Demande envoyée! Nous vous contacterons bientôt.',
 
     footer_desc: 'Fabricant et fournisseur chinois professionnel de produits d\'énergie solaire, d\'électroménager et d\'électronique 3C.',
+    group_affiliation_text: "HousePlus Group Nigerian Factory est la branche nigériane et l’entité locale de HousePlus Group. Site officiel du groupe :",
+    group_affiliation_label: "houseplus-ch.com",
     footer_quick_links: 'Liens Rapides',
     footer_products: 'Produits',
     footer_contact: 'Informations de Contact',
@@ -704,7 +710,7 @@ export const translations = {
 
     about_title: 'О House Plus Group',
     about_subtitle: 'Ваш надёжный китайский производитель',
-    about_desc: 'House Plus Group Nigeria Factory — китайский производитель и поставщик, специализирующийся на потребительской электронике (3C), солнечных решениях и бытовой технике.',
+    about_desc: 'HousePlus Group Nigerian Factory — китайский производитель и поставщик, специализирующийся на потребительской электронике (3C), солнечных решениях и бытовой технике.',
     about_mission: 'Наша миссия',
     about_mission_desc: 'Предоставлять высококачественные и доступные продукты, улучшающие жизнь в Африке и во всём мире.',
     about_vision: 'Наше видение',
@@ -821,6 +827,8 @@ export const translations = {
     inquiry_success: 'Запрос отправлен! Мы свяжемся с вами в ближайшее время.',
 
     footer_desc: 'Профессиональный китайский производитель и поставщик солнечных продуктов, бытовой техники и электроники 3C.',
+    group_affiliation_text: "HousePlus Group Nigerian Factory — нигерийское отделение и местное юридическое лицо группы HousePlus Group. Официальный сайт группы:",
+    group_affiliation_label: "houseplus-ch.com",
     footer_quick_links: 'Быстрые ссылки',
     footer_products: 'Продукты',
     footer_contact: 'Контактная информация',
@@ -914,7 +922,7 @@ export const translations = {
 
     about_title: 'Acerca de House Plus Group',
     about_subtitle: 'Su Fabricante Chino de Confianza',
-    about_desc: 'House Plus Group Nigeria Factory es un fabricante y proveedor con sede en China, especializado en electrónica de consumo (productos 3C), soluciones de energía solar y electrodomésticos.',
+    about_desc: 'HousePlus Group Nigerian Factory es un fabricante y proveedor con sede en China, especializado en electrónica de consumo (productos 3C), soluciones de energía solar y electrodomésticos.',
     about_mission: 'Nuestra Misión',
     about_mission_desc: 'Proporcionar productos de alta calidad y asequibles que mejoren vidas en África y más allá.',
     about_vision: 'Nuestra Visión',
@@ -1031,6 +1039,8 @@ export const translations = {
     inquiry_success: '¡Consulta enviada! Nos pondremos en contacto pronto.',
 
     footer_desc: 'Fabricante y proveedor chino profesional de productos de energía solar, electrodomésticos y electrónica 3C.',
+    group_affiliation_text: "HousePlus Group Nigerian Factory es la sucursal nigeriana y la entidad local de HousePlus Group. Sitio web oficial del grupo:",
+    group_affiliation_label: "houseplus-ch.com",
     footer_quick_links: 'Enlaces Rápidos',
     footer_products: 'Productos',
     footer_contact: 'Información de Contacto',
@@ -1124,7 +1134,7 @@ export const translations = {
 
     about_title: 'عن House Plus Group',
     about_subtitle: 'المصنّع الصيني الموثوق',
-    about_desc: 'House Plus Group Nigeria Factory هو مصنّع وموردّ مقره الصين، متخصص في الإلكترونيات الاستهلاكية (منتجات 3C) وحلول الطاقة الشمسية والأجهزة المنزلية.',
+    about_desc: 'HousePlus Group Nigerian Factory هو مصنّع وموردّ مقره الصين، متخصص في الإلكترونيات الاستهلاكية (منتجات 3C) وحلول الطاقة الشمسية والأجهزة المنزلية.',
     about_mission: 'مهمتنا',
     about_mission_desc: 'توفير منتجات عالية الجودة وبأسعار معقولة تحسّن حياة الناس في أفريقيا وخارجها.',
     about_vision: 'رؤيتنا',
@@ -1241,6 +1251,8 @@ export const translations = {
     inquiry_success: 'تم إرسال الاستفسار! سنتواصل معك قريبًا.',
 
     footer_desc: 'مصنّع وموردّ صيني محترف لمنتجات الطاقة الشمسية والأجهزة المنزلية وإلكترونيات 3C.',
+    group_affiliation_text: "HousePlus Group Nigerian Factory هو الفرع النيجيري والكيان المحلي لمجموعة HousePlus Group. الموقع الرسمي للمجموعة:",
+    group_affiliation_label: "houseplus-ch.com",
     footer_quick_links: 'روابط سريعة',
     footer_products: 'المنتجات',
     footer_contact: 'معلومات الاتصال',

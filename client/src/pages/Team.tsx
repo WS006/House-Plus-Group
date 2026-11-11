@@ -17,7 +17,7 @@ const TEAM = [
     phone: '+234 907 808 0738',
     whatsapp: 'https://wa.me/2349078080738',
     wechat: 'JackHousePlus',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80',
+    avatar: '/images/team/jack.jpg',
     tags: ['Solar Energy', 'Home Appliances', '3C Electronics', 'OEM/ODM'],
   },
   {
@@ -28,7 +28,7 @@ const TEAM = [
     phone: '+86 155 7811 9543',
     whatsapp: 'https://wa.me/8615578119543',
     wechat: 'JackHousePlus',
-    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&q=80',
+    avatar: '/images/team/sarah.jpg',
     tags: ['Quality Control', 'Manufacturing', 'ISO 9001'],
   },
   {
@@ -39,7 +39,7 @@ const TEAM = [
     phone: '+234 707 706 5158',
     whatsapp: 'https://wa.me/2347077065158',
     wechat: 'JackHousePlus',
-    avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&q=80',
+    avatar: '/images/team/amara.jpg',
     tags: ['Shipping', 'Customs', 'Africa Logistics'],
   },
 ];
@@ -50,7 +50,7 @@ export default function Team() {
   useEffect(() => {
     clearSchemaScripts();
     // 为主要联系人 Jack 添加 Person Schema
-    const jackSchema = generatePersonSchema('Jack', 'Sales Director & Key Account Manager', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80');
+    const jackSchema = generatePersonSchema('Jack', 'Sales Director & Key Account Manager', 'https://www.houseplus.com.ng/images/team/jack.jpg');
     injectSchema(jackSchema);
   }, []);
 

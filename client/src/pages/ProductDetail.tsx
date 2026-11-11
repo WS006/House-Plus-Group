@@ -35,7 +35,7 @@ export default function ProductDetail() {
       const productDesc = getDesc(product);
       
       // Update Page Meta
-      document.title = `${productName} - HousePlus Group Nigeria Factory | Wholesale Manufacturer`;
+      document.title = `${productName} - HousePlus Group Nigerian Factory | Wholesale Manufacturer`;
       
       // Inject Product Schema
       const productSchema = generateProductSchema({
@@ -55,7 +55,7 @@ export default function ProductDetail() {
             "name": `What is the MOQ for ${productName}?`,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": `The minimum order quantity for ${productName} is ${product.moq}. HousePlus Group Nigeria Factory provides competitive wholesale pricing.`
+              "text": `The minimum order quantity for ${productName} is ${product.moq}. HousePlus Group Nigerian Factory provides competitive wholesale pricing.`
             }
           },
           {
@@ -63,7 +63,7 @@ export default function ProductDetail() {
             "name": `How long is the delivery for ${productName}?`,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": `The standard delivery time for ${productName} is ${product.delivery}. We ensure fast shipping from our Nigeria Factory.`
+              "text": `The standard delivery time for ${productName} is ${product.delivery}. We ensure fast shipping from our Nigerian Factory.`
             }
           }
         ]
@@ -122,7 +122,7 @@ export default function ProductDetail() {
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 mb-4">
               <img
                 src={product.images[activeImg] || product.image}
-                alt={`${getName(product)} - HousePlus Group Nigeria Factory Product`}
+                alt={`${getName(product)} - HousePlus Group Nigerian Factory Product`}
                 className="w-full h-80 sm:h-96 object-cover"
                 loading="lazy"
               />
@@ -137,7 +137,7 @@ export default function ProductDetail() {
                       activeImg === i ? 'border-[#f59e0b]' : 'border-gray-200 hover:border-gray-400'
                     }`}
                   >
-                    <img src={img} alt={`${getName(product)} - HousePlus Group Nigeria Factory Thumbnail ${i + 1}`} className="w-full h-full object-cover" loading="lazy" />
+                    <img src={img} alt={`${getName(product)} - HousePlus Group Nigerian Factory Thumbnail ${i + 1}`} className="w-full h-full object-cover" loading="lazy" />
                   </button>
                 ))}
               </div>
@@ -239,7 +239,7 @@ export default function ProductDetail() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {relatedProducts.map(p => (
                 <Link key={p.id} href={`/products/${p.id}`} className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-all group">
-                  <img src={p.image} alt={`${getName(p)} - HousePlus Group Nigeria Factory Related Product`} className="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <img src={p.image} alt={`${getName(p)} - HousePlus Group Nigerian Factory Related Product`} className="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-300" />
                   <div className="p-3">
                     <h3 className="text-sm font-semibold text-[#0f2d5e] line-clamp-2 group-hover:text-[#f59e0b] transition-colors">{getName(p)}</h3>
                     <div className="text-xs text-gray-400 mt-1">MOQ: {p.moq}</div>

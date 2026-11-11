@@ -155,8 +155,7 @@ const plugins = [
   react(),
   tailwindcss(),
   jsxLocPlugin(),
-  vitePluginManusRuntime(),
-  vitePluginManusDebugCollector(),
+  ...(process.env.NODE_ENV === 'production' ? [] : [vitePluginManusRuntime(), vitePluginManusDebugCollector()]),
 ];
 
 export default defineConfig({

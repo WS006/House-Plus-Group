@@ -14,27 +14,27 @@ export interface PageMetadata {
 
 export const pageMetadata: Record<string, PageMetadata> = {
   home: {
-    title: "HousePlus Group Nigeria Factory | Solar Panels, Home Appliances & 3C Electronics for Africa",
-    description: "HousePlus Group Nigeria Factory is a leading manufacturer and supplier of solar panels, inverters, lithium batteries, home appliances, and 3C electronics. Factory direct pricing, OEM/ODM available. Serving Nigeria, Africa and global markets.",
-    keywords: "HousePlus Group Nigeria Factory, HousePlus Group, solar panels, inverters, lithium batteries, home appliances, 3C electronics, Nigeria manufacturer, Lagos factory, Africa, OEM ODM, solar energy, air fryer, smart watch, power bank",
+    title: "HousePlus Group Nigerian Factory | Solar Panels, Home Appliances & 3C Electronics for Africa",
+    description: "HousePlus Group Nigerian Factory is the Nigerian branch of HousePlus Group and a leading supplier of solar panels, inverters, lithium batteries, home appliances, and 3C electronics. Factory direct pricing, OEM/ODM available. Serving Nigeria, Africa and global markets.",
+    keywords: "HousePlus Group Nigerian Factory, HousePlus Group, solar panels, inverters, lithium batteries, home appliances, 3C electronics, Nigeria manufacturer, Lagos factory, Africa, OEM ODM, solar energy, air fryer, smart watch, power bank",
     canonical: "https://www.houseplus.com.ng/",
   },
   about: {
-    title: "About HousePlus Group Nigeria Factory — Manufacturing Excellence",
-    description: "Learn about HousePlus Group Nigeria Factory's 10+ years of manufacturing experience, mission to bridge China and Africa, and commitment to quality, integrity, and innovation. Serving 50+ countries with 500+ product SKUs.",
-    keywords: "HousePlus Group Nigeria Factory, China manufacturer, Africa trade bridge, manufacturing experience, OEM ODM services, company history, mission vision values",
+    title: "About HousePlus Group Nigerian Factory — Manufacturing Excellence",
+    description: "Learn about HousePlus Group Nigerian Factory's 10+ years of manufacturing experience, mission to bridge China and Africa, and commitment to quality, integrity, and innovation. Serving 50+ countries with 500+ product SKUs.",
+    keywords: "HousePlus Group Nigerian Factory, HousePlus Group, Nigerian manufacturer, Africa trade bridge, manufacturing experience, OEM ODM services, company history, mission vision values",
     canonical: "https://www.houseplus.com.ng/about",
   },
   products: {
-    title: "Products — HousePlus Group Nigeria Factory | Solar, Appliances & 3C",
-    description: "Browse HousePlus Group Nigeria Factory's extensive product catalog: solar energy solutions (panels, inverters, batteries), home appliances (air fryers, blenders), and 3C electronics (smart watches, power banks). Factory direct pricing.",
-    keywords: "HousePlus Group Nigeria Factory, solar panels, inverters, lithium batteries, home appliances, air fryer, blender, 3C electronics, smart watch, power bank, USB cable, Bluetooth speaker, factory direct",
+    title: "Products — HousePlus Group Nigerian Factory | Solar, Appliances & 3C",
+    description: "Browse HousePlus Group Nigerian Factory's extensive product catalog: solar energy solutions (panels, inverters, batteries), home appliances (air fryers, blenders), and 3C electronics (smart watches, power banks). Factory direct pricing.",
+    keywords: "HousePlus Group Nigerian Factory, solar panels, inverters, lithium batteries, home appliances, air fryer, blender, 3C electronics, smart watch, power bank, USB cable, Bluetooth speaker, factory direct",
     canonical: "https://www.houseplus.com.ng/products",
   },
   factory: {
-    title: "Factory — HousePlus Group Nigeria Factory Manufacturing",
-    description: "Explore HousePlus Group Nigeria Factory's state-of-the-art manufacturing facilities. ISO certified production, quality control processes, and capacity to handle large-scale orders with OEM/ODM customization.",
-    keywords: "HousePlus Group Nigeria Factory, manufacturing facility, factory tour, production capacity, ISO certification, quality control, OEM ODM manufacturing, China factory",
+    title: "Factory — HousePlus Group Nigerian Factory Manufacturing",
+    description: "Explore HousePlus Group Nigerian Factory's state-of-the-art manufacturing facilities. ISO certified production, quality control processes, and capacity to handle large-scale orders with OEM/ODM customization.",
+    keywords: "HousePlus Group Nigerian Factory, manufacturing facility, factory tour, production capacity, ISO certification, quality control, OEM ODM manufacturing, China factory",
     canonical: "https://www.houseplus.com.ng/factory",
   },
   team: {
@@ -50,15 +50,15 @@ export const pageMetadata: Record<string, PageMetadata> = {
     canonical: "https://www.houseplus.com.ng/services",
   },
   faq: {
-    title: "FAQ — HousePlus Group Nigeria Factory | Common Questions",
-    description: "Find answers to common questions about HousePlus Group Nigeria Factory's products, MOQ, payment methods, delivery times, OEM/ODM services, certifications, shipping to Nigeria and Africa.",
-    keywords: "HousePlus Group Nigeria Factory, FAQ, frequently asked questions, MOQ, payment methods, delivery time, OEM ODM, certifications, shipping Nigeria Africa",
+    title: "FAQ — HousePlus Group Nigerian Factory | Common Questions",
+    description: "Find answers to common questions about HousePlus Group Nigerian Factory's products, MOQ, payment methods, delivery times, OEM/ODM services, certifications, shipping to Nigeria and Africa.",
+    keywords: "HousePlus Group Nigerian Factory, FAQ, frequently asked questions, MOQ, payment methods, delivery time, OEM ODM, certifications, shipping Nigeria Africa",
     canonical: "https://www.houseplus.com.ng/faq",
   },
   news: {
-    title: "News & Updates — HousePlus Group Nigeria Factory News",
-    description: "Stay updated with the latest news, announcements, and industry insights from HousePlus Group Nigeria Factory. Learn about new products, company milestones, and market trends.",
-    keywords: "HousePlus Group Nigeria Factory news, company updates, product announcements, industry news, market trends, company milestones",
+    title: "News & Updates — HousePlus Group Nigerian Factory News",
+    description: "Stay updated with the latest news, announcements, and industry insights from HousePlus Group Nigerian Factory. Learn about new products, company milestones, and market trends.",
+    keywords: "HousePlus Group Nigerian Factory news, company updates, product announcements, industry news, market trends, company milestones",
     canonical: "https://www.houseplus.com.ng/news",
   },
   careers: {
@@ -68,9 +68,9 @@ export const pageMetadata: Record<string, PageMetadata> = {
     canonical: "https://www.houseplus.com.ng/careers",
   },
   contact: {
-    title: "Contact HousePlus Group Nigeria Factory — Get in Touch",
-    description: "Contact HousePlus Group Nigeria Factory for product inquiries, orders, or partnerships. Reach us via phone, email, or WhatsApp. Our team is available 24/7 to assist you.",
-    keywords: "contact HousePlus Group Nigeria Factory, phone number, email address, WhatsApp, office location, Lagos Nigeria, customer support",
+    title: "Contact HousePlus Group Nigerian Factory — Get in Touch",
+    description: "Contact HousePlus Group Nigerian Factory for product inquiries, orders, or partnerships. Reach us via phone, email, or WhatsApp. Our team is available 24/7 to assist you.",
+    keywords: "contact HousePlus Group Nigerian Factory, phone number, email address, WhatsApp, office location, Lagos Nigeria, customer support",
     canonical: "https://www.houseplus.com.ng/contact",
   },
   admin: {
@@ -190,14 +190,14 @@ export function generateProductSchema(product: {
     "@type": "Product",
     name: product.name,
     description: product.description,
-    image: product.image || "https://www.houseplus.com.ng/logo.png",
+    image: product.image || "https://www.houseplus.com.ng/images/logo-houseplus-group.svg",
     brand: {
       "@type": "Brand",
-      name: "HousePlus Group Nigeria Factory",
+      name: "HousePlus Group Nigerian Factory",
     },
     manufacturer: {
       "@type": "Organization",
-      name: "HousePlus Group Nigeria Factory",
+      name: "HousePlus Group Nigerian Factory",
     },
     ...(product.price && {
       offers: {
@@ -232,7 +232,7 @@ export function generateArticleSchema(article: {
     "@type": "NewsArticle",
     headline: article.title,
     description: article.description,
-    image: article.image || "https://www.houseplus.com.ng/logo.png",
+    image: article.image || "https://www.houseplus.com.ng/images/logo-houseplus-group.svg",
     author: {
       "@type": "Organization",
       name: article.author || "House Plus Group",
@@ -241,10 +241,10 @@ export function generateArticleSchema(article: {
     dateModified: article.dateModified || article.datePublished,
     publisher: {
       "@type": "Organization",
-      name: "HousePlus Group Nigeria Factory",
+      name: "HousePlus Group Nigerian Factory",
       logo: {
         "@type": "ImageObject",
-        url: "https://www.houseplus.com.ng/logo.png",
+        url: "https://www.houseplus.com.ng/images/logo-houseplus-group.svg",
       },
     },
   };

@@ -16,7 +16,7 @@ const NEWS_ARTICLES = [
     excerpt: 'House Plus Group announces the launch of 15 new solar energy products specifically designed for African market conditions, including high-temperature resistant solar panels and robust inverters.',
     category: 'Company News',
     date: '2024-02-15',
-    image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=80',
+    image: '/images/hero-solar.jpg',
     tags: ['Solar', 'Africa', 'New Products'],
   },
   {
@@ -25,7 +25,7 @@ const NEWS_ARTICLES = [
     excerpt: 'Our latest LiFePO4 lithium battery series offers 5000+ cycle life, built-in BMS, and Bluetooth monitoring. Perfect for off-grid solar systems in Nigeria and across Africa.',
     category: 'Product Launch',
     date: '2024-01-28',
-    image: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=600&q=80',
+    image: '/images/products/lithium-battery.jpg',
     tags: ['Battery', 'LiFePO4', 'Solar'],
   },
   {
@@ -34,7 +34,7 @@ const NEWS_ARTICLES = [
     excerpt: 'To better serve our Nigerian and West African clients, House Plus has opened a third office location at 8 Felicia Koleosho St Allen, Ikeja, Lagos.',
     category: 'Company News',
     date: '2024-01-10',
-    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80',
+    image: '/images/africa-market.jpg',
     tags: ['Nigeria', 'Lagos', 'Expansion'],
   },
   {
@@ -43,7 +43,7 @@ const NEWS_ARTICLES = [
     excerpt: 'The demand for air fryers in Nigeria and other African markets has grown by 300% in 2023. House Plus Group is meeting this demand with factory-direct pricing and fast delivery.',
     category: 'Market News',
     date: '2023-12-20',
-    image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=600&q=80',
+    image: '/images/products/air-fryer.jpg',
     tags: ['Air Fryer', 'Appliances', 'Market'],
   },
   {
@@ -52,7 +52,7 @@ const NEWS_ARTICLES = [
     excerpt: 'We are launching a new OEM/ODM partnership program for African brands looking to develop their own product lines. Minimum order quantities starting from 500 units.',
     category: 'Business',
     date: '2023-12-05',
-    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80',
+    image: '/images/about-team.jpg',
     tags: ['OEM', 'ODM', 'Partnership'],
   },
   {
@@ -61,7 +61,7 @@ const NEWS_ARTICLES = [
     excerpt: 'A recent project saw 500 House Plus all-in-one solar street lights installed in rural communities in Ogun State, Nigeria, bringing reliable lighting to thousands of residents.',
     category: 'Project',
     date: '2023-11-18',
-    image: 'https://images.unsplash.com/photo-1548613053-22087dd8edb8?w=600&q=80',
+    image: '/images/products/solar-street-light.jpg',
     tags: ['Solar Street Light', 'Nigeria', 'Project'],
   },
 ];

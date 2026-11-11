@@ -7,7 +7,7 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { productsStore } from '@/lib/store';
 import { AnimatePresence, motion, useInView } from 'framer-motion';
-import { Award, CheckCircle, ChevronLeft, ChevronRight, Factory, Globe, Package, Shield, Star, TrendingUp, Users, Zap } from 'lucide-react';
+import { Award, Building2, CheckCircle, ChevronLeft, ChevronRight, Factory, Globe, Package, Shield, Star, TrendingUp, Users, Zap } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'wouter';
 import InquiryModal from '@/components/InquiryModal';
@@ -20,7 +20,7 @@ const HERO_SLIDES = [
     subtitleKey: 'hero_slide1_subtitle' as const,
     btnKey: 'hero_slide1_btn' as const,
     btnPath: '/products',
-    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663457782054/fA3FQLnTsLWN8wdASzWxSY/hero-solar-9WdVUX6sZBGChCdiLZdas5.webp',
+    image: '/images/hero-solar.jpg',
     badge: 'Solar Energy Solutions',
   },
   {
@@ -28,7 +28,7 @@ const HERO_SLIDES = [
     subtitleKey: 'hero_slide2_subtitle' as const,
     btnKey: 'hero_slide2_btn' as const,
     btnPath: '/products?cat=3c',
-    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663457782054/fA3FQLnTsLWN8wdASzWxSY/hero-products-3Fp7bhLBGeJPBrpb6QyQSd.webp',
+    image: '/images/hero-3c.jpg',
     badge: '3C Electronics',
   },
   {
@@ -36,7 +36,7 @@ const HERO_SLIDES = [
     subtitleKey: 'hero_slide3_subtitle' as const,
     btnKey: 'hero_slide3_btn' as const,
     btnPath: '/contact',
-    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663457782054/fA3FQLnTsLWN8wdASzWxSY/hero-factory-jqHyZnMd2rskttsRiV62zU.webp',
+    image: '/images/hero-factory.jpg',
     badge: 'Factory Direct',
   },
 ];
@@ -96,10 +96,10 @@ export default function Home() {
   useEffect(() => {
     clearSchemaScripts();
     injectSchema(generateWebPageSchema({
-      pageTitle: 'HousePlus Group Nigeria Factory | Solar Panels, Home Appliances & 3C Electronics for Africa',
-      pageDescription: 'HousePlus Group Nigeria Factory is a leading manufacturer and supplier of solar panels, inverters, lithium batteries, home appliances, and 3C electronics. Factory direct pricing, OEM/ODM available. Serving Nigeria, Africa and global markets.',
+      pageTitle: 'HousePlus Group Nigerian Factory | Solar Panels, Home Appliances & 3C Electronics for Africa',
+      pageDescription: 'HousePlus Group Nigerian Factory is the Nigerian branch of HousePlus Group and a leading supplier of solar panels, inverters, lithium batteries, home appliances, and 3C electronics. Factory direct pricing, OEM/ODM available. Serving Nigeria, Africa and global markets.',
       pageUrl: 'https://www.houseplus.com.ng/',
-      imageUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663457782054/fA3FQLnTsLWN8wdASzWxSY/hero-solar-9WdVUX6sZBGChCdiLZdas5.webp'
+      imageUrl: 'https://www.houseplus.com.ng/images/hero-solar.jpg'
     }));
     injectSchema(generateOrganizationSchema());
   }, []);
@@ -130,7 +130,7 @@ export default function Home() {
           >
             <img
               src={HERO_SLIDES[currentSlide].image}
-              alt={`${t(HERO_SLIDES[currentSlide].titleKey)} - HousePlus Group Nigeria Factory`}
+              alt={`${t(HERO_SLIDES[currentSlide].titleKey)} - HousePlus Group Nigerian Factory`}
               className="w-full h-full object-cover"
               loading="eager"
             />
@@ -205,6 +205,24 @@ export default function Home() {
         {/* Trust Badges */}
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0f2d5e] to-transparent h-24 z-10" />
       </section>
+
+      {/* ===== GROUP AFFILIATION ===== */}
+      <div className="bg-[#0a1f42] border-y border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col sm:flex-row items-center justify-center gap-x-2 gap-y-1 text-center">
+          <Building2 className="w-4 h-4 text-[#f59e0b] flex-shrink-0 hidden sm:block" />
+          <span className="text-white/70 text-xs sm:text-sm leading-relaxed">
+            {t('group_affiliation_text')}
+          </span>
+          <a
+            href="https://www.houseplus-ch.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#f59e0b] hover:text-[#fbbf24] font-semibold text-xs sm:text-sm underline underline-offset-2"
+          >
+            {t('group_affiliation_label')} ↗
+          </a>
+        </div>
+      </div>
 
       {/* ===== STATS BAR ===== */}
       <section className="bg-[#0f2d5e] py-8">
@@ -400,10 +418,10 @@ export default function Home() {
                 Why Choose Us
               </div>
               <h2 className="text-3xl sm:text-4xl font-black text-[#0f2d5e] mb-6">
-                HousePlus Group Nigeria Factory — Your Trusted Local Partner
+                HousePlus Group Nigerian Factory — Your Trusted Local Partner
               </h2>
               <p className="text-gray-500 mb-8 leading-relaxed">
-                HousePlus Group Nigeria Factory has been serving Africa and global markets for over 10 years. We provide premium solar energy products, home appliances, and 3C electronics direct from our Lagos manufacturing facility with uncompromising quality.
+                HousePlus Group Nigerian Factory has been serving Africa and global markets for over 10 years. We provide premium solar energy products, home appliances, and 3C electronics direct from our Lagos manufacturing facility with uncompromising quality.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
@@ -430,8 +448,8 @@ export default function Home() {
             <FadeIn delay={0.2}>
               <div className="relative">
                 <img
-                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663457782054/fA3FQLnTsLWN8wdASzWxSY/about-team-jJL8e3Sfsi9U6dH7YCRUAi.webp"
-                  alt="HousePlus Group Nigeria Factory Team"
+                  src="/images/about-team.jpg"
+                  alt="HousePlus Group Nigerian Factory Team"
                   className="rounded-2xl shadow-2xl w-full object-cover h-[450px]"
                   loading="lazy"
                 />
@@ -454,7 +472,7 @@ export default function Home() {
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663457782054/fA3FQLnTsLWN8wdASzWxSY/africa-market-WLNYuj8npFK3XLGKhLanDJ.webp"
+            src="/images/africa-market.jpg"
             alt="Africa Market"
             className="w-full h-full object-cover"
             loading="lazy"
@@ -472,7 +490,7 @@ export default function Home() {
               Empowering Nigeria & Africa's Growth
             </h2>
             <p className="text-white/70 max-w-2xl mx-auto mb-10 text-lg leading-relaxed">
-              HousePlus Group Nigeria Factory bridges the gap between manufacturing excellence and Africa's booming market. Our Lagos factory provides local jobs and high-quality products for the continent.
+              HousePlus Group Nigerian Factory bridges the gap between manufacturing excellence and Africa's booming market. Our Lagos factory provides local jobs and high-quality products for the continent.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-6 py-4 text-center">

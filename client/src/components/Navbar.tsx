@@ -71,8 +71,8 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 flex-shrink-0">
               <img 
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663457782054/fA3FQLnTsLWN8wdASzWxSY/HousePlusGroupLogo_9e1cc7f4.png" 
-                alt="HousePlus Group Nigeria Factory"
+                src="/images/logo-houseplus-group.svg" 
+                alt="HousePlus Group Nigerian Factory"
                 className="h-12 w-auto"
               />
             </Link>

@@ -8,7 +8,7 @@ import InquiryModal from '@/components/InquiryModal';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { addPageSchema } from '@/lib/seo';
 import { motion, useInView } from 'framer-motion';
-import { Award, CheckCircle, Globe, Shield, Target, TrendingUp, Users, Zap, Star, MapPin, Briefcase, Heart } from 'lucide-react';
+import { Award, Building2, CheckCircle, Globe, Shield, Target, TrendingUp, Users, Zap, Star, MapPin, Briefcase, Heart } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'wouter';
 import { generateOrganizationSchema, injectSchema, clearSchemaScripts } from '@/lib/schema';
@@ -38,28 +38,28 @@ const TEAM_MEMBERS = [
     role: 'Founder & CEO',
     bio: 'Serial entrepreneur with 15+ years in manufacturing and supply chain management. Visionary leader driving House Plus Group\'s expansion into African markets.',
     expertise: 'Manufacturing Strategy, Market Expansion, Business Development',
-    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663457782054/fA3FQLnTsLWN8wdASzWxSY/team-jack-placeholder.jpg',
+    image: '/images/team/jack.jpg',
   },
   {
     name: 'Sarah Okafor',
     role: 'Regional Director - Nigeria',
     bio: 'Experienced business leader with deep knowledge of African markets. Manages all operations in Nigeria and coordinates regional partnerships.',
     expertise: 'Regional Operations, Client Relations, Market Development',
-    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663457782054/fA3FQLnTsLWN8wdASzWxSY/team-sarah-placeholder.jpg',
+    image: '/images/team/sarah.jpg',
   },
   {
     name: 'Li Wei',
     role: 'VP of Manufacturing',
     bio: 'Quality assurance expert with 12+ years in factory management. Ensures all products meet international standards and customer specifications.',
     expertise: 'Quality Control, ISO Compliance, Production Optimization',
-    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663457782054/fA3FQLnTsLWN8wdASzWxSY/team-li-placeholder.jpg',
+    image: '/images/team/li.jpg',
   },
   {
     name: 'Amara Adeyemi',
     role: 'Head of Customer Success',
     bio: 'Customer-centric professional dedicated to building long-term relationships. Leads our 24/7 support team across multiple time zones.',
     expertise: 'Customer Service, Account Management, Logistics Support',
-    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663457782054/fA3FQLnTsLWN8wdASzWxSY/team-amara-placeholder.jpg',
+    image: '/images/team/amara.jpg',
   },
 ];
 
@@ -133,7 +133,7 @@ export default function About() {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Where is HousePlus Group Nigeria Factory located?",
+          "name": "Where is HousePlus Group Nigerian Factory located?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Our factory and office are located at 8 Eso Cl, Ikeja GRA, Lagos, Nigeria."
@@ -167,9 +167,21 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Breadcrumb items={[{ label: t('nav_about') }]} />
           <h1 className="text-3xl sm:text-4xl font-black text-white mt-4 mb-2">{t('about_title')}</h1>
-          <p className="text-white/60">Your trusted partner for quality Chinese manufacturing</p>
+          <p className="text-white/60">The Nigerian branch of HousePlus Group — global manufacturing, local support</p>
         </div>
       </div>
+
+      {/* Group Affiliation */}
+      <div className="bg-[#0a1f42]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-center gap-x-2 gap-y-1 text-center">
+          <Building2 className="w-4 h-4 text-[#f59e0b] flex-shrink-0 hidden sm:block" />
+          <span className="text-white/75 text-xs sm:text-sm leading-relaxed">{t('group_affiliation_text')}</span>
+          <a href="https://www.houseplus-ch.com" target="_blank" rel="noopener noreferrer" className="text-[#f59e0b] hover:text-[#fbbf24] font-semibold text-xs sm:text-sm underline underline-offset-2">
+            {t('group_affiliation_label')} ↗
+          </a>
+        </div>
+      </div>
+
 
       {/* Company Overview */}
       <section className="py-20">
@@ -180,9 +192,9 @@ export default function About() {
                 <span className="w-8 h-0.5 bg-[#f59e0b]" />
                 Our Story
               </div>
-              <h2 className="text-3xl font-black text-[#0f2d5e] mb-6">HousePlus Group Nigeria Factory — Manufacturing Excellence</h2>
+              <h2 className="text-3xl font-black text-[#0f2d5e] mb-6">HousePlus Group Nigerian Factory — Manufacturing Excellence</h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
-                <p>HousePlus Group Nigeria Factory is a premier manufacturer and supplier specializing in solar energy solutions, home appliances, and 3C electronics. With our strategic factory in Lagos, Nigeria, we serve clients across Africa and global markets with factory-direct pricing and reliable quality.</p>
+                <p>HousePlus Group Nigerian Factory is a premier manufacturer and supplier specializing in solar energy solutions, home appliances, and 3C electronics. With our strategic factory in Lagos, Nigeria, we serve clients across Africa and global markets with factory-direct pricing and reliable quality.</p>
                 <p>With over 10 years of manufacturing experience, we have built a reputation for delivering high-quality, competitively priced products directly from our Nigeria factory to buyers worldwide — with a special focus on the African market.</p>
                 <p>Our Nigeria facility in Lagos serves as the core hub for manufacturing excellence, providing local support, efficient production, and rapid after-sales service to our partners.</p>
                 <p className="font-semibold text-[#0f2d5e]">Founded on principles of integrity, innovation, and partnership, we are committed to empowering African businesses and consumers with access to world-class products manufactured right here in Nigeria.</p>
