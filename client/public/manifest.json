@@ -1,0 +1,26 @@
+{
+  "name": "HousePlus Group Nigerian Factory",
+  "short_name": "HousePlus Nigeria",
+  "description": "Solar panels, inverters, batteries, home appliances and 3C electronics direct from HousePlus Group's Nigerian factory.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0f2d5e",
+  "lang": "en",
+  "categories": ["business", "shopping"],
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
