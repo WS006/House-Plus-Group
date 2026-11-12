@@ -5,6 +5,10 @@
 # each route in headless Chromium, and a CI runner without a browser would fail
 # the build (prerender.mjs now exits 1 rather than silently publishing 24 blank
 # pages). Building locally, where Chrome exists, keeps the rendered HTML intact.
-name = "houseplus"
+#
+# Project name matches the Pages project houseplus-group-nigeria. Create it in
+# the Cloudflare account that owns the houseplus.com.ng zone (affca529...) so
+# the custom domain can be attached in the same account.
+name = "houseplus-group-nigeria"
 pages_build_output_dir = "docs"
 compatibility_date = "2026-01-01"
