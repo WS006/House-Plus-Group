@@ -12,32 +12,41 @@ interface LanguageContextType {
   t: (key: TranslationKey) => string;
   isRTL: boolean;
   currentLangInfo: typeof LANGUAGES[0];
+  /** Appends ?lang=<code> to an internal link so the choice survives navigation. */
+  withLang: (href: string) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(() => {
-    // ?lang=xx wins: the prerendered pages advertise these URLs as hreflang
-    // alternates, so they must actually render in that language for crawlers.
-    if (typeof window !== 'undefined') {
-      const fromUrl = new URLSearchParams(window.location.search).get('lang');
-      if (fromUrl && LANGUAGES.some(l => l.code === fromUrl)) {
-        return fromUrl as Language;
-      }
+/** Reads ?lang= from the current URL, falling back to stored preference. */
+function initialLanguage(): Language {
+  if (typeof window !== 'undefined') {
+    const fromUrl = new URLSearchParams(window.location.search).get('lang');
+    if (fromUrl && LANGUAGES.some(l => l.code === fromUrl)) {
+      return fromUrl as Language;
     }
+  }
+  try {
     const saved = localStorage.getItem('houseplus_lang') as Language;
     if (saved && LANGUAGES.some(l => l.code === saved)) return saved;
-    // Default to English for all users
-    return 'en';
-  });
+  } catch {
+    /* storage blocked */
+  }
+  return 'en';
+}
+
+export function LanguageProvider({ children }: { children: React.ReactNode }) {
+  const [language, setLanguageState] = useState<Language>(initialLanguage);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
-    localStorage.setItem('houseplus_lang', lang);
+    try {
+      localStorage.setItem('houseplus_lang', lang);
+    } catch {
+      /* ignore */
+    }
 
-    // Keep the URL in sync with the language so it can be shared and so the
-    // hreflang alternates we publish resolve to the matching rendering.
+    // Keep ?lang= in the URL so the choice is shareable and survives a reload.
     const url = new URL(window.location.href);
     if (lang === 'en') {
       url.searchParams.delete('lang');
@@ -52,13 +61,26 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   const t = (key: TranslationKey) => getTranslation(language, key);
 
+  /**
+   * Internal links previously dropped ?lang=, so a visitor browsing in Chinese
+   * who clicked any nav item landed on an English URL. The page still *looked*
+   * Chinese (state survived the SPA transition) but sharing that URL gave the
+   * recipient the English version.
+   */
+  const withLang = (href: string) => {
+    if (language === 'en') return href;
+    if (!href.startsWith('/') || href.startsWith('//')) return href;
+    if (/[?&]lang=/.test(href)) return href;
+    return href + (href.includes('?') ? '&' : '?') + `lang=${language}`;
+  };
+
   useEffect(() => {
     document.documentElement.lang = language;
     document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
   }, [language, isRTL]);
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t, isRTL, currentLangInfo }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, isRTL, currentLangInfo, withLang }}>
       {children}
     </LanguageContext.Provider>
   );

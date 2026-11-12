@@ -44,7 +44,11 @@ export default function Footer() {
             <img 
               src="/images/logo-houseplus-group.svg" 
               alt="HousePlus Group Nigerian Factory"
+              width={234}
+              height={56}
               className="h-14 w-auto mb-4"
+              loading="lazy"
+              decoding="async"
             />
             <p className="text-white/60 text-sm leading-relaxed mb-5">
               {t('footer_desc')}

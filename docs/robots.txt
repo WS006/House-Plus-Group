@@ -1,32 +1,26 @@
-# HousePlus Group Nigeria Factory - robots.txt
-# SEO Optimization for Search Engines
+# robots.txt — HousePlus Group Nigerian Factory
+#
+# Notes:
+#  - Crawl-delay is not honoured by Google or Bing, and when placed after a
+#    user-agent group it only applies to that group. It is omitted rather than
+#    left in a misleading position.
+#  - AhrefsBot / SemrushBot are SEO research crawlers. Blocking them hides your
+#    own backlink and ranking data from the tools you use, so they are allowed.
+#  - Only genuinely abusive scrapers are blocked.
 
 User-agent: *
 Allow: /
 Disallow: /admin/
-Disallow: /private/
-Disallow: /*.json$
-Disallow: /*?*sort=
-Disallow: /*?*filter=
+Disallow: /404.html
 
-# Block bad bots
+# Aggressive scrapers with no benefit to the site
 User-agent: MJ12bot
-Disallow: /
-
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: SemrushBot
 Disallow: /
 
 User-agent: DotBot
 Disallow: /
 
-User-agent: Rogerbot
+User-agent: SemrushBot-SA
 Disallow: /
 
-# GEO/SEO Optimization
-Crawl-delay: 10
-
-# Sitemap location
 Sitemap: https://www.houseplus.com.ng/sitemap.xml

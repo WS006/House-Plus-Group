@@ -4,12 +4,30 @@
 
 import Breadcrumb from '@/components/Breadcrumb';
 import InquiryModal from '@/components/InquiryModal';
+import ResponsiveImage from '@/components/ResponsiveImage';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { getImageSize } from '@/lib/imageManifest';
 import { Product, favoritesStore, productsStore } from '@/lib/store';
 import { addPageSchema, generateProductSchema, updateProductMeta } from '@/lib/seo';
 import { ChevronLeft, ChevronRight, Heart, Package, Share2, Shield, Truck, Zap } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'wouter';
+
+/** 1200x630 share cards per product (see tools/generate-og-images.mjs). */
+const OG_BY_PRODUCT_ID: Record<string, string> = {
+  'solar-panel-mono-400w': '/images/og/product-solar-panel.jpg',
+  'solar-inverter-5kw': '/images/og/product-solar-inverter.jpg',
+  'lithium-battery-100ah': '/images/og/product-lithium-battery.jpg',
+  'solar-street-light-100w': '/images/og/product-solar-street-light.jpg',
+  'air-fryer-5l': '/images/og/product-air-fryer.jpg',
+  'blender-1200w': '/images/og/product-blender.jpg',
+  'smart-watch-pro': '/images/og/product-smart-watch.jpg',
+  'tws-earphone': '/images/og/product-tws-earbuds.jpg',
+  'power-bank-20000': '/images/og/product-power-bank.jpg',
+  'sd-card-128gb': '/images/og/product-sd-card.jpg',
+  'charge-controller-40a': '/images/og/product-charge-controller.jpg',
+  'rice-cooker-5l': '/images/og/product-rice-cooker.jpg',
+};
 
 export default function ProductDetail() {
   const { id } = useParams<{ id: string }>();
@@ -41,6 +59,7 @@ export default function ProductDetail() {
         name: productName,
         description: productDesc,
         image: product.image,
+        ogImage: OG_BY_PRODUCT_ID[product.id] || '/images/og/products.jpg',
       });
       
       // Inject Product Schema
@@ -48,6 +67,8 @@ export default function ProductDetail() {
         name: productName,
         description: productDesc,
         image: product.image,
+        sku: product.id,
+        availability: 'InStock',
       });
       addPageSchema(productSchema, "product");
 
@@ -126,11 +147,14 @@ export default function ProductDetail() {
           {/* Images */}
           <div>
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 mb-4">
-              <img
+              <ResponsiveImage
                 src={product.images[activeImg] || product.image}
                 alt={`${getName(product)} - HousePlus Group Nigerian Factory Product`}
+                {...getImageSize(product.images[activeImg] || product.image)}
                 className="w-full h-80 sm:h-96 object-cover"
-                loading="lazy"
+                pictureClassName="block w-full"
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
             {product.images.length > 1 && (
@@ -143,7 +167,14 @@ export default function ProductDetail() {
                       activeImg === i ? 'border-[#f59e0b]' : 'border-gray-200 hover:border-gray-400'
                     }`}
                   >
-                    <img src={img} alt={`${getName(product)} - HousePlus Group Nigerian Factory Thumbnail ${i + 1}`} className="w-full h-full object-cover" loading="lazy" />
+                    <ResponsiveImage
+                      src={img}
+                      alt={`${getName(product)} - HousePlus Group Nigerian Factory Thumbnail ${i + 1}`}
+                      {...getImageSize(img)}
+                      className="w-full h-full object-cover"
+                      pictureClassName="block w-full h-full"
+                      sizes="80px"
+                    />
                   </button>
                 ))}
               </div>
@@ -168,11 +199,20 @@ export default function ProductDetail() {
                 <h1 className="text-2xl sm:text-3xl font-black text-[#0f2d5e]">{getName(product)}</h1>
               </div>
               <div className="flex gap-2">
-                <button onClick={toggleFav} className={`w-10 h-10 rounded-xl border flex items-center justify-center transition-all ${isFav ? 'bg-red-50 border-red-200 text-red-500' : 'bg-white border-gray-200 text-gray-400 hover:text-red-400'}`}>
-                  <Heart className="w-5 h-5" fill={isFav ? 'currentColor' : 'none'} />
+                <button
+                  onClick={toggleFav}
+                  aria-label={isFav ? 'Remove from favourites' : 'Save to favourites'}
+                  aria-pressed={isFav}
+                  className={`w-10 h-10 rounded-xl border flex items-center justify-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0f2d5e] focus-visible:ring-offset-2 ${isFav ? 'bg-red-50 border-red-200 text-red-500' : 'bg-white border-gray-200 text-gray-400 hover:text-red-400'}`}
+                >
+                  <Heart className="w-5 h-5" fill={isFav ? 'currentColor' : 'none'} aria-hidden="true" />
                 </button>
-                <button onClick={share} className="w-10 h-10 rounded-xl border border-gray-200 bg-white text-gray-400 hover:text-[#0f2d5e] flex items-center justify-center transition-all">
-                  <Share2 className="w-5 h-5" />
+                <button
+                  onClick={share}
+                  aria-label="Share this product"
+                  className="w-10 h-10 rounded-xl border border-gray-200 bg-white text-gray-400 hover:text-[#0f2d5e] flex items-center justify-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0f2d5e] focus-visible:ring-offset-2"
+                >
+                  <Share2 className="w-5 h-5" aria-hidden="true" />
                 </button>
               </div>
             </div>
@@ -245,7 +285,14 @@ export default function ProductDetail() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {relatedProducts.map(p => (
                 <Link key={p.id} href={`/products/${p.id}`} className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-all group">
-                  <img src={p.image} alt={`${getName(p)} - HousePlus Group Nigerian Factory Related Product`} className="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <ResponsiveImage
+                    src={p.image}
+                    alt={`${getName(p)} - HousePlus Group Nigerian Factory Related Product`}
+                    {...getImageSize(p.image)}
+                    className="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-300"
+                    pictureClassName="block w-full"
+                    sizes="(max-width: 768px) 50vw, 200px"
+                  />
                   <div className="p-3">
                     <h3 className="text-sm font-semibold text-[#0f2d5e] line-clamp-2 group-hover:text-[#f59e0b] transition-colors">{getName(p)}</h3>
                     <div className="text-xs text-gray-400 mt-1">MOQ: {p.moq}</div>

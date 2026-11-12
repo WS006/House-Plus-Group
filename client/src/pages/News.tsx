@@ -3,7 +3,9 @@
 // ============================================================
 
 import Breadcrumb from '@/components/Breadcrumb';
+import ResponsiveImage from '@/components/ResponsiveImage';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { getImageSize } from '@/lib/imageManifest';
 import { Calendar, ChevronRight, Tag } from 'lucide-react';
 import { Link } from 'wouter';
 import { useEffect } from 'react';
@@ -101,7 +103,15 @@ export default function News() {
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-10 group hover:shadow-xl transition-all duration-300">
           <div className="grid grid-cols-1 lg:grid-cols-2">
             <div className="relative overflow-hidden h-64 lg:h-auto">
-              <img src={NEWS_ARTICLES[0].image} alt={NEWS_ARTICLES[0].title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <ResponsiveImage
+                src={NEWS_ARTICLES[0].image}
+                alt={NEWS_ARTICLES[0].title}
+                {...getImageSize(NEWS_ARTICLES[0].image)}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                pictureClassName="block w-full h-full"
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
               <div className="absolute top-4 left-4">
                 <span className="bg-[#f59e0b] text-[#0f2d5e] text-xs font-bold px-3 py-1 rounded-full">Featured</span>
               </div>
@@ -134,7 +144,14 @@ export default function News() {
           {NEWS_ARTICLES.slice(1).map((article, i) => (
             <div key={article.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden group hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="relative overflow-hidden h-48">
-                <img src={article.image} alt={`${article.title} - News Article`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                <ResponsiveImage
+                src={article.image}
+                alt={`${article.title} - News Article`}
+                {...getImageSize(article.image)}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                pictureClassName="block w-full h-full"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
                 <div className="absolute top-3 left-3">
                   <span className="bg-white/90 text-[#0f2d5e] text-xs font-semibold px-2.5 py-1 rounded-full">{article.category}</span>
                 </div>

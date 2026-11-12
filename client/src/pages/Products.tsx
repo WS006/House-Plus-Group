@@ -5,7 +5,9 @@
 
 import Breadcrumb from '@/components/Breadcrumb';
 import InquiryModal from '@/components/InquiryModal';
+import ResponsiveImage from '@/components/ResponsiveImage';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { getImageSize } from '@/lib/imageManifest';
 import { Product, favoritesStore, productsStore } from '@/lib/store';
 import { motion } from 'framer-motion';
 import { ChevronRight, Heart, Search, SlidersHorizontal, X } from 'lucide-react';
@@ -177,11 +179,13 @@ export default function Products() {
                 className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group border border-gray-100"
               >
                 <div className="relative overflow-hidden h-48">
-                  <img
+                  <ResponsiveImage
                     src={product.image}
                     alt={getProductName(product)}
+                    {...getImageSize(product.image)}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    pictureClassName="block w-full h-full"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                   <div className="absolute top-3 left-3 flex gap-1.5">
                     {product.isNew && <span className="bg-[#10b981] text-white text-xs font-bold px-2 py-0.5 rounded-full">NEW</span>}

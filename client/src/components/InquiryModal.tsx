@@ -4,7 +4,7 @@
 // ============================================================
 
 import { useLanguage } from '@/contexts/LanguageContext';
-import { messagesStore } from '@/lib/store';
+import { submitInquiry } from '@/lib/forms';
 import { AnimatePresence, motion } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useState } from 'react';
@@ -32,8 +32,7 @@ export default function InquiryModal({ open, onClose, productName }: InquiryModa
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    await new Promise(r => setTimeout(r, 800));
-    messagesStore.add({
+    const result = await submitInquiry({
       name: form.name,
       email: form.email,
       phone: form.phone,
@@ -46,7 +45,17 @@ export default function InquiryModal({ open, onClose, productName }: InquiryModa
       type: 'inquiry',
     });
     setSubmitting(false);
-    toast.success(t('inquiry_success'));
+
+    if (!result.ok) {
+      toast.error(`Could not send your inquiry: ${result.error}`);
+      return;
+    }
+
+    toast.success(
+      result.via === 'mailto'
+        ? 'Your email app should now be open with your inquiry ready to send.'
+        : t('inquiry_success')
+    );
     setForm({ name: '', email: '', phone: '', country: '', product: productName || '', quantity: '', requirements: '' });
     onClose();
   };
@@ -75,7 +84,7 @@ export default function InquiryModal({ open, onClose, productName }: InquiryModa
                 <h3 className="text-white font-bold text-lg">{t('inquiry_title')}</h3>
                 <p className="text-[#f59e0b] text-sm">House Plus Group</p>
               </div>
-              <button onClick={onClose} className="text-white/60 hover:text-white transition-colors">
+              <button onClick={onClose} aria-label="Close inquiry form" className="text-white/60 hover:text-white transition-colors">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -84,8 +93,10 @@ export default function InquiryModal({ open, onClose, productName }: InquiryModa
             <form onSubmit={handleSubmit} className="p-6 space-y-4">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">{t('contact_name')} *</label>
+                  <label htmlFor="inquiry-name" className="block text-xs font-medium text-gray-600 mb-1">{t('contact_name')} *</label>
                   <input
+                    id="inquiry-name"
+                    name="name"
                     type="text"
                     required
                     value={form.name}
@@ -95,8 +106,10 @@ export default function InquiryModal({ open, onClose, productName }: InquiryModa
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">{t('contact_country')}</label>
+                  <label htmlFor="inquiry-country" className="block text-xs font-medium text-gray-600 mb-1">{t('contact_country')}</label>
                   <input
+                    id="inquiry-country"
+                    name="country"
                     type="text"
                     value={form.country}
                     onChange={e => setForm(f => ({ ...f, country: e.target.value }))}
@@ -107,8 +120,10 @@ export default function InquiryModal({ open, onClose, productName }: InquiryModa
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-gray-600 mb-1">{t('contact_email')} *</label>
+                <label htmlFor="inquiry-email" className="block text-xs font-medium text-gray-600 mb-1">{t('contact_email')} *</label>
                 <input
+                  id="inquiry-email"
+                  name="email"
                   type="email"
                   required
                   value={form.email}
@@ -119,8 +134,10 @@ export default function InquiryModal({ open, onClose, productName }: InquiryModa
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-gray-600 mb-1">{t('contact_phone')}</label>
+                <label htmlFor="inquiry-phone" className="block text-xs font-medium text-gray-600 mb-1">{t('contact_phone')}</label>
                 <input
+                  id="inquiry-phone"
+                  name="phone"
                   type="tel"
                   value={form.phone}
                   onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
@@ -131,8 +148,10 @@ export default function InquiryModal({ open, onClose, productName }: InquiryModa
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">{t('inquiry_product')}</label>
+                  <label htmlFor="inquiry-product" className="block text-xs font-medium text-gray-600 mb-1">{t('inquiry_product')}</label>
                   <input
+                    id="inquiry-product"
+                    name="product"
                     type="text"
                     value={form.product}
                     onChange={e => setForm(f => ({ ...f, product: e.target.value }))}
@@ -141,8 +160,10 @@ export default function InquiryModal({ open, onClose, productName }: InquiryModa
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">{t('inquiry_quantity')}</label>
+                  <label htmlFor="inquiry-quantity" className="block text-xs font-medium text-gray-600 mb-1">{t('inquiry_quantity')}</label>
                   <input
+                    id="inquiry-quantity"
+                    name="quantity"
                     type="text"
                     value={form.quantity}
                     onChange={e => setForm(f => ({ ...f, quantity: e.target.value }))}
@@ -153,8 +174,10 @@ export default function InquiryModal({ open, onClose, productName }: InquiryModa
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-gray-600 mb-1">{t('inquiry_requirements')}</label>
+                <label htmlFor="inquiry-requirements" className="block text-xs font-medium text-gray-600 mb-1">{t('inquiry_requirements')}</label>
                 <textarea
+                  id="inquiry-requirements"
+                  name="requirements"
                   rows={3}
                   value={form.requirements}
                   onChange={e => setForm(f => ({ ...f, requirements: e.target.value }))}

@@ -4,7 +4,9 @@
 
 import Breadcrumb from '@/components/Breadcrumb';
 import InquiryModal from '@/components/InquiryModal';
+import ResponsiveImage from '@/components/ResponsiveImage';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { getImageSize } from '@/lib/imageManifest';
 import { addPageSchema } from '@/lib/seo';
 import { motion, useInView } from 'framer-motion';
 import { Award, CheckCircle, Factory as FactoryIcon, Settings, Shield, TrendingUp, Zap } from 'lucide-react';
@@ -89,11 +91,14 @@ export default function Factory() {
 
       {/* Hero Image */}
       <div className="relative h-80 sm:h-96 overflow-hidden">
-        <img
+        <ResponsiveImage
           src="/images/hero-factory.jpg"
           alt="HousePlus Group Nigerian Factory - Professional Solar & Home Appliance Manufacturing Facility"
+          {...getImageSize('/images/hero-factory.jpg')}
           className="w-full h-full object-cover"
-          loading="lazy"
+          pictureClassName="block w-full h-full"
+          priority
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-[#0f2d5e]/50 flex items-center justify-center">
           <div className="text-center text-white">

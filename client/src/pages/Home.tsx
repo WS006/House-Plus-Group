@@ -11,6 +11,8 @@ import { Award, Building2, CheckCircle, ChevronLeft, ChevronRight, Factory, Glob
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'wouter';
 import InquiryModal from '@/components/InquiryModal';
+import ResponsiveImage from '@/components/ResponsiveImage';
+import { getImageSize } from '@/lib/imageManifest';
 import { injectSchema, clearSchemaScripts, generateWebPageSchema, generateOrganizationSchema } from '@/lib/schema';
 
 // Hero slides data
@@ -129,11 +131,14 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="absolute inset-0"
           >
-            <img
+            <ResponsiveImage
               src={HERO_SLIDES[currentSlide].image}
               alt={`${t(HERO_SLIDES[currentSlide].titleKey)} - HousePlus Group Nigerian Factory`}
+              {...getImageSize(HERO_SLIDES[currentSlide].image)}
               className="w-full h-full object-cover"
-              loading="eager"
+              pictureClassName="block w-full h-full"
+              priority={currentSlide === 0}
+              sizes="100vw"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#0f2d5e]/85 via-[#0f2d5e]/50 to-transparent" />
           </motion.div>
@@ -186,20 +191,30 @@ export default function Home() {
 
         {/* Carousel Controls */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 z-10">
-          <button onClick={prevSlide} className="w-9 h-9 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-colors">
-            <ChevronLeft className="w-4 h-4" />
+          <button
+            onClick={prevSlide}
+            aria-label="Previous slide"
+            className="w-9 h-9 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f2d5e]"
+          >
+            <ChevronLeft className="w-4 h-4" aria-hidden="true" />
           </button>
           <div className="flex gap-2">
             {HERO_SLIDES.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentSlide(i)}
-                className={`transition-all duration-300 rounded-full ${i === currentSlide ? 'w-6 h-2 bg-[#f59e0b]' : 'w-2 h-2 bg-white/50 hover:bg-white/80'}`}
+                aria-label={`Go to slide ${i + 1}`}
+                aria-current={i === currentSlide}
+                className={`transition-all duration-300 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white ${i === currentSlide ? 'w-6 h-2 bg-[#f59e0b]' : 'w-2 h-2 bg-white/50 hover:bg-white/80'}`}
               />
             ))}
           </div>
-          <button onClick={nextSlide} className="w-9 h-9 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-colors">
-            <ChevronRight className="w-4 h-4" />
+          <button
+            onClick={nextSlide}
+            aria-label="Next slide"
+            className="w-9 h-9 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f2d5e]"
+          >
+            <ChevronRight className="w-4 h-4" aria-hidden="true" />
           </button>
         </div>
 
@@ -344,11 +359,13 @@ export default function Home() {
               <FadeIn key={product.id} delay={i * 0.05}>
                 <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group border border-gray-100">
                   <div className="relative overflow-hidden h-52">
-                    <img
+                    <ResponsiveImage
                       src={product.image}
                       alt={product.nameEn}
+                      {...getImageSize(product.image)}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
+                      pictureClassName="block w-full h-full"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     />
                     <div className="absolute top-3 left-3 flex gap-1.5">
                       {product.isNew && (
@@ -448,11 +465,13 @@ export default function Home() {
 
             <FadeIn delay={0.2}>
               <div className="relative">
-                <img
+                <ResponsiveImage
                   src="/images/about-team.jpg"
                   alt="HousePlus Group Nigerian Factory Team"
+                  {...getImageSize('/images/about-team.jpg')}
                   className="rounded-2xl shadow-2xl w-full object-cover h-[450px]"
-                  loading="lazy"
+                  pictureClassName="block w-full"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
                 {/* Floating card */}
                 <div className="absolute -bottom-6 -left-6 bg-[#0f2d5e] text-white p-5 rounded-2xl shadow-xl max-w-[200px]">
@@ -472,11 +491,13 @@ export default function Home() {
       {/* ===== AFRICA MARKET ===== */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <ResponsiveImage
             src="/images/africa-market.jpg"
             alt="Africa Market"
+            {...getImageSize('/images/africa-market.jpg')}
             className="w-full h-full object-cover"
-            loading="lazy"
+            pictureClassName="block w-full h-full"
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-[#0f2d5e]/80" />
         </div>

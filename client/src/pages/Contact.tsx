@@ -4,7 +4,7 @@
 
 import Breadcrumb from '@/components/Breadcrumb';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { messagesStore } from '@/lib/store';
+import { submitInquiry } from '@/lib/forms';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, MessageCircle, Phone, Send } from 'lucide-react';
 import { useEffect, useState } from 'react';
@@ -25,10 +25,19 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    await new Promise(r => setTimeout(r, 800));
-    messagesStore.add({ ...form, type: 'contact' });
+    const result = await submitInquiry({ ...form, type: 'contact' });
     setSubmitting(false);
-    toast.success(t('contact_success'));
+
+    if (!result.ok) {
+      toast.error(`Could not send your message: ${result.error}`);
+      return;
+    }
+
+    toast.success(
+      result.via === 'mailto'
+        ? 'Your email app should now be open with your message ready to send.'
+        : t('contact_success')
+    );
     setForm({ name: '', email: '', phone: '', country: '', subject: '', message: '' });
   };
 
@@ -128,41 +137,41 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact_name')} *</label>
-                    <input type="text" required value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                    <label htmlFor="contact-name" className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact_name')} *</label>
+                    <input id="contact-name" name="name" type="text" required value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
                       className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0f2d5e]/20 focus:border-[#0f2d5e]"
                       placeholder="Your full name" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact_country')}</label>
-                    <input type="text" value={form.country} onChange={e => setForm(f => ({ ...f, country: e.target.value }))}
+                    <label htmlFor="contact-country" className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact_country')}</label>
+                    <input id="contact-country" name="country" type="text" value={form.country} onChange={e => setForm(f => ({ ...f, country: e.target.value }))}
                       className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0f2d5e]/20 focus:border-[#0f2d5e]"
                       placeholder="Your country" />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact_email')} *</label>
-                    <input type="email" required value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                    <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact_email')} *</label>
+                    <input id="contact-email" name="email" type="email" required value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
                       className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0f2d5e]/20 focus:border-[#0f2d5e]"
                       placeholder="your@email.com" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact_phone')}</label>
-                    <input type="tel" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
+                    <label htmlFor="contact-phone" className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact_phone')}</label>
+                    <input id="contact-phone" name="phone" type="tel" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
                       className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0f2d5e]/20 focus:border-[#0f2d5e]"
                       placeholder="+1 234 567 8900" />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact_subject')}</label>
-                  <input type="text" value={form.subject} onChange={e => setForm(f => ({ ...f, subject: e.target.value }))}
+                  <label htmlFor="contact-subject" className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact_subject')}</label>
+                  <input id="contact-subject" name="subject" type="text" value={form.subject} onChange={e => setForm(f => ({ ...f, subject: e.target.value }))}
                     className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0f2d5e]/20 focus:border-[#0f2d5e]"
                     placeholder="Product inquiry, partnership, etc." />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact_message')} *</label>
-                  <textarea required rows={5} value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
+                  <label htmlFor="contact-message" className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact_message')} *</label>
+                  <textarea id="contact-message" name="message" required rows={5} value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                     className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0f2d5e]/20 focus:border-[#0f2d5e] resize-none"
                     placeholder="Tell us about your requirements, product needs, or any questions..." />
                 </div>

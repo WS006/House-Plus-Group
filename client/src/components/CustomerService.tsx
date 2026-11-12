@@ -36,7 +36,7 @@ export default function CustomerService() {
                   <div className="text-white font-semibold text-sm">{t('cs_title')}</div>
                   <div className="text-[#f59e0b] text-xs">House Plus Group</div>
                 </div>
-                <button onClick={() => setOpen(false)} className="text-white/60 hover:text-white transition-colors">
+                <button onClick={() => setOpen(false)} aria-label="Close customer service" className="text-white/60 hover:text-white transition-colors">
                   <X className="w-4 h-4" />
                 </button>
               </div>

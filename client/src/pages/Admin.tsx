@@ -60,7 +60,9 @@ function LoginForm({ onLogin }: { onLogin: () => void }) {
           <button type="submit" className="w-full bg-[#0f2d5e] hover:bg-[#1a3f7a] text-white font-bold py-3 rounded-xl transition-colors">
             {t('admin_login_btn')}
           </button>
-          <p className="text-center text-gray-400 text-xs">Default: admin / houseplus2024</p>
+          <p className="text-center text-gray-400 text-xs">
+            Demo panel — data is stored in this browser only.
+          </p>
         </form>
       </motion.div>
     </div>
@@ -244,7 +246,7 @@ export default function Admin() {
                     <tr key={product.id} className="hover:bg-gray-50 transition-colors">
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
-                          <img src={product.image} alt={product.nameEn} className="w-10 h-10 rounded-lg object-cover" />
+                          <img src={product.image} alt={product.nameEn} width={40} height={40} className="w-10 h-10 rounded-lg object-cover" loading="lazy" />
                           <div>
                             <div className="font-semibold text-[#0f2d5e] text-sm">{product.nameEn}</div>
                             <div className="text-gray-400 text-xs">{product.id}</div>

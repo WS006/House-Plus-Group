@@ -3,7 +3,9 @@
 // ============================================================
 
 import Breadcrumb from '@/components/Breadcrumb';
+import ResponsiveImage from '@/components/ResponsiveImage';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { getImageSize } from '@/lib/imageManifest';
 import { Mail, Phone } from 'lucide-react';
 import { useEffect } from 'react';
 import { generatePersonSchema, injectSchema, clearSchemaScripts } from '@/lib/schema';
@@ -69,7 +71,14 @@ export default function Team() {
           {TEAM.map((member, i) => (
             <div key={i} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="relative h-56 overflow-hidden">
-                <img src={member.avatar} alt={`${member.name} - ${member.role}`} className="w-full h-full object-cover" loading="lazy" />
+                <ResponsiveImage
+              src={member.avatar}
+              alt={`${member.name} - ${member.role}`}
+              {...getImageSize(member.avatar)}
+              className="w-full h-full object-cover"
+              pictureClassName="block w-full h-full"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f2d5e]/60 to-transparent" />
                 <div className="absolute bottom-4 left-4">
                   <h3 className="text-white font-black text-xl">{member.name}</h3>

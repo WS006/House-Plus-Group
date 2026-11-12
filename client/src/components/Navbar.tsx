@@ -25,7 +25,7 @@ const NAV_ITEMS = [
 ] as const;
 
 export default function Navbar() {
-  const { t, language, setLanguage, currentLangInfo } = useLanguage();
+  const { t, language, setLanguage, currentLangInfo, withLang } = useLanguage();
   const [location] = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -73,7 +73,10 @@ export default function Navbar() {
               <img 
                 src="/images/logo-houseplus-group.svg" 
                 alt="HousePlus Group Nigerian Factory"
+                width={200}
+                height={48}
                 className="h-12 w-auto"
+                decoding="async"
               />
             </Link>
 
@@ -82,7 +85,7 @@ export default function Navbar() {
               {NAV_ITEMS.slice(0, 7).map(item => (
                 <Link
                   key={item.key}
-                  href={item.path}
+                  href={withLang(item.path)}
                   className={`px-3 py-2 text-sm font-medium rounded transition-colors duration-150 ${
                     isActive(item.path)
                       ? 'text-[#f59e0b] bg-white/10'
@@ -100,7 +103,7 @@ export default function Navbar() {
                   {NAV_ITEMS.slice(7).map(item => (
                     <Link
                       key={item.key}
-                      href={item.path}
+                      href={withLang(item.path)}
                       className={`block px-4 py-2 text-sm ${
                         isActive(item.path)
                           ? 'text-[#f59e0b] bg-white/10'
@@ -120,6 +123,9 @@ export default function Navbar() {
               <div ref={langRef} className="relative">
                 <button
                   onClick={() => setLangOpen(!langOpen)}
+                  aria-label="Change language"
+                  aria-expanded={langOpen}
+                  aria-haspopup="listbox"
                   className="flex items-center gap-1.5 px-2.5 py-1.5 text-white/85 hover:text-white hover:bg-white/10 rounded transition-colors text-sm"
                 >
                   <Globe className="w-4 h-4" />
@@ -157,7 +163,7 @@ export default function Navbar() {
 
               {/* CTA Button */}
               <Link
-                href="/contact"
+                href={withLang("/contact")}
                 className="hidden md:flex items-center gap-1.5 bg-[#f59e0b] hover:bg-[#d97706] text-[#0f2d5e] font-semibold px-4 py-2 rounded-lg text-sm transition-colors duration-150"
               >
                 {t('nav_get_quote')}
@@ -166,6 +172,8 @@ export default function Navbar() {
               {/* Mobile Menu Toggle */}
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
+                aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={mobileOpen}
                 className="lg:hidden p-2 text-white hover:bg-white/10 rounded transition-colors"
               >
                 {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -188,7 +196,7 @@ export default function Navbar() {
                 {NAV_ITEMS.map(item => (
                   <Link
                     key={item.key}
-                    href={item.path}
+                    href={withLang(item.path)}
                     className={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                       isActive(item.path)
                         ? 'bg-[#f59e0b] text-[#0f2d5e]'
@@ -200,7 +208,7 @@ export default function Navbar() {
                 ))}
                 <div className="pt-2 border-t border-white/10">
                   <Link
-                    href="/contact"
+                    href={withLang("/contact")}
                     className="block w-full text-center bg-[#f59e0b] hover:bg-[#d97706] text-[#0f2d5e] font-semibold px-4 py-2.5 rounded-lg text-sm transition-colors"
                   >
                     {t('nav_get_quote')}

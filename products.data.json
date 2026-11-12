@@ -1,0 +1,86 @@
+[
+  {
+    "id": "solar-panel-mono-400w",
+    "nameEn": "400W Monocrystalline Solar Panel",
+    "descEn": "High-efficiency 400W monocrystalline solar panel with 21% efficiency. Ideal for home and commercial solar systems. Durable aluminum frame, IP67 junction box.",
+    "image": "/images/products/solar-panel.jpg",
+    "moq": "10 pcs"
+  },
+  {
+    "id": "solar-inverter-5kw",
+    "nameEn": "5KW Hybrid Solar Inverter",
+    "descEn": "5KW hybrid solar inverter with built-in MPPT charge controller. Supports grid-tie and off-grid modes. LCD display, WiFi monitoring.",
+    "image": "/images/products/solar-inverter.jpg",
+    "moq": "5 pcs"
+  },
+  {
+    "id": "lithium-battery-100ah",
+    "nameEn": "100Ah LiFePO4 Lithium Battery",
+    "descEn": "100Ah LiFePO4 lithium battery with BMS protection. 4000+ cycle life, lightweight design. Perfect for solar energy storage systems.",
+    "image": "/images/products/lithium-battery.jpg",
+    "moq": "10 pcs"
+  },
+  {
+    "id": "solar-street-light-100w",
+    "nameEn": "100W All-in-One Solar Street Light",
+    "descEn": "100W all-in-one solar street light with motion sensor. IP65 waterproof, 3 lighting modes, remote control. Easy installation.",
+    "image": "/images/products/solar-street-light.jpg",
+    "moq": "20 pcs"
+  },
+  {
+    "id": "air-fryer-5l",
+    "nameEn": "5L Digital Air Fryer",
+    "descEn": "5L digital air fryer with 8 preset cooking modes. 1800W power, 360° hot air circulation, non-stick basket. Healthier cooking with 80% less oil.",
+    "image": "/images/products/air-fryer.jpg",
+    "moq": "50 pcs"
+  },
+  {
+    "id": "blender-1200w",
+    "nameEn": "1200W Professional Blender",
+    "descEn": "1200W professional blender with 2L BPA-free jar. 6 stainless steel blades, 3 speed settings + pulse. Perfect for smoothies, soups, and more.",
+    "image": "/images/products/blender.jpg",
+    "moq": "50 pcs"
+  },
+  {
+    "id": "smart-watch-pro",
+    "nameEn": "Smart Watch Pro - Health Monitor",
+    "descEn": "Smart watch with heart rate, blood oxygen, sleep tracking. 1.7\" HD display, IP68 waterproof, 7-day battery life. Compatible with iOS and Android.",
+    "image": "/images/products/smart-watch.jpg",
+    "moq": "100 pcs"
+  },
+  {
+    "id": "tws-earphone",
+    "nameEn": "TWS Bluetooth Earphones with ANC",
+    "descEn": "TWS earphones with active noise cancellation. Bluetooth 5.3, 30-hour total battery life, IPX5 water resistant. Hi-Fi sound quality.",
+    "image": "/images/products/tws-earbuds.jpg",
+    "moq": "100 pcs"
+  },
+  {
+    "id": "power-bank-20000",
+    "nameEn": "20000mAh Solar Power Bank",
+    "descEn": "20000mAh solar power bank with dual USB + Type-C output. Built-in solar panel for emergency charging. LED flashlight, IP65 waterproof.",
+    "image": "/images/products/power-bank.jpg",
+    "moq": "100 pcs"
+  },
+  {
+    "id": "sd-card-128gb",
+    "nameEn": "128GB High-Speed SD Memory Card",
+    "descEn": "128GB Class 10 UHS-I SD card. Read speed up to 100MB/s, write speed up to 80MB/s. Compatible with cameras, phones, and tablets.",
+    "image": "/images/products/sd-card.jpg",
+    "moq": "500 pcs"
+  },
+  {
+    "id": "charge-controller-40a",
+    "nameEn": "40A MPPT Solar Charge Controller",
+    "descEn": "40A MPPT solar charge controller with LCD display. Supports 12V/24V/48V battery systems. Multiple protection functions, high efficiency up to 98%.",
+    "image": "/images/products/charge-controller.jpg",
+    "moq": "20 pcs"
+  },
+  {
+    "id": "rice-cooker-5l",
+    "nameEn": "5L Digital Rice Cooker",
+    "descEn": "5L digital rice cooker with 12 cooking functions. Non-stick inner pot, keep warm function, delay timer. Perfect for families.",
+    "image": "/images/products/rice-cooker.jpg",
+    "moq": "50 pcs"
+  }
+]
