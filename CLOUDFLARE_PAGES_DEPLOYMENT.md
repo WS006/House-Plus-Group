@@ -51,7 +51,7 @@ git add -A && git commit -m "..." && git push
 
 1. 打开 https://dash.cloudflare.com → **Workers & Pages** → **Create** → **Pages** → **Connect to Git**
 2. 授权 GitHub，选择仓库 **`WS006/House-Plus-Group`**，分支 `main`
-   （旧文档里写的 `houseplus-website` 是错的）
+   （早期文档里写过另一个仓库名，均以此处为准）
 3. 构建设置：
 
    | 字段 | 值 |

@@ -38,13 +38,10 @@
 - [x] 优化页面 SEO 元数据和结构化数据 - 已常用 generateOrganizationSchema
 - [x] 部署并测试页面 - 已推送到 GitHub
 
+## 待办（当前）
 
-## Cloudflare Worker SPA 路由配置 (2026-03-31)
-
-- [ ] 登录 Cloudflare Dashboard
-- [ ] 创建新 Worker 脚本（houseplus-spa-router）
-- [ ] 复制 cloudflare-worker.js 中的代码到 Worker 编辑器
-- [ ] 配置 Worker 路由（www.houseplus.com.ng/*）
-- [ ] 等待配置生效（1-2 分钟）
-- [ ] 测试 /privacy、/terms、/about 页面是否正常加载
-- [ ] 验证 HTTP 状态码为 200（不是 404）
+- [ ] 创建 Cloudflare Pages 项目，构建命令留空、输出目录 `docs`（见 CLOUDFLARE_PAGES_DEPLOYMENT.md）
+- [ ] 在 `jack@houseplus-ch.com` 点击 FormSubmit 的 Activate Form
+- [ ] 吊销对话中暴露过的 GitHub PAT 与 Cloudflare API Token
+- [ ] 拆分 `/about/` 的 127KB 主 JS 包
+- [ ] 生图余额恢复后用 AI 写实图替换过渡实拍图

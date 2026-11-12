@@ -1,3 +1,10 @@
+> **历史文档，结论已过时（2026-03/04）。**
+> 当前准确状态见 [OPTIMIZATION_REPORT.md](./OPTIMIZATION_REPORT.md)，部署方式见
+> [CLOUDFLARE_PAGES_DEPLOYMENT.md](./CLOUDFLARE_PAGES_DEPLOYMENT.md)。
+> 本文保留作历史记录，**不要按其中的步骤操作**：
+> 仓库是 `WS006/House-Plus-Group`（不是 houseplus-website）；hreflang 已移除；
+> Worker 方案已被 Cloudflare Pages 取代；表单、图片、预渲染均已重做。
+
 # House Plus Group - SEO 监控和维护指南
 
 ## 📊 概述
