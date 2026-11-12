@@ -474,11 +474,13 @@ export default function Home() {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
                 {/* Floating card */}
-                <div className="absolute -bottom-6 -left-6 bg-[#0f2d5e] text-white p-5 rounded-2xl shadow-xl max-w-[200px]">
+                {/* Keep the badges inside the viewport on phones; only pull them
+                    outside the image once there is room (>= 640px). */}
+                <div className="absolute bottom-3 left-3 sm:-bottom-6 sm:-left-6 bg-[#0f2d5e] text-white p-4 sm:p-5 rounded-2xl shadow-xl max-w-[200px]">
                   <div className="text-3xl font-black text-[#f59e0b]">10+</div>
                   <div className="text-sm text-white/80">Years of Excellence in Nigeria Manufacturing</div>
                 </div>
-                <div className="absolute -top-6 -right-6 bg-[#f59e0b] text-[#0f2d5e] p-4 rounded-2xl shadow-xl">
+                <div className="absolute top-3 right-3 sm:-top-6 sm:-right-6 bg-[#f59e0b] text-[#0f2d5e] p-3 sm:p-4 rounded-2xl shadow-xl">
                   <div className="text-2xl font-black">50+</div>
                   <div className="text-xs font-semibold">Countries</div>
                 </div>
