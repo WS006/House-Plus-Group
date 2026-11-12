@@ -125,7 +125,12 @@ export async function submitInquiry(payload: InquiryPayload): Promise<DeliveryRe
   }
 
   // Hand off to the visitor's mail client so the enquiry still reaches a human.
-  window.location.href = buildMailtoUrl(payload);
+  // Navigate on a short delay so the UI can render its toast first — replacing
+  // location immediately can discard the pending React update in some browsers.
+  const mailto = buildMailtoUrl(payload);
+  setTimeout(() => {
+    window.location.href = mailto;
+  }, 600);
   return { ok: true, via: 'mailto' };
 }
 
