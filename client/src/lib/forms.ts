@@ -6,11 +6,11 @@
  * toast — the lead never left the visitor's browser. This module makes the
  * submission actually reach the business, with graceful degradation:
  *
- *   1. If VITE_FORM_ENDPOINT is configured (Formspree, Cloudflare Worker, etc.)
- *      POST the payload there as JSON.
- *   2. Otherwise fall back to opening the visitor's mail client with the
- *      enquiry pre-filled, and report `fallback: 'mailto'` so the UI can tell
- *      the visitor what happened instead of claiming a silent success.
+ *   1. POST the payload as JSON to `VITE_FORM_ENDPOINT`, or to FormSubmit's
+ *      no-signup AJAX relay by default (which emails CONTACT_EMAIL).
+ *   2. If that request fails for any reason, open the visitor's mail client
+ *      with the enquiry pre-filled and report `via: 'mailto'` so the UI can
+ *      tell them what happened instead of claiming a silent success.
  *
  * Local storage is still written, but only as a record for the in-browser demo
  * admin panel — never as the primary delivery path.
@@ -18,10 +18,20 @@
 
 import { messagesStore } from './store';
 
-const ENDPOINT = (import.meta.env.VITE_FORM_ENDPOINT as string | undefined)?.trim();
+const CONFIGURED_ENDPOINT = (import.meta.env.VITE_FORM_ENDPOINT as string | undefined)?.trim();
 
 /** Business inbox that receives enquiries when no API endpoint is configured. */
 export const CONTACT_EMAIL = 'jack@houseplus-ch.com';
+
+/**
+ * Default delivery relay: FormSubmit's AJAX endpoint needs no account or
+ * backend and forwards the submission to CONTACT_EMAIL as an email. The first
+ * submission triggers a one-time confirmation link sent to that inbox.
+ *
+ * Override with VITE_FORM_ENDPOINT (e.g. a Formspree form or Cloudflare
+ * Worker) to route enquiries somewhere else.
+ */
+const ENDPOINT = CONFIGURED_ENDPOINT || `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
 
 export interface InquiryPayload {
   name: string;
@@ -90,22 +100,36 @@ export async function submitInquiry(payload: InquiryPayload): Promise<DeliveryRe
       const res = await fetch(ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ ...payload, submittedAt: new Date().toISOString() }),
+        body: JSON.stringify({
+          ...payload,
+          submittedAt: new Date().toISOString(),
+          _subject: payload.product ? `Product inquiry: ${payload.product}` : 'Website enquiry',
+          _template: 'table',
+          _captcha: 'false',
+        }),
       });
-      if (res.ok) return { ok: true, via: 'endpoint' };
-      return { ok: false, error: `Server responded ${res.status}` };
-    } catch (err) {
-      return { ok: false, error: err instanceof Error ? err.message : 'Network error' };
+      if (res.ok) {
+        // FormSubmit (and some relays) answer HTTP 200 with
+        // {"success":"false","message":"..."} when the form is not yet
+        // activated, so an OK status alone does not mean the lead was sent.
+        const data = await res.json().catch(() => null);
+        const delivered =
+          data === null || data.success === true || data.success === 'true';
+        if (delivered) return { ok: true, via: 'endpoint' };
+      }
+      // Relay rejected or is misconfigured; don't lose the lead — fall through
+      // to the mail-client hand-off below.
+    } catch {
+      /* network/CORS failure — same fallback */
     }
   }
 
-  // No endpoint configured: hand off to the visitor's mail client so the
-  // enquiry still reaches a human.
+  // Hand off to the visitor's mail client so the enquiry still reaches a human.
   window.location.href = buildMailtoUrl(payload);
   return { ok: true, via: 'mailto' };
 }
 
-/** True when submissions are delivered automatically rather than via mailto. */
+/** True when automatic relay delivery is configured (overridable via env). */
 export function hasFormEndpoint(): boolean {
   return Boolean(ENDPOINT);
 }
