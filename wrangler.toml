@@ -1,14 +1,16 @@
 # Cloudflare Pages project configuration.
 #
-# The site ships pre-built output from docs/ (see tools/publish-docs.mjs). We
-# deliberately do NOT let Pages run `npm run build`: the prerender step boots
-# each route in headless Chromium, and a CI runner without a browser would fail
-# the build (prerender.mjs now exits 1 rather than silently publishing 24 blank
-# pages). Building locally, where Chrome exists, keeps the rendered HTML intact.
+# Live project: houseplus-group-ng in the account that owns the houseplus.com.ng zone
+# (affca529f7b55b7eb2b3770c954bd36d). Custom domain www.houseplus.com.ng is attached there.
 #
-# Project name matches the Pages project houseplus-group-nigeria. Create it in
-# the Cloudflare account that owns the houseplus.com.ng zone (affca529...) so
-# the custom domain can be attached in the same account.
-name = "houseplus-group-nigeria"
+# Deployment is a Direct Upload of the pre-built docs/ directory:
+#   CLOUDFLARE_API_TOKEN=... CLOUDFLARE_ACCOUNT_ID=affca529f7b55b7eb2b3770c954bd36d \
+#   npx wrangler pages deploy docs --project-name houseplus-group-ng --branch main
+#
+# The project intentionally does NOT connect to Git, and Pages never runs
+# `npm run build`: the prerender step boots each route in headless Chromium,
+# which CI runners do not have (prerender.mjs exits 1 rather than publishing
+# 24 blank pages). Build locally, then upload docs/.
+name = "houseplus-group-ng"
 pages_build_output_dir = "docs"
 compatibility_date = "2026-01-01"
