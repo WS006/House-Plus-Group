@@ -5,13 +5,14 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite --host",
-    "build": "node tools/generate-product-data.mjs && node tools/optimize-images.mjs && node tools/generate-image-manifest.mjs && node tools/generate-og-images.mjs && node tools/generate-favicon.mjs && vite build && node prerender.mjs && node sitemap.mjs",
+    "build": "node tools/generate-product-data.mjs && node tools/optimize-images.mjs && node tools/generate-image-manifest.mjs && node tools/generate-og-images.mjs && node tools/generate-favicon.mjs && vite build && node prerender.mjs && node sitemap.mjs && node tools/publish-docs.mjs",
     "start": "vite preview --host --port 3000",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
     "format": "prettier --write .",
     "prerender": "node prerender.mjs && node sitemap.mjs",
-    "images": "node tools/optimize-images.mjs && node tools/generate-image-manifest.mjs"
+    "images": "node tools/optimize-images.mjs && node tools/generate-image-manifest.mjs",
+    "deploy": "npm run build"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",

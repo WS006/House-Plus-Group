@@ -46,10 +46,13 @@
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#0f2d5e" />
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet" />
+    <!-- Fonts: self-hosted so no third-party font host is needed (Google Fonts
+         is unreachable from mainland China and a blocking request elsewhere).
+         The @font-face rules live in the main stylesheet (client/src/index.css)
+         to avoid an extra round trip. Only the regular weight is preloaded: on a
+         1.6 Mbps phone every extra preload steals bandwidth from the hero image,
+         which is the LCP element. The rest swap in without blocking text. -->
+    <link rel="preload" href="/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Schema.org Organization Markup -->
     <script type="application/ld+json" data-schema-key="organization">
@@ -89,9 +92,9 @@
       ]
     }
     </script>
-    <script type="module" crossorigin src="/assets/index-Dxf69qZn.js"></script>
+    <script type="module" crossorigin src="/assets/index-BkqhHo_A.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/vendor-Be1Libk3.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-ZPTt2_nQ.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-CUSzI2do.css">
   </head>
 
   <body>
@@ -112,6 +115,15 @@
         }
       })(window.location);
     </script>
-    <div id="root"></div>
+    <div id="root"><div class="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
+  <div class="w-full max-w-lg mx-4 shadow-lg border-0 bg-white/80 backdrop-blur-sm rounded-xl">
+    <div class="pt-8 pb-8 px-6 text-center">
+      <h1 class="text-4xl font-bold text-slate-900 mb-2">404</h1>
+      <h2 class="text-xl font-semibold text-slate-700 mb-4">Page Not Found</h2>
+      <p class="text-slate-600 mb-8 leading-relaxed">Sorry, the page you are looking for doesn't exist.<br />It may have been moved or deleted.</p>
+      <a href="/" class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg">Go Home</a>
+    </div>
+  </div>
+</div></div>
   </body>
 </html>
