@@ -1,18 +1,16 @@
 /**
- * Cloudflare Worker — security headers, caching and SPA fallback for
- * www.houseplus.com.ng in front of GitHub Pages.
+ * Cloudflare Worker - UNUSED FALLBACK, NOT DEPLOYED.
  *
- * Why this exists: the site is hosted on GitHub Pages, which serves static
- * files only. It ignores the `_headers` and `_redirects` files in the repo, so
- * none of the intended security headers or long-lived asset caching ever
- * reached visitors. A worker in front of the origin is the only way to apply
- * them without moving hosts.
+ * This was written for an earlier "GitHub Pages origin + Worker in front"
+ * approach. The project has since moved to Cloudflare Pages, where
+ * client/public/_headers and client/public/_redirects are applied natively:
+ * security headers, cache policy and real 404s no longer need custom code.
  *
- * Deploy: Cloudflare dashboard -> Workers & Pages -> create worker -> paste this
- * -> add a route for www.houseplus.com.ng/*.
+ * See CLOUDFLARE_PAGES_DEPLOYMENT.md. DO NOT deploy this alongside Pages:
+ * the two would set overlapping headers and the origin path is different.
  *
- * Replace the previous cloudflare-worker*.js variants (four conflicting copies,
- * two with a wrong GitHub Pages base URL).
+ * Kept only as a reference in case the site ever moves back to an origin that
+ * cannot apply custom headers. It is not part of the build or deploy pipeline.
  */
 
 const ORIGIN = 'https://ws006.github.io/House-Plus-Group';
