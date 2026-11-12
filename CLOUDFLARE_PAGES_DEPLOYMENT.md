@@ -72,20 +72,40 @@ git add -A && git commit -m "..." && git push
 
 ---
 
-## 四、跨 Cloudflare 账号的限制
+## 四、账号与跨域名的实际情况（已核实，2026-11-12）
 
-如果 Pages 项目和 `houseplus.com.ng` zone **不在同一个 Cloudflare 账号**：
+通过 Cloudflare API 实测确认：
 
-| 场景 | 结果 |
-|---|---|
-| 子域 `www` CNAME 指向外部 DNS | 可以 |
-| 子域指向**另一个** CF 账号的 zone（橙色云） | **不行**，`Error 1014 CNAME Cross-User Banned` |
-| 子域指向另一个账号 zone（灰色云 DNS-only） | 能用，但该 zone 的 WAF / 缓存规则不生效 |
-| Apex `houseplus.com.ng` | **不行**，官方要求 apex zone 必须与 Pages 项目同账号 |
+```txt
+zone houseplus.com.ng  ->  account affca529f7b55b7eb2b3770c954bd36d
+Pages 项目 houseplus-group-nigeria ->  account 5cd2f2781f30e866504997ad801d7dbd
+www.houseplus.com.ng   ->  CNAME ws006.github.io (proxied=true, 仍在 GitHub Pages)
+```
 
-**建议**：把 Pages 项目建在持有 `houseplus.com.ng` zone 的那个账号里，这是唯一没有妥协的路径。
+**两个账号不同**。现有 Pages 项目已经连着正确的仓库 `WS006/House-Plus-Group`，但它在另一个账号里，所以：
 
----
+- 在账号 B 里给项目绑定 `www.houseplus.com.ng` 会触发 `Error 1014 CNAME Cross-User Banned`（橙色云指向另一个账号的 zone）
+- 用灰色云 DNS-only CNAME 指向 `houseplus-group-nigeria.pages.dev` 可以工作，但会失去 zone 账号里的 WAF / 缓存规则
+- apex `houseplus.com.ng` 官方要求必须与 Pages 项目同账号
+
+**推荐做法**：在持有 zone 的账号（`affca529…`）里新建同名的 Pages 项目，连同一个 GitHub 仓库。项目本身不保存内容，站点内容全在仓库的 `docs/` 目录，所以「等效重建」与复制效果一致，不需要也不能跨账号复制项目。
+
+### API Token 权限
+
+自动化创建项目需要 **`Account · Cloudflare Pages: Edit`** 权限，并且 token 必须属于目标账号。当前对话里出现过的 token 只有 Zone / DNS 权限，实测：
+
+```txt
+GET  /accounts/{acct}/pages/projects  -> 403 Authentication error
+POST /accounts/{acct}/pages/projects  -> 403 Authentication error
+```
+
+因此创建项目这一步要么在 Dashboard 里做（不需要 API Key），要么换一个带 Pages:Edit 权限的 token。
+
+### 当前最紧急的问题：部署全部失败
+
+Dashboard 显示 `9b3faf3`、`cd7c83c`、`79d7b0a`、`4be68a4`、`490032d` 五次部署均为 `No deployment available`，只有 11-11 的 `ac22eeb` 成功。所以 `pages.dev` 上现在跑的还是旧站点（Google Fonts、无 h1、所有路径回退到同一个 6394 字节 HTML）。
+
+原因是项目配置了构建命令，而 CI 无 Chromium 导致预渲染失败。**修复方式就是第三节的「构建命令留空、输出目录 `docs`」**，改完后 Retry deployment。
 
 ## 五、部署后验证
 
