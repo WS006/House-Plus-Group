@@ -15,12 +15,25 @@
 > 线上实测：CSP / X-Frame-Options / HSTS 全部生效，`/assets/*` 永久缓存，
 > 未知路径返回真正的 404，`/admin/` 返回 200 且 `noindex`，全站字体自托管。
 >
-> **以后更新站点**：本地 `npm run build`（生成 `docs/`）→ `git push` → 再执行一次
-> `wrangler pages deploy docs --project-name houseplus-group-ng --branch main` 上传到 Pages。
-> GitHub Pages 已不再是发布目标，可以关闭。
+> **以后更新站点（两步，因为是 Direct Upload 项目，不连 Git）**：
+> ```bash
+> npm run build                       # 生成 docs/
+> git add -A && git commit -m "..." && git push
+> CLOUDFLARE_API_TOKEN=... CLOUDFLARE_ACCOUNT_ID=affca529f7b55b7eb2b3770c954bd36d \
+>   npx wrangler pages deploy docs --project-name houseplus-group-ng --branch main
+> ```
+> 只 `git push` 不会更新线上，必须再跑一次 `wrangler pages deploy`。
 >
-> 旧账号 `5cd2f278…` 里的 `houseplus-group-nigeria` 项目已弃用（同一仓库被它占用，
-> 导致新项目无法再连 Git），可自行删除。
+> **为什么没连 Git**：同一个 GitHub 仓库不能同时绑定到两个 Cloudflare 账号的 Pages
+> 项目（错误 `8000093`）。旧账号 `5cd2f278…` 的 `houseplus-group-nigeria` 占着
+> `WS006/House-Plus-Group`，所以新项目只能用 Direct Upload。若想恢复 push 自动部署：
+> 先在旧账号删除那个项目释放仓库占用，再在账号 A 新建一个连 Git 的项目，构建命令留空、
+> 输出目录 `docs`。
+>
+> **GitHub Pages 暂时保留**：DNS 已切走，它不再接收流量，但留着可在一分钟内把 CNAME
+> 改回 `ws006.github.io` 完成回滚。确认 Pages 稳定运行一周后再关闭它。
+>
+> 旧账号 `5cd2f278…` 里的 `houseplus-group-nigeria` 项目已弃用，可自行删除。
 
 ---
 
