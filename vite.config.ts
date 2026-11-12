@@ -150,16 +150,16 @@ function vitePluginManusDebugCollector(): Plugin {
   };
 }
 
-const plugins = [
-  react(),
-  tailwindcss(),
-  jsxLocPlugin(),
-  ...(process.env.NODE_ENV === 'production' ? [] : [vitePluginManusRuntime(), vitePluginManusDebugCollector()]),
-];
-
-export default defineConfig({
+// jsxLocPlugin stamps every element with data-loc="path:line" for the Manus
+// editor. That is useful in dev and harmful in production: it leaks internal
+// source paths and adds a few hundred KB to the prerendered HTML.
+export default defineConfig(({ command }) => ({
   base: '/',
-  plugins,
+  plugins: [
+    react(),
+    tailwindcss(),
+    ...(command === 'serve' ? [jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector()] : []),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),
@@ -213,4 +213,4 @@ export default defineConfig({
       deny: ["**/.*"],
     },
   },
-});
+}));
