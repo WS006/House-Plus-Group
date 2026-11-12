@@ -1,3 +1,29 @@
+# ✅ 已完成迁移（2026-11-12）
+
+> **本页下方是历史说明，实际部署已完成，无需再按步骤创建项目。**
+>
+> | 项 | 值 |
+> |---|---|
+> | Cloudflare 账号 | `affca529f7b55b7eb2b3770c954bd36d`（持有 `houseplus.com.ng` zone） |
+> | Pages 项目 | `houseplus-group-ng` |
+> | 预览域名 | https://houseplus-group-ng.pages.dev |
+> | 正式域名 | https://www.houseplus.com.ng |
+> | 部署方式 | **Direct Upload**（`wrangler pages deploy docs`），不连 Git、不跑构建 |
+> | DNS | `www` CNAME → `houseplus-group-ng.pages.dev`，橙色云 |
+> | 自定义域状态 | active，证书已签发 |
+>
+> 线上实测：CSP / X-Frame-Options / HSTS 全部生效，`/assets/*` 永久缓存，
+> 未知路径返回真正的 404，`/admin/` 返回 200 且 `noindex`，全站字体自托管。
+>
+> **以后更新站点**：本地 `npm run build`（生成 `docs/`）→ `git push` → 再执行一次
+> `wrangler pages deploy docs --project-name houseplus-group-ng --branch main` 上传到 Pages。
+> GitHub Pages 已不再是发布目标，可以关闭。
+>
+> 旧账号 `5cd2f278…` 里的 `houseplus-group-nigeria` 项目已弃用（同一仓库被它占用，
+> 导致新项目无法再连 Git），可自行删除。
+
+---
+
 # Cloudflare Pages 部署指南
 
 **最后更新**：2026-11-12
