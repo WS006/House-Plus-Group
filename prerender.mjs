@@ -320,6 +320,20 @@ if (puppeteer) {
   console.warn('⚠ puppeteer not installed — falling back to metadata-only prerender');
 }
 
+// Without a browser every route is written with an empty <div id="root">: the
+// build reports success while publishing 24 blank pages to crawlers and no-JS
+// visitors. That is worse than failing loudly, so refuse unless the caller
+// explicitly opts into a metadata-only run.
+if (!browser && process.env.ALLOW_METADATA_ONLY !== '1') {
+  console.error(
+    '\nx No browser available, refusing to overwrite the prerendered pages.\n' +
+      '  Every route would be published with an empty #root.\n' +
+      '  Fix: install Chrome/Edge, or set PUPPETEER_EXECUTABLE_PATH.\n' +
+      '  Override: ALLOW_METADATA_ONLY=1 (head metadata only, no body).\n'
+  );
+  process.exit(1);
+}
+
 /** LCP artwork per static route (the first large image rendered above the fold). */
 const HERO_BY_ROUTE = {
   '/': '/images/hero-solar.jpg',
@@ -438,6 +452,28 @@ server.close();
 </div>`;
 
   fs.writeFileSync(path.join(distPath, '404.html'), compose(shell, { headBlock, rootHtml: notFoundHtml }), 'utf8');
+}
+
+// /admin is the only client-only route. A rewrite rule is not enough: GitHub
+// Pages ignores _redirects entirely (so /admin has been a 404 for visitors),
+// and Cloudflare Pages answers the bare /admin path with a 308 to the homepage.
+// Publishing a real file fixes both, and the SPA hydrates over it as usual.
+{
+  const headBlock = renderHead({
+    url: '/admin',
+    title: 'Admin — HousePlus Group',
+    description: 'HousePlus Group administration panel.',
+    ogType: 'website',
+  })
+    .replace('<meta name="robots" content="index, follow" />', '<meta name="robots" content="noindex, nofollow" />')
+    .replace(/\s*<link rel="canonical"[^>]*>/g, '');
+
+  // No body copy: the login form requires JS, and putting a mock dashboard in
+  // static HTML would be misleading to crawlers. The SPA renders it on load.
+  const adminDir = path.join(distPath, 'admin');
+  fs.mkdirSync(adminDir, { recursive: true });
+  fs.writeFileSync(path.join(adminDir, 'index.html'), compose(shell, { headBlock, rootHtml: '' }), 'utf8');
+  console.log('  ✓ /admin (SPA shell, noindex)');
 }
 
 console.log(`\n✓ prerendered ${count} routes + 404${failed ? ` (${failed} without body)` : ''}`);

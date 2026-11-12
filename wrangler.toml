@@ -1,0 +1,10 @@
+# Cloudflare Pages project configuration.
+#
+# The site ships pre-built output from docs/ (see tools/publish-docs.mjs). We
+# deliberately do NOT let Pages run `npm run build`: the prerender step boots
+# each route in headless Chromium, and a CI runner without a browser would fail
+# the build (prerender.mjs now exits 1 rather than silently publishing 24 blank
+# pages). Building locally, where Chrome exists, keeps the rendered HTML intact.
+name = "houseplus"
+pages_build_output_dir = "docs"
+compatibility_date = "2026-01-01"
