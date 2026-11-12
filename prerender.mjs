@@ -170,18 +170,28 @@ function startServer() {
 // Meta block rendering
 // ---------------------------------------------------------------------------
 /**
- * LCP preload for the route's hero art. Uses imagesrcset so browsers pick the
- * same WebP variant the <picture> will request — without this the hero is only
- * discovered after the JS bundle parses, delaying LCP by a full round trip.
+ * LCP preload for the route's hero art.
+ *
+ * The <img> and the preload must resolve to the *same* candidate, otherwise the
+ * browser downloads two variants and repaints the hero twice (measured: the
+ * <picture> picked 768w while a 100vw preload forced 1200w, pushing LCP to
+ * 3.8s on a throttled phone). So the values are copied verbatim from the
+ * rendered priority image instead of being recomputed here.
  */
-function preloadLink(src) {
-  if (!src) return '';
-  const base = src.replace(/\.jpe?g$/i, '');
+function preloadLink(preload) {
+  if (!preload || !preload.src) return '';
+  if (preload.srcset && preload.sizes) {
+    return (
+      `    <link rel="preload" as="image" type="image/webp" fetchpriority="high"` +
+      ` imagesrcset="${escapeHtml(preload.srcset)}" imagesizes="${escapeHtml(preload.sizes)}" />\n`
+    );
+  }
+  const base = preload.src.replace(/\.jpe?g$/i, '');
   const srcset = [480, 768, 1200, 1800].map((w) => `${base}-${w}.webp ${w}w`).join(', ');
   return `    <link rel="preload" as="image" type="image/webp" href="${base}-1200.webp" imagesrcset="${srcset}" imagesizes="100vw" fetchpriority="high" />\n`;
 }
 
-function renderHead({ url, title, description, image, ogType, jsonLd, preloadSrc }) {
+function renderHead({ url, title, description, image, ogType, jsonLd, preload }) {
   const canonical = SITE + (url === '/' ? '/' : url + '/');
   const ogImage = SITE + (image || '/images/logo-houseplus-group.svg');
 
@@ -192,7 +202,7 @@ function renderHead({ url, title, description, image, ogType, jsonLd, preloadSrc
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="${canonical}" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
-${preloadLink(preloadSrc)}
+${preloadLink(preload)}
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="${ogType || 'website'}" />
@@ -318,24 +328,27 @@ const HERO_BY_ROUTE = {
   '/products': '/images/products/solar-panel.jpg',
 };
 
+/** Reads the srcset/sizes of the route's priority image so the preload matches it. */
+const CAPTURE_PRELOAD = () => {
+  const img = document.querySelector('#root img[fetchpriority="high"]');
+  if (!img) return null;
+  const picture = img.parentElement && img.parentElement.tagName === 'PICTURE' ? img.parentElement : null;
+  const source = picture ? picture.querySelector('source[type="image/webp"]') : null;
+  return {
+    src: img.getAttribute('src'),
+    srcset: source ? source.getAttribute('srcset') : null,
+    sizes: source ? source.getAttribute('sizes') : null,
+  };
+};
+
 for (const route of routes) {
   const m = meta[route] || { title: SITE_NAME, description: '' };
   const isProduct = route.startsWith('/products/') && route !== '/products';
   const product = isProduct ? products.find((p) => route === `/products/${p.id}`) : null;
 
-  const headBlock = renderHead({
-    url: route,
-    title: m.title,
-    description: m.description,
-    image: ogImageFor(route, product),
-    ogType: isProduct ? 'product' : 'website',
-    jsonLd: product ? productJsonLd(product) : null,
-    // Product pages render the product photo first; other pages use their hero.
-    preloadSrc: product ? product.image : HERO_BY_ROUTE[route],
-  });
-
   let rootHtml = '';
   let headSchemas = [];
+  let preload = { src: product ? product.image : HERO_BY_ROUTE[route] };
   if (browser) {
     const page = await browser.newPage();
     try {
@@ -345,6 +358,18 @@ for (const route of routes) {
       await page.waitForSelector('#root h1', { timeout: 15000 }).catch(() => {});
       // Let framer-motion settle so text isn't captured mid-animation.
       await new Promise((r) => setTimeout(r, 400));
+
+      // Reveal wrappers may have applied their hidden inline styles by now.
+      // Never bake those into the static HTML: crawlers and no-JS visitors must
+      // see the content, and a hidden hero would also destroy LCP.
+      await page.evaluate(() => {
+        document.querySelectorAll('[data-fade-in]').forEach((el) => el.removeAttribute('style'));
+        // The cookie banner is a client-only, consent-gated overlay captured
+        // mid-animation; it must not end up in the static markup either.
+        document.querySelectorAll('[data-cookie-banner]').forEach((el) => el.remove());
+      });
+
+      preload = (await page.evaluate(CAPTURE_PRELOAD)) || preload;
 
       rootHtml = await page.evaluate(() => {
         const root = document.getElementById('root');
@@ -366,6 +391,16 @@ for (const route of routes) {
       await page.close();
     }
   }
+
+  const headBlock = renderHead({
+    url: route,
+    title: m.title,
+    description: m.description,
+    image: ogImageFor(route, product),
+    ogType: isProduct ? 'product' : 'website',
+    jsonLd: product ? productJsonLd(product) : null,
+    preload,
+  });
 
   const html = compose(shell, { headBlock, rootHtml, headSchemas });
   const dir = route === '/' ? distPath : path.join(distPath, route.slice(1));
@@ -389,7 +424,20 @@ server.close();
   }).replace('<meta name="robots" content="index, follow" />', '<meta name="robots" content="noindex, follow" />')
     .replace(/\s*<link rel="canonical"[^>]*>/g, '');
 
-  fs.writeFileSync(path.join(distPath, '404.html'), compose(shell, { headBlock, rootHtml: '' }), 'utf8');
+  // Static fallback body: without JavaScript (or before hydration) the page must
+  // still show a heading and a way back instead of a blank screen.
+  const notFoundHtml = `<div class="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
+  <div class="w-full max-w-lg mx-4 shadow-lg border-0 bg-white/80 backdrop-blur-sm rounded-xl">
+    <div class="pt-8 pb-8 px-6 text-center">
+      <h1 class="text-4xl font-bold text-slate-900 mb-2">404</h1>
+      <h2 class="text-xl font-semibold text-slate-700 mb-4">Page Not Found</h2>
+      <p class="text-slate-600 mb-8 leading-relaxed">Sorry, the page you are looking for doesn't exist.<br />It may have been moved or deleted.</p>
+      <a href="/" class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg">Go Home</a>
+    </div>
+  </div>
+</div>`;
+
+  fs.writeFileSync(path.join(distPath, '404.html'), compose(shell, { headBlock, rootHtml: notFoundHtml }), 'utf8');
 }
 
 console.log(`\n✓ prerendered ${count} routes + 404${failed ? ` (${failed} without body)` : ''}`);

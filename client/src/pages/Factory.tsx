@@ -3,25 +3,16 @@
 // ============================================================
 
 import Breadcrumb from '@/components/Breadcrumb';
+import FadeIn from '@/components/FadeIn';
 import InquiryModal from '@/components/InquiryModal';
 import ResponsiveImage from '@/components/ResponsiveImage';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getImageSize } from '@/lib/imageManifest';
 import { addPageSchema } from '@/lib/seo';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Award, CheckCircle, Factory as FactoryIcon, Settings, Shield, TrendingUp, Zap } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { generateLocalBusinessSchema, injectSchema, clearSchemaScripts } from '@/lib/schema';
-
-function FadeIn({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-50px' });
-  return (
-    <motion.div ref={ref} initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay }} className={className}>
-      {children}
-    </motion.div>
-  );
-}
 
 const CAPABILITIES = [
   { icon: <FactoryIcon className="w-6 h-6" />, title: 'Modern Production Lines', desc: 'Fully automated assembly lines with advanced machinery for consistent quality output' },

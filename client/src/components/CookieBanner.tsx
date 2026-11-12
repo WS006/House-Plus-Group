@@ -38,6 +38,7 @@ export default function CookieBanner() {
           exit={{ opacity: 0, y: 100 }}
           transition={{ type: 'spring', stiffness: 200, damping: 25 }}
           className="fixed bottom-0 left-0 right-0 z-50 bg-[#0f2d5e] border-t border-[#f59e0b]/30 shadow-2xl"
+          data-cookie-banner=""
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">

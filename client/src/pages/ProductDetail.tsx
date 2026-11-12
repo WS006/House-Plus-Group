@@ -154,7 +154,7 @@ export default function ProductDetail() {
                 className="w-full h-80 sm:h-96 object-cover"
                 pictureClassName="block w-full"
                 priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                sizes="(max-width: 1024px) calc(100vw - 2rem), 50vw"
               />
             </div>
             {product.images.length > 1 && (

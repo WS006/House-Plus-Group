@@ -10,6 +10,7 @@ import { AnimatePresence, motion, useInView } from 'framer-motion';
 import { Award, Building2, CheckCircle, ChevronLeft, ChevronRight, Factory, Globe, Package, Shield, Star, TrendingUp, Users, Zap } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'wouter';
+import FadeIn from '@/components/FadeIn';
 import InquiryModal from '@/components/InquiryModal';
 import ResponsiveImage from '@/components/ResponsiveImage';
 import { getImageSize } from '@/lib/imageManifest';
@@ -69,27 +70,13 @@ function Counter({ target, suffix = '' }: { target: number; suffix?: string }) {
   return <span ref={ref}>{count}{suffix}</span>;
 }
 
-// Section animation wrapper
-function FadeIn({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-50px' });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay, ease: 'easeOut' }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
 export default function Home() {
   const { t } = useLanguage();
   const [currentSlide, setCurrentSlide] = useState(0);
+  // The first slide is prerendered: fading it in from opacity 0 would hide
+  // content that is already painted and push LCP to the end of the animation.
+  // Only slides that arrive after the first transition get the fade.
+  const [hasAdvanced, setHasAdvanced] = useState(false);
   const [inquiryOpen, setInquiryOpen] = useState(false);
   const products = productsStore.getAll();
   const hotProducts = products.filter(p => p.isHot).slice(0, 6);
@@ -110,13 +97,18 @@ export default function Home() {
   // Auto-play carousel
   useEffect(() => {
     const timer = setInterval(() => {
+      setHasAdvanced(true);
       setCurrentSlide(prev => (prev + 1) % HERO_SLIDES.length);
     }, 5000);
     return () => clearInterval(timer);
   }, []);
 
-  const prevSlide = () => setCurrentSlide(prev => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
-  const nextSlide = () => setCurrentSlide(prev => (prev + 1) % HERO_SLIDES.length);
+  const goTo = (index: number) => {
+    setHasAdvanced(true);
+    setCurrentSlide((index + HERO_SLIDES.length) % HERO_SLIDES.length);
+  };
+  const prevSlide = () => goTo(currentSlide - 1);
+  const nextSlide = () => goTo(currentSlide + 1);
 
   return (
     <div className="min-h-screen">
@@ -125,7 +117,7 @@ export default function Home() {
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
-            initial={{ opacity: 0 }}
+            initial={hasAdvanced ? { opacity: 0 } : false}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
@@ -150,7 +142,7 @@ export default function Home() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentSlide}
-                initial={{ opacity: 0, x: -40 }}
+                initial={hasAdvanced ? { opacity: 0, x: -40 } : false}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 40 }}
                 transition={{ duration: 0.6 }}
@@ -202,7 +194,7 @@ export default function Home() {
             {HERO_SLIDES.map((_, i) => (
               <button
                 key={i}
-                onClick={() => setCurrentSlide(i)}
+                onClick={() => goTo(i)}
                 aria-label={`Go to slide ${i + 1}`}
                 aria-current={i === currentSlide}
                 className={`transition-all duration-300 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white ${i === currentSlide ? 'w-6 h-2 bg-[#f59e0b]' : 'w-2 h-2 bg-white/50 hover:bg-white/80'}`}
@@ -471,7 +463,7 @@ export default function Home() {
                   {...getImageSize('/images/about-team.jpg')}
                   className="rounded-2xl shadow-2xl w-full object-cover h-[450px]"
                   pictureClassName="block w-full"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) calc(100vw - 2rem), 50vw"
                 />
                 {/* Floating card */}
                 {/* Keep the badges inside the viewport on phones; only pull them

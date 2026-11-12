@@ -50,10 +50,13 @@
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#0f2d5e" />
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet" />
+    <!-- Fonts: self-hosted so no third-party font host is needed (Google Fonts
+         is unreachable from mainland China and a blocking request elsewhere).
+         The @font-face rules live in the main stylesheet (client/src/index.css)
+         to avoid an extra round trip. Only the regular weight is preloaded: on a
+         1.6 Mbps phone every extra preload steals bandwidth from the hero image,
+         which is the LCP element. The rest swap in without blocking text. -->
+    <link rel="preload" href="/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Schema.org Organization Markup -->
     <script type="application/ld+json" data-schema-key="organization">

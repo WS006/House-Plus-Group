@@ -39,7 +39,7 @@ export default function ResponsiveImage({
   height,
   className = '',
   priority = false,
-  sizes = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw',
+  sizes = '(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) 50vw, 33vw',
   pictureClassName = '',
 }: ResponsiveImageProps) {
   const list = variants(src);

@@ -25,8 +25,9 @@ const SECURITY_HEADERS = {
   'Content-Security-Policy': [
     "default-src 'self'",
     "script-src 'self' 'unsafe-inline'",
-    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-    "font-src 'self' https://fonts.gstatic.com",
+    // Fonts are self-hosted (/fonts/*), so no external font hosts are needed.
+    "style-src 'self' 'unsafe-inline'",
+    "font-src 'self'",
     "img-src 'self' data: https:",
     "connect-src 'self' https:",
     "frame-ancestors 'none'",
@@ -78,11 +79,30 @@ export default {
       redirect: 'manual',
     });
 
-    // Unknown route -> serve the SPA shell so client-side routing takes over.
-    // Only for navigations; a missing .js must stay a 404, not return HTML.
+    // Every marketing route is prerendered to its own index.html, so an unknown
+    // path is genuinely missing. It used to fall back to the SPA shell with a
+    // 200, which is a "soft 404": Google treats those as thin duplicates of the
+    // homepage and they can outrank real content.
+    //
+    // /admin is the one client-only route (never prerendered), so it keeps the
+    // SPA fallback. Missing assets never fall back either — a 404 for a .js
+    // must stay a 404, not return HTML.
     const wantsHtml = (request.headers.get('Accept') || '').includes('text/html');
-    if (upstream.status === 404 && wantsHtml && !/\.[a-z0-9]+$/i.test(pathname)) {
-      upstream = await fetch(ORIGIN + '/index.html', { headers: request.headers });
+    const isAsset = /\.[a-z0-9]+$/i.test(pathname);
+    const isClientRoute = pathname === '/admin' || pathname.startsWith('/admin/');
+
+    if (upstream.status === 404 && wantsHtml && !isAsset) {
+      if (isClientRoute) {
+        upstream = await fetch(ORIGIN + '/index.html', { headers: request.headers });
+      } else {
+        // Serve the prerendered 404 page, with a real 404 status.
+        const notFound = await fetch(ORIGIN + '/404.html', { headers: request.headers });
+        const headers = new Headers(notFound.headers);
+        for (const [k, v] of Object.entries(SECURITY_HEADERS)) headers.set(k, v);
+        headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
+        headers.delete('ETag');
+        return new Response(notFound.body, { status: 404, statusText: 'Not Found', headers });
+      }
     }
 
     const headers = new Headers(upstream.headers);
