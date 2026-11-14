@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite --host",
-    "build": "node tools/generate-product-data.mjs && node tools/optimize-images.mjs && node tools/generate-image-manifest.mjs && node tools/generate-og-images.mjs && node tools/generate-favicon.mjs && vite build && node prerender.mjs && node sitemap.mjs && node tools/publish-docs.mjs",
+    "build": "node tools/generate-product-data.mjs && node tools/optimize-images.mjs && node tools/generate-image-manifest.mjs && node tools/generate-og-images.mjs && node tools/generate-icons.mjs && node tools/generate-favicon.mjs && vite build && node prerender.mjs && node sitemap.mjs && node tools/publish-docs.mjs",
     "start": "vite preview --host --port 3000",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
