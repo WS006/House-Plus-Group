@@ -193,7 +193,7 @@ function preloadLink(preload) {
 
 function renderHead({ url, title, description, image, ogType, jsonLd, preload }) {
   const canonical = SITE + (url === '/' ? '/' : url + '/');
-  const ogImage = SITE + (image || '/images/logo-houseplus-group.svg');
+  const ogImage = SITE + (image || '/images/og/default.jpg');
 
   return `<!-- Primary Meta Tags -->
     <title>${escapeHtml(title)}</title>

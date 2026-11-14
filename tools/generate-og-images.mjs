@@ -70,4 +70,22 @@ for (const { src, out } of sources) {
   made++;
 }
 
+/**
+ * Fallback card for pages without artwork (404, admin, legal). It used to be
+ * the logo SVG itself, which no social platform renders — WeChat, Facebook and
+ * WhatsApp all skip SVG previews. A navy canvas with the logo centred matches
+ * the 1200x630 contract the meta tags already advertise.
+ */
+const logoFile = path.join(imagesDir, 'logo-houseplus-group.svg');
+if (fs.existsSync(logoFile)) {
+  const logoW = 760;
+  const logo = await sharp(fs.readFileSync(logoFile)).resize({ width: logoW }).png().toBuffer();
+  const { height: logoH } = await sharp(logo).metadata();
+  await sharp({ create: { width: OG_W, height: OG_H, channels: 3, background: NAVY } })
+    .composite([{ input: logo, left: Math.round((OG_W - logoW) / 2), top: Math.round((OG_H - logoH) / 2) }])
+    .jpeg({ quality: 88, mozjpeg: true })
+    .toFile(path.join(ogDir, 'default.jpg'));
+  made++;
+}
+
 console.log(`✓ generated ${made} OG images at ${OG_W}x${OG_H} in client/public/images/og/`);

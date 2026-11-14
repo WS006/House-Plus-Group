@@ -40,17 +40,15 @@ async function dataUri(page, file, crop, targetH) {
 }
 
 function buildSvg(uri) {
-  const iconH = 96;
-  const iconW = Math.round(iconH * (CROP.w / CROP.h)); // 105
-  const iconY = Math.round((120 - iconH) / 2); // 12
+  const iconH = 90;
+  const iconW = Math.round(iconH * (CROP.w / CROP.h)); // 99
+  const iconY = Math.round((120 - iconH) / 2); // 15
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="400" height="120" role="img" aria-label="HousePlus Group — Nigerian Factory">
   <title>HousePlus Group — Nigerian Factory</title>
   <rect x="1.5" y="1.5" width="397" height="117" rx="18" fill="#0f2d5e" stroke="#f59e0b" stroke-width="3"/>
-  <image href="${uri}" x="10" y="${iconY}" width="${iconW}" height="${iconH}" preserveAspectRatio="xMidYMid meet"/>
-  <text x="124" y="60" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="37" font-weight="800" letter-spacing="-0.8">
-    <tspan fill="#ffffff">House</tspan><tspan fill="#f59e0b">Plus</tspan>
-  </text>
-  <text x="125" y="87" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#f59e0b" letter-spacing="2.2">GROUP · NIGERIAN FACTORY</text>
+  <image href="${uri}" x="12" y="${iconY}" width="${iconW}" height="${iconH}" preserveAspectRatio="xMidYMid meet"/>
+  <text x="118" y="60" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="35" font-weight="800" letter-spacing="-0.8"><tspan fill="#ffffff">House</tspan><tspan fill="#f59e0b">Plus</tspan><tspan dx="7" font-size="23" font-weight="700" fill="#ffffff" letter-spacing="-0.2">Group</tspan></text>
+  <text x="119" y="87" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#f59e0b" letter-spacing="2.4">NIGERIAN FACTORY</text>
 </svg>
 `;
 }
