@@ -44,9 +44,16 @@ const HERO_SLIDES = [
   },
 ];
 
-// Animated counter
+// Animated counter.
+//
+// The server-rendered HTML must show the real number: prerender.mjs renders each
+// route once, and a counter that starts at 0 ships "0+" for every visitor who
+// has not scrolled that far yet — invisible to anyone reading the page source or
+// the prerendered copy, and wrong for crawlers. So the first render outputs the
+// final value, then the animation restarts from 0 only after the element is in
+// view and JS is running.
 function Counter({ target, suffix = '' }: { target: number; suffix?: string }) {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(target);
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true });
 

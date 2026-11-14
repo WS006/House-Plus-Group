@@ -113,3 +113,8 @@ client/public/__manus__/version.json
 
 # Wrangler local dev state
 .wrangler/
+
+live-backup/
+
+# Local verification screenshots
+tools/shots/

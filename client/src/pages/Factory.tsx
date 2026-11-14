@@ -10,7 +10,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { getImageSize } from '@/lib/imageManifest';
 import { addPageSchema } from '@/lib/seo';
 import { motion } from 'framer-motion';
-import { Award, CheckCircle, Factory as FactoryIcon, Settings, Shield, TrendingUp, Zap } from 'lucide-react';
+import { Award, CheckCircle, ChevronDown, Factory as FactoryIcon, Settings, Shield, TrendingUp, Zap } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { generateLocalBusinessSchema, injectSchema, clearSchemaScripts } from '@/lib/schema';
 
@@ -162,6 +162,45 @@ export default function Factory() {
                   <div className="text-gray-400 text-xs">{cert.desc}</div>
                 </div>
               </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ — renders the same Q&As that the FAQPage schema in the effect
+          above declares. Without visible answers the structured data claims
+          content the page does not show. */}
+      <section id="faq" aria-labelledby="faq-heading" className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 id="faq-heading" className="text-3xl font-black text-[#0f2d5e] mb-3">
+              Factory Visits &amp; Certifications
+            </h2>
+            <p className="text-gray-500 max-w-2xl mx-auto">
+              What buyers usually ask before scheduling a visit or placing a factory order.
+            </p>
+          </div>
+          <div className="space-y-3">
+            {[
+              {
+                q: 'Can I visit the HousePlus Group Nigerian Factory?',
+                a: 'Yes, we welcome factory visits. Please contact us in advance to schedule your visit to our Lagos facility.',
+              },
+              {
+                q: 'What certifications does the factory have?',
+                a: 'Our manufacturing processes are CE, RoHS, FCC, ISO 9001:2015, and SONCAP certified.',
+              },
+            ].map((item) => (
+              <details
+                key={item.q}
+                className="group bg-white border border-gray-200 rounded-xl overflow-hidden"
+              >
+                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-5 py-4 font-semibold text-[#0f2d5e] hover:bg-gray-50 [&::-webkit-details-marker]:hidden">
+                  <span className="text-base font-semibold text-[#0f2d5e]">{item.q}</span>
+                  <ChevronDown className="w-5 h-5 flex-shrink-0 text-[#f59e0b] transition-transform group-open:rotate-180" />
+                </summary>
+                <div className="px-5 pb-5 -mt-1 text-gray-600 leading-relaxed text-sm">{item.a}</div>
+              </details>
             ))}
           </div>
         </div>

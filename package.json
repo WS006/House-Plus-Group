@@ -12,6 +12,7 @@
     "format": "prettier --write .",
     "prerender": "node prerender.mjs && node sitemap.mjs",
     "images": "node tools/optimize-images.mjs && node tools/generate-image-manifest.mjs",
+    "verify:spa": "node tools/verify-spa-loading.cjs",
     "deploy": "npm run build"
   },
   "dependencies": {

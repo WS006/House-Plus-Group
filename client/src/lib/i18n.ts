@@ -194,7 +194,7 @@ export const translations = {
     footer_products: 'Products',
     footer_contact: 'Contact Info',
     footer_follow: 'Follow Us',
-    footer_rights: 'All Rights Reserved. | RC: XXXXXXX',
+    footer_rights: 'All Rights Reserved.',
     footer_privacy: 'Privacy Policy',
     footer_terms: 'Terms of Service',
     footer_sitemap: 'Sitemap',

@@ -73,7 +73,7 @@ export default function Navbar() {
               <img 
                 src="/images/logo-houseplus-group.svg" 
                 alt="HousePlus Group Nigerian Factory"
-                width={200}
+                width={160}
                 height={48}
                 className="h-12 w-auto"
                 decoding="async"
@@ -123,11 +123,14 @@ export default function Navbar() {
               <div ref={langRef} className="relative">
                 <button
                   onClick={() => setLangOpen(!langOpen)}
-                  aria-label="Change language"
                   aria-expanded={langOpen}
                   aria-haspopup="listbox"
                   className="flex items-center gap-1.5 px-2.5 py-1.5 text-white/85 hover:text-white hover:bg-white/10 rounded transition-colors text-sm"
                 >
+                  {/* sr-only text instead of aria-label: the accessible name then
+                      includes the visible flag and code, so a screen reader
+                      announces the current language as well as the action. */}
+                  <span className="sr-only">Change language</span>
                   <Globe className="w-4 h-4" />
                   <span className="hidden sm:inline">{currentLangInfo.flag} {currentLangInfo.code.toUpperCase()}</span>
                   <span className="sm:hidden">{currentLangInfo.flag}</span>

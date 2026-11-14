@@ -9,7 +9,7 @@ import InquiryModal from '@/components/InquiryModal';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { addPageSchema } from '@/lib/seo';
 import { motion } from 'framer-motion';
-import { Award, Building2, CheckCircle, Globe, Shield, Target, TrendingUp, Users, Zap, Star, MapPin, Briefcase, Heart } from 'lucide-react';
+import { Award, Building2, CheckCircle, ChevronDown, Globe, Shield, Target, TrendingUp, Users, Zap, Star, MapPin, Briefcase, Heart } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'wouter';
 import { clearSchemaScripts } from '@/lib/schema';
@@ -373,6 +373,49 @@ export default function About() {
               ))}
             </div>
           </FadeIn>
+        </div>
+      </section>
+
+      {/* FAQ — matrixed with the FAQPage schema above. The schema alone let
+          Google surface answers that no visitor could see on the page, which is
+          a structured-data policy violation; this renders the same three Q&As. */}
+      <section id="faq" aria-labelledby="faq-heading" className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 id="faq-heading" className="text-3xl font-black text-[#0f2d5e] mb-3">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-gray-500 max-w-2xl mx-auto">
+              Quick answers about our Lagos factory, product range and OEM/ODM services.
+            </p>
+          </div>
+          <div className="space-y-3">
+            {[
+              {
+                q: 'Where is HousePlus Group Nigerian Factory located?',
+                a: 'Our factory and office are located at 8 Eso Cl, Ikeja GRA, Lagos, Nigeria.',
+              },
+              {
+                q: 'What products does HousePlus Group manufacture?',
+                a: 'We specialize in solar energy solutions (panels, inverters, batteries), home appliances (air fryers, blenders), and 3C electronics (smart watches, power banks).',
+              },
+              {
+                q: 'Do you offer OEM/ODM services?',
+                a: 'Yes, we provide comprehensive OEM/ODM manufacturing services for global clients, including custom branding and specifications.',
+              },
+            ].map((item) => (
+              <details
+                key={item.q}
+                className="group bg-white border border-gray-200 rounded-xl overflow-hidden"
+              >
+                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-5 py-4 font-semibold text-[#0f2d5e] hover:bg-gray-50 [&::-webkit-details-marker]:hidden">
+                  <span className="text-base font-semibold text-[#0f2d5e]">{item.q}</span>
+                  <ChevronDown className="w-5 h-5 flex-shrink-0 text-[#f59e0b] transition-transform group-open:rotate-180" />
+                </summary>
+                <div className="px-5 pb-5 -mt-1 text-gray-600 leading-relaxed text-sm">{item.a}</div>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 
