@@ -1,8 +1,8 @@
-/**
+﻿/**
  * Generates social share images at the 1.91:1 ratio (1200x630) that
  * Facebook, X, LinkedIn and Slack expect.
  *
- * Previously og:image pointed at whatever product/hero JPEG the page used —
+ * Previously og:image pointed at whatever product/hero JPEG the page used 鈥?
  * mostly 1200x800 or 1200x1800 portrait. Those get centre-cropped by every
  * platform, usually cutting the product out of frame or clipping the logo.
  *
@@ -50,7 +50,7 @@ let made = 0;
 for (const { src, out } of sources) {
   const abs = path.join(imagesDir, src);
   if (!fs.existsSync(abs)) {
-    console.warn(`  ⚠ missing ${src}`);
+    console.warn(`  鈿?missing ${src}`);
     continue;
   }
 
@@ -72,11 +72,11 @@ for (const { src, out } of sources) {
 
 /**
  * Fallback card for pages without artwork (404, admin, legal). It used to be
- * the logo SVG itself, which no social platform renders — WeChat, Facebook and
+ * the logo SVG itself, which no social platform renders 鈥?WeChat, Facebook and
  * WhatsApp all skip SVG previews. A navy canvas with the logo centred matches
  * the 1200x630 contract the meta tags already advertise.
  */
-const logoFile = path.join(imagesDir, 'logo-houseplus-group.svg');
+const logoFile = path.join(imagesDir, 'logo-houseplus-group-v2.svg');
 if (fs.existsSync(logoFile)) {
   const logoW = 760;
   const logo = await sharp(fs.readFileSync(logoFile)).resize({ width: logoW }).png().toBuffer();
@@ -88,4 +88,4 @@ if (fs.existsSync(logoFile)) {
   made++;
 }
 
-console.log(`✓ generated ${made} OG images at ${OG_W}x${OG_H} in client/public/images/og/`);
+console.log(`鉁?generated ${made} OG images at ${OG_W}x${OG_H} in client/public/images/og/`);

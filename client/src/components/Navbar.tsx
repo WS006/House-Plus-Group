@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 // House Plus Group - Navbar Component
 // Design: African Solar Commerce - Navy Blue + Solar Gold
 // Features: Fixed top, scroll-hide, mobile hamburger, language switcher
@@ -71,7 +71,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 flex-shrink-0">
               <img 
-                src="/images/logo-houseplus-group.svg" 
+                src="/images/logo-houseplus-group-v2.svg" 
                 alt="HousePlus Group Nigerian Factory"
                 width={160}
                 height={48}

@@ -145,9 +145,12 @@ function buildSvg(uri, subX) {
   );
 
   const svg = buildSvg(uri, subX);
+  // Versioned filename: /images/* is served with a 7-day TTL and is not
+  // fingerprinted, so a content change under the old name keeps serving the
+  // cached copy. Bump this suffix whenever the artwork changes.
   const targets = [
-    path.join(REPO, 'client', 'public', 'images', 'logo-houseplus-group.svg'),
-    path.join(REPO, 'docs', 'images', 'logo-houseplus-group.svg'),
+    path.join(REPO, 'client', 'public', 'images', 'logo-houseplus-group-v2.svg'),
+    path.join(REPO, 'docs', 'images', 'logo-houseplus-group-v2.svg'),
   ];
   for (const t of targets) {
     fs.mkdirSync(path.dirname(t), { recursive: true });

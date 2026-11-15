@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Schema.org Structured Data Generator
  * Generates JSON-LD structured data for SEO optimization
  */
@@ -29,7 +29,7 @@ export function generateOrganizationSchema() {
     "name": "HousePlus Group Nigerian Factory",
     "alternateName": ["HousePlus Group Nigeria", "HousePlus Nigeria", "HousePlus Group Nigerian Factory"],
     "url": "https://www.houseplus.com.ng",
-    "logo": "https://www.houseplus.com.ng/images/logo-houseplus-group.svg",
+    "logo": "https://www.houseplus.com.ng/images/logo-houseplus-group-v2.svg",
     "parentOrganization": {
       "@type": "Organization",
       "name": "HousePlus Group",
@@ -85,7 +85,7 @@ export function generateWebPageSchema(config: SchemaConfig) {
       "name": "HousePlus Group Nigerian Factory",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.houseplus.com.ng/images/logo-houseplus-group.svg"
+        "url": "https://www.houseplus.com.ng/images/logo-houseplus-group-v2.svg"
       }
     }
   };
@@ -155,7 +155,7 @@ export function generateArticleSchema(config: SchemaConfig) {
       "name": "HousePlus Group Nigerian Factory",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.houseplus.com.ng/images/logo-houseplus-group.svg"
+        "url": "https://www.houseplus.com.ng/images/logo-houseplus-group-v2.svg"
       }
     }
   };
@@ -185,7 +185,7 @@ export function generateLocalBusinessSchema() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "HousePlus Group Nigerian Factory",
-    "image": "https://www.houseplus.com.ng/images/logo-houseplus-group.svg",
+    "image": "https://www.houseplus.com.ng/images/logo-houseplus-group-v2.svg",
     "description": "Nigerian branch of HousePlus Group providing solar energy products, home appliances, and 3C electronics to the African market.",
     "address": {
       "@type": "PostalAddress",
@@ -294,7 +294,7 @@ export function generateJobPostingSchema(jobTitle: string, jobDescription: strin
       "@type": "Organization",
       "name": "HousePlus Group Nigerian Factory",
       "sameAs": "https://www.houseplus.com.ng",
-      "logo": "https://www.houseplus.com.ng/images/logo-houseplus-group.svg"
+      "logo": "https://www.houseplus.com.ng/images/logo-houseplus-group-v2.svg"
     },
     "jobLocation": {
       "@type": "Place",

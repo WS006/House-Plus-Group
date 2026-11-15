@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 // House Plus Group - Footer Component
 // Design: Deep navy background, solar gold accents
 // ============================================================
@@ -42,7 +42,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <img 
-              src="/images/logo-houseplus-group.svg" 
+              src="/images/logo-houseplus-group-v2.svg" 
               alt="HousePlus Group Nigerian Factory"
               width={187}
               height={56}
@@ -59,7 +59,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="inline-block text-[#f59e0b] hover:text-[#fbbf24] text-xs font-semibold mb-5 underline underline-offset-2"
             >
-              {t('group_affiliation_label')} ↗
+              {t('group_affiliation_label')} 鈫?
             </a>
             {/* Social Links */}
             <div className="flex gap-3">
