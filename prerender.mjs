@@ -201,7 +201,7 @@ function renderHead({ url, title, description, image, ogType, jsonLd, preload })
     <meta name="description" content="${escapeHtml(description)}" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="${canonical}" />
-    <link rel="icon" href="/favicon.ico?v=2" sizes="any" />
+    <link rel="icon" href="/favicon.ico?v=3" sizes="any" />
 ${preloadLink(preload)}
 
     <!-- Open Graph / Facebook -->

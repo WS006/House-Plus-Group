@@ -36,12 +36,33 @@ if (!fs.existsSync(SRC)) {
   process.exit(0);
 }
 
-/** Draws `crop` on a navy square, scaled to `fill` of the canvas width. */
+// Flat navy looked like a sticker. A diagonal gradient gives the tile depth and
+// a warm glow sits behind the sun so the artwork reads as lit rather than pasted
+// on. Centred on the sun, not the canvas, so the light comes from the right
+// place. Stays fully opaque: iOS paints transparent pixels black.
+const BACKGROUND = `<svg xmlns="http://www.w3.org/2000/svg" width="${SIZE}" height="${SIZE}">
+  <defs>
+    <linearGradient id="base" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#26518f"/>
+      <stop offset="0.5" stop-color="#0f2d5e"/>
+      <stop offset="1" stop-color="#061530"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.70" cy="0.40" r="0.72">
+      <stop offset="0" stop-color="#f59e0b" stop-opacity="0.42"/>
+      <stop offset="0.5" stop-color="#f59e0b" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#f59e0b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="${SIZE}" height="${SIZE}" fill="url(#base)"/>
+  <rect width="${SIZE}" height="${SIZE}" fill="url(#glow)"/>
+</svg>`;
+
+/** Draws `crop` on the gradient square, scaled to `fill` of the canvas width. */
 async function square(crop, fill) {
   const inner = Math.round(SIZE * fill);
   const mark = await sharp(SRC).extract(crop).resize({ width: inner }).png().toBuffer();
   const { height: markH } = await sharp(mark).metadata();
-  const buf = await sharp({ create: { width: SIZE, height: SIZE, channels: 4, background: NAVY } })
+  const buf = await sharp(Buffer.from(BACKGROUND))
     .composite([{ input: mark, left: Math.round((SIZE - inner) / 2), top: Math.round((SIZE - markH) / 2) }])
     .png({ compressionLevel: 9 })
     .toBuffer();
