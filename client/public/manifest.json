@@ -11,13 +11,13 @@
   "categories": ["business", "shopping"],
   "icons": [
     {
-      "src": "/apple-touch-icon.png?v=3",
+      "src": "/apple-touch-icon.png?v=4",
       "sizes": "180x180",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/favicon.svg?v=3",
+      "src": "/favicon.svg?v=4",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"

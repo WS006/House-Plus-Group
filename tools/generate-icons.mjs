@@ -1,7 +1,6 @@
 /**
  * Builds every site icon from the real HousePlus artwork:
- *   client/public/apple-touch-icon.png  (180x180, opaque navy — iOS fills
- *                                        transparent pixels with black)
+ *   client/public/apple-touch-icon.png  (180x180, transparent)
  *   client/public/favicon.svg           (64px raster embedded, so it stays
  *                                        faithful instead of being redrawn)
  *   client/public/favicon.ico           (16/32/48 PNG entries)
@@ -9,6 +8,11 @@
  * The same full lockup goes into all three. Cropping the "House" wordmark off
  * the tab icon made the logo look truncated, so the wordmark stays even though
  * it is only a few pixels tall at 16px.
+ *
+ * The background is transparent, so the tile blends into whatever the browser
+ * chrome paints behind it. The artwork itself is saturated orange/red, which
+ * reads on both light and dark tab bars. Note that iOS does not honour alpha on
+ * home-screen icons: transparent pixels are painted black there.
  *
  * Run: node tools/generate-icons.mjs
  */
@@ -25,44 +29,25 @@ const SRC =
 // The mark plus its "House" word. The stray "House Plus" line sits at y>=1135.
 const LOCKUP = { left: 0, top: 0, width: 1426, height: 1033 };
 
-const NAVY = '#0f2d5e';
 const SIZE = 180;
-// Landscape lockup on a square: 0.86 leaves enough margin that the roof tip and
-// the sun's rays never touch the edge.
-const FILL = 0.86;
+// With the plate gone there is no visual padding to respect, so the lockup grows
+// to 0.96 of the width: as large as it can be without the roof tip or the sun's
+// rays touching the edge. At 0.86 the icon read as small and timid in the tab.
+const FILL = 0.96;
 
 if (!fs.existsSync(SRC)) {
   console.warn(`⚠ source artwork not found, keeping existing icons: ${SRC}`);
   process.exit(0);
 }
 
-// Flat navy looked like a sticker. A diagonal gradient gives the tile depth and
-// a warm glow sits behind the sun so the artwork reads as lit rather than pasted
-// on. Centred on the sun, not the canvas, so the light comes from the right
-// place. Stays fully opaque: iOS paints transparent pixels black.
-const BACKGROUND = `<svg xmlns="http://www.w3.org/2000/svg" width="${SIZE}" height="${SIZE}">
-  <defs>
-    <linearGradient id="base" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#26518f"/>
-      <stop offset="0.5" stop-color="#0f2d5e"/>
-      <stop offset="1" stop-color="#061530"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="0.70" cy="0.40" r="0.72">
-      <stop offset="0" stop-color="#f59e0b" stop-opacity="0.42"/>
-      <stop offset="0.5" stop-color="#f59e0b" stop-opacity="0.12"/>
-      <stop offset="1" stop-color="#f59e0b" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <rect width="${SIZE}" height="${SIZE}" fill="url(#base)"/>
-  <rect width="${SIZE}" height="${SIZE}" fill="url(#glow)"/>
-</svg>`;
-
-/** Draws `crop` on the gradient square, scaled to `fill` of the canvas width. */
+/** Draws `crop` centred on a transparent square, scaled to `fill` of the width. */
 async function square(crop, fill) {
   const inner = Math.round(SIZE * fill);
   const mark = await sharp(SRC).extract(crop).resize({ width: inner }).png().toBuffer();
   const { height: markH } = await sharp(mark).metadata();
-  const buf = await sharp(Buffer.from(BACKGROUND))
+  const buf = await sharp({
+    create: { width: SIZE, height: SIZE, channels: 4, background: { r: 0, g: 0, b: 0, alpha: 0 } },
+  })
     .composite([{ input: mark, left: Math.round((SIZE - inner) / 2), top: Math.round((SIZE - markH) / 2) }])
     .png({ compressionLevel: 9 })
     .toBuffer();
@@ -74,9 +59,18 @@ async function square(crop, fill) {
 const icon = await square(LOCKUP, FILL);
 fs.writeFileSync(path.join(pub, 'apple-touch-icon.png'), icon.buf);
 
+/** Downscales for the tab sizes, sharpening slightly so the edges stay crisp. */
+async function small(size) {
+  return sharp(icon.buf)
+    .resize(size, size, { kernel: 'lanczos3' })
+    .sharpen({ sigma: 0.7, m1: 0.6, m2: 0.4 })
+    .png({ compressionLevel: 9 })
+    .toBuffer();
+}
+
 // 64px covers the largest slot browsers ask for (32 at 2x) and keeps the inline
 // payload small — this file is fetched on every first page view.
-const svgPng = await sharp(icon.buf).resize(64, 64, { kernel: 'lanczos3' }).png({ compressionLevel: 9 }).toBuffer();
+const svgPng = await small(64);
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="HousePlus Group">
   <image href="data:image/png;base64,${svgPng.toString('base64')}" width="64" height="64"/>
 </svg>
@@ -88,7 +82,7 @@ fs.writeFileSync(path.join(pub, 'favicon.svg'), svg);
 const sizes = [16, 32, 48];
 const pngs = [];
 for (const size of sizes) {
-  pngs.push(await sharp(icon.buf).resize(size, size, { kernel: 'lanczos3' }).png({ compressionLevel: 9 }).toBuffer());
+  pngs.push(await small(size));
 }
 
 const header = Buffer.alloc(6);
@@ -117,5 +111,5 @@ fs.writeFileSync(path.join(pub, 'favicon.ico'), ico);
 
 console.log(
   `✓ icons: apple-touch-icon.png ${icon.buf.length}B, favicon.svg ${svg.length}B, ` +
-    `favicon.ico ${ico.length}B (mark ${icon.inner}x${icon.markH})`,
+    `favicon.ico ${ico.length}B (mark ${icon.inner}x${icon.markH}, transparent)`,
 );
