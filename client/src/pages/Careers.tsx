@@ -9,7 +9,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Briefcase, ChevronDown, Globe, MapPin, Users } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
-import { generateJobPostingSchema, injectSchema, clearSchemaScripts } from '@/lib/schema';
+import { clearSchemaScripts } from '@/lib/schema';
 
 const JOBS = [
   { title: 'International Sales Manager', location: 'Lagos, Nigeria / Remote', type: 'Full-time', dept: 'Sales', desc: 'Lead our international sales efforts across Africa and the Middle East. Develop new business relationships and manage key accounts.' },
@@ -29,15 +29,10 @@ export default function Careers() {
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
+    // No JobPosting structured data: these are standing vacancies without a
+    // real posting date, and Google rejects JobPosting without one. An invalid
+    // block is worse than none, so the page ships no job schema at all.
     clearSchemaScripts();
-    // 为第一个职位添加 JobPosting Schema
-    const firstJob = JOBS[0];
-    const jobSchema = generateJobPostingSchema(
-      firstJob.title,
-      firstJob.desc,
-      'https://www.houseplus.com.ng/careers'
-    );
-    injectSchema(jobSchema, 'job');
   }, []);
 
   const handleApply = async (e: React.FormEvent) => {
@@ -80,7 +75,7 @@ export default function Careers() {
               { icon: <Briefcase className="w-6 h-6" />, title: 'Career Growth', desc: 'Clear career progression paths with training and development support' },
             ].map((item, i) => (
               <div key={i} className="bg-gray-50 rounded-2xl p-6 text-center">
-                <div className="w-12 h-12 bg-[#f59e0b]/20 text-[#f59e0b] rounded-xl flex items-center justify-center mx-auto mb-4">{item.icon}</div>
+                <div className="w-12 h-12 bg-[#f59e0b]/20 text-[#b45309] rounded-xl flex items-center justify-center mx-auto mb-4">{item.icon}</div>
                 <h3 className="font-bold text-[#0f2d5e] mb-2">{item.title}</h3>
                 <p className="text-gray-500 text-sm">{item.desc}</p>
               </div>
@@ -109,7 +104,7 @@ export default function Careers() {
                     </div>
                   </div>
                   <motion.div animate={{ rotate: openJob === i ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                    <ChevronDown className="w-5 h-5 text-[#f59e0b] mt-1 flex-shrink-0" />
+                    <ChevronDown className="w-5 h-5 text-[#b45309] mt-1 flex-shrink-0" />
                   </motion.div>
                 </button>
                 <AnimatePresence>
@@ -146,7 +141,7 @@ export default function Careers() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/50" onClick={() => setApplyJob(null)} />
             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="relative bg-white rounded-2xl shadow-2xl w-full max-w-md p-8">
               <h3 className="text-xl font-bold text-[#0f2d5e] mb-1">Apply for Position</h3>
-              <p className="text-[#f59e0b] text-sm mb-6">{applyJob}</p>
+              <p className="text-[#b45309] text-sm mb-6">{applyJob}</p>
               <form onSubmit={handleApply} className="space-y-4">
                 <input type="text" required placeholder="Your Name" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
                   className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0f2d5e]/20" />

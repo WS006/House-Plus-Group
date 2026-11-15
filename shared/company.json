@@ -1,0 +1,36 @@
+{
+  "name": "HousePlus Group Nigerian Factory",
+  "shortName": "HousePlus Nigeria",
+  "alternateName": ["HousePlus Group Nigeria", "HousePlus Nigeria"],
+  "description": "HousePlus Group Nigerian Factory is the Nigerian branch and local entity of HousePlus Group.",
+  "url": "https://www.houseplus.com.ng",
+  "logo": "/images/logo-houseplus-group-v2.svg",
+  "logoWidth": 400,
+  "logoHeight": 120,
+  "email": "jack@houseplus-ch.com",
+  "phone": "+2349078080738",
+  "phoneSecondary": "+8615578119543",
+  "whatsapp": "2349078080738",
+  "address": {
+    "streetAddress": "8 Eso Cl, Ikeja GRA",
+    "addressLocality": "Ikeja",
+    "addressRegion": "Lagos",
+    "postalCode": "101233",
+    "addressCountry": "NG"
+  },
+  "geo": {
+    "latitude": 6.5967,
+    "longitude": 3.3421
+  },
+  "sameAs": [
+    "https://www.houseplus-ch.com",
+    "https://www.linkedin.com/company/houseplus-group",
+    "https://www.facebook.com/HousePlusNigeria",
+    "https://www.instagram.com/houseplusgroup"
+  ],
+  "parentOrganization": {
+    "name": "HousePlus Group",
+    "url": "https://www.houseplus-ch.com"
+  },
+  "areaServed": ["NG", "Africa", "Global"]
+}

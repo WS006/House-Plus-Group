@@ -15,6 +15,26 @@
     "description": "Browse solar panels, inverters, lithium batteries, home appliances and 3C electronics from HousePlus Group Nigerian Factory. Factory-direct pricing, OEM/ODM."
   },
   {
+    "path": "/products/solar",
+    "title": "Solar Products in Nigeria — Portable Power Stations, Panels, Inverters | HousePlus",
+    "description": "Solar products from HousePlus Group Nigerian Factory: portable power stations (flagship), 400W solar panels, 5kW hybrid inverters, 100Ah LiFePO4 batteries, MPPT controllers and solar street lights. Factory-direct, OEM/ODM."
+  },
+  {
+    "path": "/products/home-appliances",
+    "title": "Home Appliances Wholesale — Air Fryers, Blenders, Rice Cookers | HousePlus",
+    "description": "Kitchen appliances at wholesale MOQ from HousePlus Group Nigerian Factory: 5L digital air fryers, 1200W professional blenders and 5L digital rice cookers, with OEM/ODM branding available."
+  },
+  {
+    "path": "/products/3c-electronics",
+    "title": "3C Electronics Supplier Nigeria — Watches, Earbuds, Power Banks | HousePlus",
+    "description": "HousePlus Group Nigerian Factory supplies smart watches, TWS earbuds, 20000mAh solar power banks and 128GB SD memory cards at wholesale MOQ from 100 pieces. OEM/ODM available."
+  },
+  {
+    "path": "/guides",
+    "title": "Solar Buying Guides — Prices, Sizing, Batteries | HousePlus Nigeria",
+    "description": "Straight answers for Nigerian solar buyers: what a system really costs, how to size panels and batteries, inverter vs generator, and LiFePO4 vs lead-acid — from the factory."
+  },
+  {
     "path": "/factory",
     "title": "Our Factory — Manufacturing & Quality Control",
     "description": "Inside the HousePlus Group factory: production lines, quality control, testing labs and OEM/ODM capacity for large-volume solar, appliance and 3C orders."

@@ -93,7 +93,7 @@ export default function CustomerService() {
                     <div className="text-sm font-medium text-gray-800">{t('cs_email')}</div>
                     <div className="text-xs text-gray-500 truncate">jack@houseplus-ch.com</div>
                   </div>
-                  <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-[#f59e0b] transition-colors" />
+                  <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-[#b45309] transition-colors" />
                 </a>
 
                 {/* WeChat */}

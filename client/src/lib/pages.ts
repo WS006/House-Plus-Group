@@ -24,6 +24,9 @@ const LOADERS = {
   About: () => import("../pages/About"),
   Products: () => import("../pages/Products"),
   ProductDetail: () => import("../pages/ProductDetail"),
+  CategoryProducts: () => import("../pages/CategoryProducts"),
+  Guides: () => import("../pages/Guides"),
+  Guide: () => import("../pages/Guide"),
   Factory: () => import("../pages/Factory"),
   Team: () => import("../pages/Team"),
   Services: () => import("../pages/Services"),
@@ -152,7 +155,11 @@ export function pageForPath(pathname: string): PageName {
   if (p === "/") return "Home";
   if (p === "/about") return "About";
   if (p === "/products") return "Products";
+  if (p === "/products/solar" || p === "/products/home-appliances" || p === "/products/3c-electronics")
+    return "CategoryProducts";
   if (p.startsWith("/products/")) return "ProductDetail";
+  if (p === "/guides") return "Guides";
+  if (p.startsWith("/guides/")) return "Guide";
   if (p === "/factory") return "Factory";
   if (p === "/team") return "Team";
   if (p === "/services") return "Services";

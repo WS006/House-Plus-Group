@@ -14,7 +14,8 @@ import FadeIn from '@/components/FadeIn';
 import InquiryModal from '@/components/InquiryModal';
 import ResponsiveImage from '@/components/ResponsiveImage';
 import { getImageSize } from '@/lib/imageManifest';
-import { injectSchema, clearSchemaScripts, generateWebPageSchema, generateOrganizationSchema } from '@/lib/schema';
+import { injectSchema, clearSchemaScripts, generateWebPageSchema } from '@/lib/schema';
+import { pageMetadata } from '@/lib/seo';
 
 // Hero slides data
 const HERO_SLIDES = [
@@ -91,14 +92,20 @@ export default function Home() {
   // Inject Schema.org structured data
   useEffect(() => {
     clearSchemaScripts();
-    injectSchema(generateWebPageSchema({
-      pageTitle: 'HousePlus Group Nigerian Factory | Solar Panels, Home Appliances & 3C Electronics for Africa',
-      pageDescription: 'HousePlus Group Nigerian Factory is the Nigerian branch of HousePlus Group and a leading supplier of solar panels, inverters, lithium batteries, home appliances, and 3C electronics. Factory direct pricing, OEM/ODM available. Serving Nigeria, Africa and global markets.',
-      pageUrl: 'https://www.houseplus.com.ng/',
-      imageUrl: 'https://www.houseplus.com.ng/images/hero-solar.jpg'
-    }), 'webpage');
-    // The site-wide Organization block already ships in index.html under the
-    // "organization" key, so Home must not inject a second copy.
+    // Title and description come from shared/routes.meta.json, the same file
+    // the prerenderer uses, so the static and hydrated copies cannot disagree.
+    const meta = pageMetadata.home;
+    injectSchema(
+      generateWebPageSchema({
+        pageTitle: meta.title,
+        pageDescription: meta.description,
+        pageUrl: meta.canonical || 'https://www.houseplus.com.ng/',
+        imageUrl: 'https://www.houseplus.com.ng/images/hero-solar.jpg',
+      }),
+      'webpage'
+    );
+    // The site-wide Organization + WebSite graph is injected once by
+    // applyRouteSeo(), so no page repeats it.
   }, []);
 
   // Auto-play carousel
@@ -265,7 +272,7 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 text-[#f59e0b] text-sm font-semibold uppercase tracking-wider mb-3">
+            <div className="inline-flex items-center gap-2 text-[#b45309] text-sm font-semibold uppercase tracking-wider mb-3">
               <span className="w-8 h-0.5 bg-[#f59e0b]" />
               What We Offer
               <span className="w-8 h-0.5 bg-[#f59e0b]" />
@@ -284,17 +291,17 @@ export default function Home() {
                 icon: '☀️',
                 titleKey: 'industry_solar',
                 descKey: 'industry_solar_desc',
-                path: '/products?cat=solar',
+                path: '/products/solar',
                 color: 'from-amber-50 to-orange-50',
                 border: 'border-amber-200',
                 badge: 'bg-amber-100 text-amber-700',
-                products: ['Solar Panels', 'Inverters', 'LiFePO4 Batteries', 'Charge Controllers', 'Solar Street Lights'],
+                products: ['Portable Power Stations', 'Solar Panels', 'Inverters', 'LiFePO4 Batteries', 'Solar Street Lights'],
               },
               {
                 icon: '🏠',
                 titleKey: 'industry_appliances',
                 descKey: 'industry_appliances_desc',
-                path: '/products?cat=appliances',
+                path: '/products/home-appliances',
                 color: 'from-blue-50 to-indigo-50',
                 border: 'border-blue-200',
                 badge: 'bg-blue-100 text-blue-700',
@@ -304,7 +311,7 @@ export default function Home() {
                 icon: '📱',
                 titleKey: 'industry_3c',
                 descKey: 'industry_3c_desc',
-                path: '/products?cat=3c',
+                path: '/products/3c-electronics',
                 color: 'from-green-50 to-emerald-50',
                 border: 'border-green-200',
                 badge: 'bg-green-100 text-green-700',
@@ -342,13 +349,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn className="flex items-end justify-between mb-12">
             <div>
-              <div className="inline-flex items-center gap-2 text-[#f59e0b] text-sm font-semibold uppercase tracking-wider mb-3">
+              <div className="inline-flex items-center gap-2 text-[#b45309] text-sm font-semibold uppercase tracking-wider mb-3">
                 <span className="w-8 h-0.5 bg-[#f59e0b]" />
                 Best Sellers
               </div>
               <h2 className="text-3xl sm:text-4xl font-black text-[#0f2d5e]">{t('products_title')}</h2>
             </div>
-            <Link href="/products" className="hidden sm:flex items-center gap-1.5 text-[#0f2d5e] font-semibold text-sm hover:text-[#f59e0b] transition-colors">
+            <Link href="/products" className="hidden sm:flex items-center gap-1.5 text-[#0f2d5e] font-semibold text-sm hover:text-[#b45309] transition-colors">
               {t('btn_view_all')} <ChevronRight className="w-4 h-4" />
             </Link>
           </FadeIn>
@@ -385,7 +392,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="p-5">
-                    <h3 className="font-bold text-[#0f2d5e] text-base mb-2 line-clamp-2 group-hover:text-[#f59e0b] transition-colors">
+                    <h3 className="font-bold text-[#0f2d5e] text-base mb-2 line-clamp-2 group-hover:text-[#b45309] transition-colors">
                       {product.nameEn}
                     </h3>
                     <p className="text-gray-500 text-sm mb-4 line-clamp-2">{product.descEn}</p>
@@ -430,7 +437,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <FadeIn>
-              <div className="inline-flex items-center gap-2 text-[#f59e0b] text-sm font-semibold uppercase tracking-wider mb-4">
+              <div className="inline-flex items-center gap-2 text-[#b45309] text-sm font-semibold uppercase tracking-wider mb-4">
                 <span className="w-8 h-0.5 bg-[#f59e0b]" />
                 Why Choose Us
               </div>
@@ -450,7 +457,7 @@ export default function Home() {
                   { icon: <Star className="w-5 h-5" />, title: '10+ Years', desc: 'Proven track record' },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-gray-50 hover:bg-[#0f2d5e]/5 transition-colors">
-                    <div className="w-9 h-9 bg-[#f59e0b]/20 text-[#f59e0b] rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-9 h-9 bg-[#b45309]/20 text-[#b45309] rounded-lg flex items-center justify-center flex-shrink-0">
                       {item.icon}
                     </div>
                     <div>

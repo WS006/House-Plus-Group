@@ -226,7 +226,12 @@ function Router() {
       <Route path="/" component={() => <Layout><Page name="Home" /></Layout>} />
       <Route path="/about" component={() => <Layout><Page name="About" /></Layout>} />
       <Route path="/products" component={() => <Layout><Page name="Products" /></Layout>} />
+      <Route path="/products/solar" component={() => <Layout><Page name="CategoryProducts" /></Layout>} />
+      <Route path="/products/home-appliances" component={() => <Layout><Page name="CategoryProducts" /></Layout>} />
+      <Route path="/products/3c-electronics" component={() => <Layout><Page name="CategoryProducts" /></Layout>} />
       <Route path="/products/:id" component={() => <Layout><Page name="ProductDetail" /></Layout>} />
+      <Route path="/guides" component={() => <Layout><Page name="Guides" /></Layout>} />
+      <Route path="/guides/:slug" component={() => <Layout><Page name="Guide" /></Layout>} />
       <Route path="/factory" component={() => <Layout><Page name="Factory" /></Layout>} />
       <Route path="/team" component={() => <Layout><Page name="Team" /></Layout>} />
       <Route path="/services" component={() => <Layout><Page name="Services" /></Layout>} />

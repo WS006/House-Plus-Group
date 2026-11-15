@@ -43,10 +43,10 @@ export default function CookieBanner() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <div className="flex items-start gap-3 flex-1">
-                <Cookie className="w-5 h-5 text-[#f59e0b] mt-0.5 flex-shrink-0" />
+                <Cookie className="w-5 h-5 text-[#b45309] mt-0.5 flex-shrink-0" />
                 <p className="text-white/80 text-sm leading-relaxed">
                   {t('cookie_notice')}{' '}
-                  <a href="/privacy" className="text-[#f59e0b] hover:underline">
+                  <a href="/privacy" className="text-[#b45309] hover:underline">
                     {t('cookie_policy')}
                   </a>
                   .

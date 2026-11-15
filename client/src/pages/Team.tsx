@@ -82,7 +82,7 @@ export default function Team() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f2d5e]/60 to-transparent" />
                 <div className="absolute bottom-4 left-4">
                   <h3 className="text-white font-black text-xl">{member.name}</h3>
-                  <p className="text-[#f59e0b] text-sm">{member.role}</p>
+                  <p className="text-[#b45309] text-sm">{member.role}</p>
                 </div>
               </div>
               <div className="p-6">
@@ -94,7 +94,7 @@ export default function Team() {
                 </div>
                 <div className="space-y-2">
                   <a href={`mailto:${member.email}`} className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#0f2d5e] transition-colors">
-                    <Mail className="w-4 h-4 text-[#f59e0b]" />
+                    <Mail className="w-4 h-4 text-[#b45309]" />
                     {member.email}
                   </a>
                   <a href={member.whatsapp} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#25D366] transition-colors">

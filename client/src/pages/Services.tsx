@@ -52,7 +52,7 @@ export default function Services() {
                   </div>
                   <h3 className="text-xl font-bold text-[#0f2d5e] mb-3">{t(service.titleKey as any)}</h3>
                   <p className="text-gray-600 leading-relaxed flex-1">{t(service.descKey as any)}</p>
-                  <button onClick={() => setInquiryOpen(true)} className="mt-5 text-[#0f2d5e] font-semibold text-sm hover:text-[#f59e0b] transition-colors text-left">
+                  <button onClick={() => setInquiryOpen(true)} className="mt-5 text-[#0f2d5e] font-semibold text-sm hover:text-[#b45309] transition-colors text-left">
                     Learn More →
                   </button>
                 </div>
@@ -102,7 +102,7 @@ export default function Services() {
             ].map((item, i) => (
               <FadeIn key={i} delay={i * 0.1}>
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-[#f59e0b]/20 text-[#f59e0b] rounded-2xl flex items-center justify-center mx-auto mb-4">{item.icon}</div>
+                  <div className="w-16 h-16 bg-[#f59e0b]/20 text-[#b45309] rounded-2xl flex items-center justify-center mx-auto mb-4">{item.icon}</div>
                   <h3 className="text-white font-bold text-lg mb-2">{item.title}</h3>
                   <p className="text-white/60 text-sm">{item.desc}</p>
                 </div>

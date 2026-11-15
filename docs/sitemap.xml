@@ -3,121 +3,110 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.houseplus.com.ng/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/hero-solar.jpg</image:loc>
-      <image:title>HousePlus Group Nigerian Factory — Solar Energy Solutions</image:title>
+      <image:title>Solar Panels &amp; Home Appliances in Nigeria | HousePlus</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://www.houseplus.com.ng/about/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/about-team.jpg</image:loc>
-      <image:title>About HousePlus Group Nigerian Factory</image:title>
+      <image:title>About HousePlus Group — Nigeria Factory &amp; Team</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://www.houseplus.com.ng/products/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/solar-panel.jpg</image:loc>
-      <image:title>Solar, Home Appliance and 3C Product Catalogue</image:title>
+      <image:title>Products: Solar, Appliances &amp; 3C | HousePlus Nigeria</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.houseplus.com.ng/products/solar/</loc>
+    <image:image>
+      <image:loc>https://www.houseplus.com.ng/images/products/power-station.jpg</image:loc>
+      <image:title>Solar Products in Nigeria — Portable Power Stations, Panels, Inverters | HousePlus</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.houseplus.com.ng/products/home-appliances/</loc>
+    <image:image>
+      <image:loc>https://www.houseplus.com.ng/images/products/air-fryer.jpg</image:loc>
+      <image:title>Home Appliances Wholesale — Air Fryers, Blenders, Rice Cookers | HousePlus</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.houseplus.com.ng/products/3c-electronics/</loc>
+    <image:image>
+      <image:loc>https://www.houseplus.com.ng/images/products/power-bank.jpg</image:loc>
+      <image:title>3C Electronics Supplier Nigeria — Watches, Earbuds, Power Banks | HousePlus</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.houseplus.com.ng/guides/</loc>
+    <image:image>
+      <image:loc>https://www.houseplus.com.ng/images/hero-solar.jpg</image:loc>
+      <image:title>Solar Buying Guides — Prices, Sizing, Batteries | HousePlus Nigeria</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://www.houseplus.com.ng/factory/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/hero-factory.jpg</image:loc>
-      <image:title>HousePlus Group Manufacturing and Quality Control</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://www.houseplus.com.ng/services/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://www.houseplus.com.ng/images/africa-market.jpg</image:loc>
-      <image:title>OEM/ODM, Sourcing and Logistics Services</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://www.houseplus.com.ng/faq/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://www.houseplus.com.ng/images/hero-solar.jpg</image:loc>
-      <image:title>HousePlus Group Frequently Asked Questions</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://www.houseplus.com.ng/contact/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://www.houseplus.com.ng/images/hero-factory.jpg</image:loc>
-      <image:title>Contact HousePlus Group Nigerian Factory</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://www.houseplus.com.ng/news/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://www.houseplus.com.ng/images/hero-3c.jpg</image:loc>
-      <image:title>HousePlus Group News and Updates</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://www.houseplus.com.ng/careers/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-    <image:image>
-      <image:loc>https://www.houseplus.com.ng/images/about-team.jpg</image:loc>
-      <image:title>Careers at HousePlus Group</image:title>
+      <image:title>Our Factory — Manufacturing &amp; Quality Control</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://www.houseplus.com.ng/team/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/about-team.jpg</image:loc>
-      <image:title>HousePlus Group Nigerian Factory Team</image:title>
+      <image:title>Our Team — HousePlus Group Nigeria Leadership</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.houseplus.com.ng/services/</loc>
+    <image:image>
+      <image:loc>https://www.houseplus.com.ng/images/africa-market.jpg</image:loc>
+      <image:title>OEM/ODM, Customisation &amp; Logistics | HousePlus</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.houseplus.com.ng/faq/</loc>
+    <image:image>
+      <image:loc>https://www.houseplus.com.ng/images/hero-solar.jpg</image:loc>
+      <image:title>FAQ — HousePlus Group Nigeria | Common Questions</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.houseplus.com.ng/news/</loc>
+    <image:image>
+      <image:loc>https://www.houseplus.com.ng/images/hero-3c.jpg</image:loc>
+      <image:title>News &amp; Updates — HousePlus Group Nigeria</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.houseplus.com.ng/careers/</loc>
+    <image:image>
+      <image:loc>https://www.houseplus.com.ng/images/about-team.jpg</image:loc>
+      <image:title>Careers — Join the HousePlus Nigeria Team</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.houseplus.com.ng/contact/</loc>
+    <image:image>
+      <image:loc>https://www.houseplus.com.ng/images/hero-factory.jpg</image:loc>
+      <image:title>Contact HousePlus Group Nigeria — Get in Touch</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://www.houseplus.com.ng/privacy/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://www.houseplus.com.ng/terms/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://www.houseplus.com.ng/products/solar-panel-mono-400w/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/solar-panel.jpg</image:loc>
       <image:title>400W Monocrystalline Solar Panel</image:title>
@@ -125,9 +114,6 @@
   </url>
   <url>
     <loc>https://www.houseplus.com.ng/products/solar-inverter-5kw/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/solar-inverter.jpg</image:loc>
       <image:title>5KW Hybrid Solar Inverter</image:title>
@@ -135,9 +121,6 @@
   </url>
   <url>
     <loc>https://www.houseplus.com.ng/products/lithium-battery-100ah/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/lithium-battery.jpg</image:loc>
       <image:title>100Ah LiFePO4 Lithium Battery</image:title>
@@ -145,9 +128,6 @@
   </url>
   <url>
     <loc>https://www.houseplus.com.ng/products/solar-street-light-100w/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/solar-street-light.jpg</image:loc>
       <image:title>100W All-in-One Solar Street Light</image:title>
@@ -155,9 +135,6 @@
   </url>
   <url>
     <loc>https://www.houseplus.com.ng/products/air-fryer-5l/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/air-fryer.jpg</image:loc>
       <image:title>5L Digital Air Fryer</image:title>
@@ -165,9 +142,6 @@
   </url>
   <url>
     <loc>https://www.houseplus.com.ng/products/blender-1200w/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/blender.jpg</image:loc>
       <image:title>1200W Professional Blender</image:title>
@@ -175,9 +149,6 @@
   </url>
   <url>
     <loc>https://www.houseplus.com.ng/products/smart-watch-pro/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/smart-watch.jpg</image:loc>
       <image:title>Smart Watch Pro - Health Monitor</image:title>
@@ -185,9 +156,6 @@
   </url>
   <url>
     <loc>https://www.houseplus.com.ng/products/tws-earphone/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/tws-earbuds.jpg</image:loc>
       <image:title>TWS Bluetooth Earphones with ANC</image:title>
@@ -195,9 +163,6 @@
   </url>
   <url>
     <loc>https://www.houseplus.com.ng/products/power-bank-20000/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/power-bank.jpg</image:loc>
       <image:title>20000mAh Solar Power Bank</image:title>
@@ -205,9 +170,6 @@
   </url>
   <url>
     <loc>https://www.houseplus.com.ng/products/sd-card-128gb/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/sd-card.jpg</image:loc>
       <image:title>128GB High-Speed SD Memory Card</image:title>
@@ -215,9 +177,6 @@
   </url>
   <url>
     <loc>https://www.houseplus.com.ng/products/charge-controller-40a/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/charge-controller.jpg</image:loc>
       <image:title>40A MPPT Solar Charge Controller</image:title>
@@ -225,12 +184,44 @@
   </url>
   <url>
     <loc>https://www.houseplus.com.ng/products/rice-cooker-5l/</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/rice-cooker.jpg</image:loc>
       <image:title>5L Digital Rice Cooker</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.houseplus.com.ng/products/portable-power-station-500w/</loc>
+    <image:image>
+      <image:loc>https://www.houseplus.com.ng/images/products/power-station.jpg</image:loc>
+      <image:title>500W Portable Power Station</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.houseplus.com.ng/guides/solar-panel-price-nigeria/</loc>
+    <image:image>
+      <image:loc>https://www.houseplus.com.ng/images/hero-solar.jpg</image:loc>
+      <image:title>How much do solar panels cost in Nigeria?</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.houseplus.com.ng/guides/how-to-size-a-solar-system/</loc>
+    <image:image>
+      <image:loc>https://www.houseplus.com.ng/images/hero-solar.jpg</image:loc>
+      <image:title>How many solar panels does a house in Nigeria need?</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.houseplus.com.ng/guides/inverter-vs-generator-nigeria/</loc>
+    <image:image>
+      <image:loc>https://www.houseplus.com.ng/images/hero-solar.jpg</image:loc>
+      <image:title>Inverter system or generator — which costs less in Nigeria?</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.houseplus.com.ng/guides/lifepo4-vs-lead-acid-battery/</loc>
+    <image:image>
+      <image:loc>https://www.houseplus.com.ng/images/hero-solar.jpg</image:loc>
+      <image:title>LiFePO4 or lead-acid battery — which should you buy?</image:title>
     </image:image>
   </url>
 </urlset>

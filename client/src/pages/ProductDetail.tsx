@@ -8,7 +8,8 @@ import ResponsiveImage from '@/components/ResponsiveImage';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getImageSize } from '@/lib/imageManifest';
 import { Product, favoritesStore, productsStore } from '@/lib/store';
-import { addPageSchema, generateProductSchema, updateProductMeta } from '@/lib/seo';
+import { addBreadcrumbSchema, addPageSchema, generateProductSchema, updateProductMeta } from '@/lib/seo';
+import { clearSchemaScripts } from '@/lib/schema';
 import { ChevronLeft, ChevronRight, Heart, Package, Share2, Shield, Truck, Zap } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'wouter';
@@ -27,6 +28,14 @@ const OG_BY_PRODUCT_ID: Record<string, string> = {
   'sd-card-128gb': '/images/og/product-sd-card.jpg',
   'charge-controller-40a': '/images/og/product-charge-controller.jpg',
   'rice-cooker-5l': '/images/og/product-rice-cooker.jpg',
+  'portable-power-station-500w': '/images/og/product-power-station.jpg',
+};
+
+/** schema.org category label per catalogue category. */
+const CATEGORY_SCHEMA: Record<Product['category'], string> = {
+  solar: 'Solar energy equipment',
+  appliances: 'Home appliances',
+  '3c': 'Consumer electronics',
 };
 
 export default function ProductDetail() {
@@ -48,55 +57,72 @@ export default function ProductDetail() {
   };
 
   useEffect(() => {
-    if (product) {
-      const productName = getName(product);
-      const productDesc = getDesc(product);
-      
-      // Update Page Meta
-      // Keep this in sync with the title produced by prerender.mjs so the
-      // hydrated page does not disagree with the static HTML crawlers index.
-      updateProductMeta({
-        name: productName,
-        description: productDesc,
-        image: product.image,
-        ogImage: OG_BY_PRODUCT_ID[product.id] || '/images/og/products.jpg',
-      });
-      
-      // Inject Product Schema
-      const productSchema = generateProductSchema({
-        name: productName,
-        description: productDesc,
+    if (!product) return;
+
+    // Drop anything a previously rendered route left in <head>. Without this
+    // the product page shipped the homepage's WebPage node alongside its own
+    // Product markup.
+    clearSchemaScripts();
+
+    const productName = getName(product);
+    const productDesc = getDesc(product);
+
+    // Keep this in sync with the title produced by prerender.mjs so the
+    // hydrated page does not disagree with the static HTML crawlers index.
+    updateProductMeta({
+      name: productName,
+      title: product.titleEn || `${productName} | HousePlus`,
+      description: productDesc,
+      image: product.image,
+      ogImage: OG_BY_PRODUCT_ID[product.id] || '/images/og/products.jpg',
+    });
+
+    addPageSchema(
+      generateProductSchema({
+        name: product.nameEn,
+        description: product.descEn,
         image: product.image,
         sku: product.id,
-        availability: 'InStock',
-      });
-      addPageSchema(productSchema, "product");
+        category: CATEGORY_SCHEMA[product.category],
+        specs: product.specs,
+      }),
+      'product'
+    );
 
-      // Inject FAQ Schema for Product
-      const faqSchema = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
+    // Home → Products → this product. The trail matches the visible breadcrumb.
+    addBreadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Products', path: '/products' },
+      { name: product.nameEn },
+    ]);
+
+    // The same two questions are rendered as visible <h3> blocks below, so the
+    // answers in the markup are the answers a visitor can read.
+    addPageSchema(
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
           {
-            "@type": "Question",
-            "name": `What is the MOQ for ${productName}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `The minimum order quantity for ${productName} is ${product.moq}. HousePlus Group Nigerian Factory provides competitive wholesale pricing.`
-            }
+            '@type': 'Question',
+            name: `What is the minimum order quantity for the ${product.nameEn}?`,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: `The minimum order quantity for the ${product.nameEn} is ${product.moq}. Smaller trial orders can be discussed as a sample order at a higher unit price.`,
+            },
           },
           {
-            "@type": "Question",
-            "name": `How long is the delivery for ${productName}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `The standard delivery time for ${productName} is ${product.delivery}. We ensure fast shipping from our Nigerian Factory.`
-            }
-          }
-        ]
-      };
-      addPageSchema(faqSchema, "product-faq");
-    }
+            '@type': 'Question',
+            name: `How long does delivery of the ${product.nameEn} take?`,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: `Delivery is ${product.delivery} from the date the deposit clears. Custom OEM orders with your branding take longer, because production is scheduled after the artwork is approved.`,
+            },
+          },
+        ],
+      },
+      'product-faq'
+    );
   }, [product, language]);
 
   if (!product) {
@@ -186,7 +212,7 @@ export default function ProductDetail() {
             <div className="flex items-start justify-between gap-4 mb-4">
               <div>
                 <div className="flex gap-2 mb-2">
-                  {product.isNew && <span className="bg-[#10b981] text-white text-xs font-bold px-2 py-0.5 rounded-full">NEW</span>}
+                  {product.isNew && <span className="bg-[#047857] text-white text-xs font-bold px-2 py-0.5 rounded-full">NEW</span>}
                   {product.isHot && <span className="bg-[#f59e0b] text-[#0f2d5e] text-xs font-bold px-2 py-0.5 rounded-full">HOT SELLER</span>}
                   <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
                     product.category === 'solar' ? 'bg-amber-100 text-amber-700' :
@@ -227,7 +253,7 @@ export default function ProductDetail() {
                 { icon: <Shield className="w-4 h-4" />, label: 'Payment', value: product.payment },
               ].map((item, i) => (
                 <div key={i} className="bg-gray-50 rounded-xl p-3 text-center">
-                  <div className="flex justify-center text-[#f59e0b] mb-1">{item.icon}</div>
+                  <div className="flex justify-center text-[#b45309] mb-1">{item.icon}</div>
                   <div className="text-xs text-gray-400 mb-0.5">{item.label}</div>
                   <div className="text-sm font-semibold text-[#0f2d5e]">{item.value}</div>
                 </div>
@@ -278,6 +304,48 @@ export default function ProductDetail() {
           </div>
         </div>
 
+        {/* Buying questions. Rendered as text, not hidden in the schema, so the
+            answer in the markup is the same answer a visitor reads. */}
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 mb-10">
+          <h2 className="text-xl font-bold text-[#0f2d5e] mb-6">Ordering the {product.nameEn}</h2>
+          <div className="space-y-5">
+            <div>
+              <h3 className="font-semibold text-[#0f2d5e] mb-1.5">
+                What is the minimum order quantity for the {product.nameEn}?
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                The minimum order quantity is <strong>{product.moq}</strong>. Smaller trial orders can be
+                discussed as a sample order at a higher unit price.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-[#0f2d5e] mb-1.5">
+                How long does delivery of the {product.nameEn} take?
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Delivery is <strong>{product.delivery}</strong> from the date the deposit clears. Custom
+                OEM orders with your branding take longer, because production is scheduled after the
+                artwork is approved.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-[#0f2d5e] mb-1.5">How is the price calculated?</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                By quotation. Solar and battery costs track the exchange rate and freight, so no list
+                price is published. Send the quantity and destination city and we confirm stock, freight
+                and the unit price in a written quotation.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-[#0f2d5e] mb-1.5">What payment terms apply?</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                {product.payment}. The exact split is stated on the proforma invoice, and payment details
+                are only ever sent on our official letterhead.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Related Products */}
         {relatedProducts.length > 0 && (
           <div>
@@ -294,7 +362,7 @@ export default function ProductDetail() {
                     sizes="(max-width: 768px) 50vw, 200px"
                   />
                   <div className="p-3">
-                    <h3 className="text-sm font-semibold text-[#0f2d5e] line-clamp-2 group-hover:text-[#f59e0b] transition-colors">{getName(p)}</h3>
+                    <h3 className="text-sm font-semibold text-[#0f2d5e] line-clamp-2 group-hover:text-[#b45309] transition-colors">{getName(p)}</h3>
                     <div className="text-xs text-gray-400 mt-1">MOQ: {p.moq}</div>
                   </div>
                 </Link>

@@ -177,7 +177,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <FadeIn>
-              <div className="inline-flex items-center gap-2 text-[#f59e0b] text-sm font-semibold uppercase tracking-wider mb-4">
+              <div className="inline-flex items-center gap-2 text-[#b45309] text-sm font-semibold uppercase tracking-wider mb-4">
                 <span className="w-8 h-0.5 bg-[#f59e0b]" />
                 Our Story
               </div>
@@ -231,7 +231,7 @@ export default function About() {
             ].map((item, i) => (
               <FadeIn key={i} delay={i * 0.1}>
                 <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 text-center h-full">
-                  <div className="w-16 h-16 bg-[#f59e0b]/20 text-[#f59e0b] rounded-2xl flex items-center justify-center mx-auto mb-5">{item.icon}</div>
+                  <div className="w-16 h-16 bg-[#b45309]/20 text-[#b45309] rounded-2xl flex items-center justify-center mx-auto mb-5">{item.icon}</div>
                   <h3 className="text-xl font-bold text-[#0f2d5e] mb-3">{item.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{item.desc}</p>
                 </div>
@@ -245,7 +245,7 @@ export default function About() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 text-[#f59e0b] text-sm font-semibold uppercase tracking-wider mb-3">
+            <div className="inline-flex items-center gap-2 text-[#b45309] text-sm font-semibold uppercase tracking-wider mb-3">
               <span className="w-8 h-0.5 bg-[#f59e0b]" />
               Leadership Team
               <span className="w-8 h-0.5 bg-[#f59e0b]" />
@@ -262,7 +262,7 @@ export default function About() {
                   </div>
                   <div className="p-6">
                     <h3 className="text-lg font-bold text-[#0f2d5e] mb-1">{member.name}</h3>
-                    <p className="text-[#f59e0b] font-semibold text-sm mb-3">{member.role}</p>
+                    <p className="text-[#b45309] font-semibold text-sm mb-3">{member.role}</p>
                     <p className="text-gray-600 text-sm leading-relaxed mb-4">{member.bio}</p>
                     <div className="pt-4 border-t border-gray-100">
                       <p className="text-xs text-gray-500 font-semibold uppercase tracking-wide mb-2">Expertise</p>
@@ -290,7 +290,7 @@ export default function About() {
                 <div className={`flex items-center gap-8 mb-10 ${i % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
                   <div className={`flex-1 ${i % 2 === 0 ? 'text-right' : 'text-left'}`}>
                     <div className="bg-white border border-gray-100 shadow-sm rounded-xl p-5">
-                      <div className="text-[#f59e0b] font-black text-xl mb-2">{item.year}</div>
+                      <div className="text-[#b45309] font-black text-xl mb-2">{item.year}</div>
                       <p className="text-gray-600 text-sm">{item.event}</p>
                     </div>
                   </div>
@@ -314,7 +314,7 @@ export default function About() {
             {ACHIEVEMENTS.map((achievement, i) => (
               <FadeIn key={i} delay={i * 0.1}>
                 <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 border border-gray-100 text-center">
-                  <div className="w-16 h-16 bg-[#f59e0b]/20 text-[#f59e0b] rounded-2xl flex items-center justify-center mx-auto mb-5">{achievement.icon}</div>
+                  <div className="w-16 h-16 bg-[#b45309]/20 text-[#b45309] rounded-2xl flex items-center justify-center mx-auto mb-5">{achievement.icon}</div>
                   <h3 className="text-xl font-bold text-[#0f2d5e] mb-3">{achievement.title}</h3>
                   <p className="text-gray-600 text-sm leading-relaxed">{achievement.description}</p>
                 </div>
@@ -328,7 +328,7 @@ export default function About() {
       <section className="py-20 bg-[#0f2d5e]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 text-[#f59e0b] text-sm font-semibold uppercase tracking-wider mb-3">
+            <div className="inline-flex items-center gap-2 text-[#b45309] text-sm font-semibold uppercase tracking-wider mb-3">
               <span className="w-8 h-0.5 bg-[#f59e0b]" />
               Client Stories
               <span className="w-8 h-0.5 bg-[#f59e0b]" />
@@ -342,14 +342,14 @@ export default function About() {
                 <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8">
                   <div className="flex gap-1 mb-4">
                     {[...Array(testimonial.rating)].map((_, j) => (
-                      <Star key={j} className="w-4 h-4 fill-[#f59e0b] text-[#f59e0b]" />
+                      <Star key={j} className="w-4 h-4 fill-[#b45309] text-[#b45309]" />
                     ))}
                   </div>
                   <p className="text-white/90 leading-relaxed mb-6 italic">"{testimonial.text}"</p>
                   <div className="border-t border-white/10 pt-4">
                     <p className="text-white font-semibold">{testimonial.name}</p>
                     <p className="text-white/60 text-sm">{testimonial.role}</p>
-                    <p className="text-[#f59e0b] text-sm font-semibold">{testimonial.company}</p>
+                    <p className="text-[#b45309] text-sm font-semibold">{testimonial.company}</p>
                   </div>
                 </div>
               </FadeIn>
@@ -367,7 +367,7 @@ export default function About() {
             <div className="flex flex-wrap justify-center gap-4">
               {['CE Certified', 'RoHS Compliant', 'ISO 9001:2015', 'FCC Approved', 'UL Listed', 'SONCAP Nigeria'].map(cert => (
                 <div key={cert} className="flex items-center gap-2 bg-white border border-gray-200 text-[#0f2d5e] px-5 py-3 rounded-xl shadow-sm">
-                  <CheckCircle className="w-4 h-4 text-[#f59e0b]" />
+                  <CheckCircle className="w-4 h-4 text-[#b45309]" />
                   <span className="font-semibold text-sm">{cert}</span>
                 </div>
               ))}
@@ -410,7 +410,7 @@ export default function About() {
               >
                 <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-5 py-4 font-semibold text-[#0f2d5e] hover:bg-gray-50 [&::-webkit-details-marker]:hidden">
                   <span className="text-base font-semibold text-[#0f2d5e]">{item.q}</span>
-                  <ChevronDown className="w-5 h-5 flex-shrink-0 text-[#f59e0b] transition-transform group-open:rotate-180" />
+                  <ChevronDown className="w-5 h-5 flex-shrink-0 text-[#b45309] transition-transform group-open:rotate-180" />
                 </summary>
                 <div className="px-5 pb-5 -mt-1 text-gray-600 leading-relaxed text-sm">{item.a}</div>
               </details>

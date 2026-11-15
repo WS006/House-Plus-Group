@@ -24,18 +24,25 @@ import { createRequire } from 'module';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distPath = path.join(__dirname, 'dist', 'public');
-const SITE = 'https://www.houseplus.com.ng';
 const require = createRequire(import.meta.url);
 
 const products = JSON.parse(fs.readFileSync(path.join(__dirname, 'products.data.json'), 'utf8'));
 
-const SITE_NAME = 'HousePlus Group Nigerian Factory';
+/** Single source of truth for the entity — same file the client bundle reads. */
+const company = JSON.parse(fs.readFileSync(path.join(__dirname, 'shared', 'company.json'), 'utf8'));
+
+const SITE = company.url;
+const SITE_NAME = company.name;
 
 /** 1200x630 share cards, one per route (see tools/generate-og-images.mjs). */
 const OG_BY_ROUTE = {
   '/': '/images/og/home.jpg',
   '/about': '/images/og/about.jpg',
   '/products': '/images/og/products.jpg',
+  '/products/solar': '/images/og/product-power-station.jpg',
+  '/products/home-appliances': '/images/og/product-air-fryer.jpg',
+  '/products/3c-electronics': '/images/og/product-power-bank.jpg',
+  '/guides': '/images/og/home.jpg',
   '/factory': '/images/og/factory.jpg',
   '/services': '/images/og/services.jpg',
   '/news': '/images/og/news.jpg',
@@ -59,32 +66,42 @@ const OG_BY_PRODUCT = {
   'sd-card-128gb': '/images/og/product-sd-card.jpg',
   'charge-controller-40a': '/images/og/product-charge-controller.jpg',
   'rice-cooker-5l': '/images/og/product-rice-cooker.jpg',
+  'portable-power-station-500w': '/images/og/product-power-station.jpg',
 };
+
+/** Static guide routes share the home card (no per-guide artwork exists). */
+const OG_GUIDE = '/images/og/home.jpg';
 
 function ogImageFor(route, product) {
   if (product) return OG_BY_PRODUCT[product.id] || '/images/og/products.jpg';
+  if (route.startsWith('/guides/')) return OG_GUIDE;
   return OG_BY_ROUTE[route] || '/images/og/home.jpg';
 }
 
+/** Static routes, in the order shared/routes.meta.json lists them. */
+const metaRoutes = JSON.parse(fs.readFileSync(path.join(__dirname, 'shared', 'routes.meta.json'), 'utf8'));
+
+/** Guide pages: title/description come from the same JSON the UI renders. */
+const guides = JSON.parse(fs.readFileSync(path.join(__dirname, 'shared', 'guides.json'), 'utf8'));
+
 /** Routes written to disk. '/' is the shell itself. */
 const routes = [
-  '/', '/about', '/products', '/factory', '/team', '/services', '/faq',
-  '/news', '/careers', '/contact', '/privacy', '/terms',
+  ...metaRoutes.map((r) => r.path),
+  ...guides.map((g) => `/guides/${g.slug}`),
   ...products.map((p) => `/products/${p.id}`),
 ];
 
 /** Per-route title/description: single source shared with the SPA. */
-const meta = Object.fromEntries(
-  JSON.parse(fs.readFileSync(path.join(__dirname, 'shared', 'routes.meta.json'), 'utf8')).map((r) => [
-    r.path,
-    { title: r.title, description: r.description },
-  ])
-);
+const meta = Object.fromEntries(metaRoutes.map((r) => [r.path, { title: r.title, description: r.description }]));
+
+for (const g of guides) {
+  meta[`/guides/${g.slug}`] = { title: g.metaTitle, description: g.description };
+}
 
 /** Product pages get their own product copy rather than the site defaults. */
 for (const p of products) {
   meta[`/products/${p.id}`] = {
-    title: `${p.nameEn} | HousePlus`,
+    title: p.titleEn || `${p.nameEn} | HousePlus`,
     description: p.descEn,
   };
 }
@@ -226,39 +243,35 @@ ${preloadLink(preload)}
     <meta name="twitter:image" content="${ogImage}" />
 
     <!-- Geo Tags -->
-    <meta name="geo.region" content="NG" />
-    <meta name="geo.placename" content="Lagos, Nigeria" />
-    <meta name="geo.position" content="6.5967;3.3421" />
-    <meta name="ICBM" content="6.5967, 3.3421" />
+    <meta name="geo.region" content="${company.address.addressCountry}" />
+    <meta name="geo.placename" content="${escapeHtml(`${company.address.addressLocality}, ${company.address.addressRegion}, Nigeria`)}" />
+    <meta name="geo.position" content="${company.geo.latitude};${company.geo.longitude}" />
+    <meta name="ICBM" content="${company.geo.latitude}, ${company.geo.longitude}" />
 ${jsonLd ? `\n    <script type="application/ld+json" data-schema-key="product">\n    ${JSON.stringify(jsonLd, null, 2).split('\n').join('\n    ')}\n    </script>` : ''}
 `;
 }
 
+/**
+ * Product node.
+ *
+ * No `offers`: a price is not published, and an Offer without `price` is a
+ * Search Console error. `manufacturer` points at the site-wide Organization
+ * node by @id so the entity is not restated with a second set of facts.
+ */
 function productJsonLd(p) {
   const url = `${SITE}/products/${p.id}/`;
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
+    '@id': `${url}#product`,
     name: p.nameEn,
     description: p.descEn,
     image: SITE + p.image,
     url,
     sku: p.id,
+    ...(p.category ? { category: p.category } : {}),
     brand: { '@type': 'Brand', name: SITE_NAME },
-    manufacturer: {
-      '@type': 'Organization',
-      name: SITE_NAME,
-      url: SITE,
-      parentOrganization: { '@type': 'Organization', name: 'HousePlus Group', url: 'https://www.houseplus-ch.com' },
-    },
-    offers: {
-      '@type': 'Offer',
-      url,
-      priceCurrency: 'USD',
-      availability: 'https://schema.org/InStock',
-      itemCondition: 'https://schema.org/NewCondition',
-      seller: { '@type': 'Organization', name: SITE_NAME },
-    },
+    manufacturer: { '@id': `${SITE}/#organization` },
   };
 }
 
@@ -394,7 +407,7 @@ for (const route of routes) {
       // Person…). Capture those so they survive into the static HTML — otherwise
       // every route would ship only the shell's Organization block.
       headSchemas = await page.evaluate(() =>
-        [...document.querySelectorAll('script[type="application/ld+json"][data-schema-path]')].map(
+        [...document.querySelectorAll('script[type="application/ld+json"][data-schema-key]')].map(
           (el) => ({ key: el.getAttribute('data-schema-key') || 'page', json: el.textContent || '' })
         )
       );

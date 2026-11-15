@@ -67,7 +67,9 @@ if (!Array.isArray(products) || products.length === 0) {
 // avoids shipping translation blobs into build-time tooling.
 const slim = products.map((p) => ({
   id: p.id,
+  category: p.category,
   nameEn: p.nameEn,
+  titleEn: p.titleEn,
   descEn: p.descEn,
   image: p.image,
   moq: p.moq,

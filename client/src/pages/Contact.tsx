@@ -192,16 +192,16 @@ export default function Contact() {
                 <h3 className="font-bold text-[#0f2d5e] text-sm mb-3">{office.name}</h3>
                 <div className="space-y-2">
                   <div className="flex items-start gap-2">
-                    <MapPin className="w-4 h-4 text-[#f59e0b] mt-0.5 flex-shrink-0" />
+                    <MapPin className="w-4 h-4 text-[#b45309] mt-0.5 flex-shrink-0" />
                     <span className="text-gray-600 text-xs leading-relaxed">{office.address}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Phone className="w-4 h-4 text-[#f59e0b] flex-shrink-0" />
+                    <Phone className="w-4 h-4 text-[#b45309] flex-shrink-0" />
                     <a href={`tel:${office.phone.replace(/\s/g, '')}`} className="text-gray-600 text-xs hover:text-[#0f2d5e]">{office.phone}</a>
                   </div>
                 </div>
                 <a href={office.mapUrl} target="_blank" rel="noopener noreferrer"
-                  className="mt-3 inline-flex items-center gap-1.5 text-[#0f2d5e] text-xs font-semibold hover:text-[#f59e0b] transition-colors">
+                  className="mt-3 inline-flex items-center gap-1.5 text-[#0f2d5e] text-xs font-semibold hover:text-[#b45309] transition-colors">
                   <MapPin className="w-3.5 h-3.5" /> View on Google Maps
                 </a>
               </div>

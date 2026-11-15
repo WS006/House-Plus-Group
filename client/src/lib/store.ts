@@ -7,6 +7,8 @@ export interface Product {
   id: string;
   category: 'solar' | 'appliances' | '3c';
   nameEn: string;
+  /** SERP/share title when it needs to be longer than the product name. */
+  titleEn?: string;
   nameZh: string;
   nameFr: string;
   nameRu: string;
@@ -91,6 +93,7 @@ const DEFAULT_PRODUCTS: Product[] = [
     id: 'solar-inverter-5kw',
     category: 'solar',
     nameEn: '5KW Hybrid Solar Inverter',
+    titleEn: '5KW Hybrid Solar Inverter with MPPT for Homes | HousePlus',
     nameZh: '5KW混合型太阳能逆变器',
     nameFr: 'Onduleur Solaire Hybride 5KW',
     nameRu: 'Гибридный Солнечный Инвертор 5КВт',
@@ -190,6 +193,7 @@ const DEFAULT_PRODUCTS: Product[] = [
     id: 'air-fryer-5l',
     category: 'appliances',
     nameEn: '5L Digital Air Fryer',
+    titleEn: '5L Digital Air Fryer — 1800W, 8 Presets | HousePlus',
     nameZh: '5L数字空气炸锅',
     nameFr: 'Friteuse à Air Numérique 5L',
     nameRu: 'Цифровая Аэрофритюрница 5Л',
@@ -322,6 +326,7 @@ const DEFAULT_PRODUCTS: Product[] = [
     id: 'power-bank-20000',
     category: '3c',
     nameEn: '20000mAh Solar Power Bank',
+    titleEn: '20000mAh Solar Power Bank for Off-Grid Use | HousePlus',
     nameZh: '20000mAh太阳能充电宝',
     nameFr: 'Batterie Externe Solaire 20000mAh',
     nameRu: 'Солнечный Павербанк 20000мАч',
@@ -421,6 +426,7 @@ const DEFAULT_PRODUCTS: Product[] = [
     id: 'rice-cooker-5l',
     category: 'appliances',
     nameEn: '5L Digital Rice Cooker',
+    titleEn: '5L Digital Rice Cooker with 12 Cooking Modes | HousePlus',
     nameZh: '5L数字电饭煲',
     nameFr: 'Cuiseur à Riz Numérique 5L',
     nameRu: 'Цифровая Рисоварка 5Л',
@@ -449,6 +455,42 @@ const DEFAULT_PRODUCTS: Product[] = [
     isNew: false,
     isHot: false,
     createdAt: '2024-01-18',
+  },
+  {
+    id: 'portable-power-station-500w',
+    category: 'solar',
+    nameEn: '500W Portable Power Station',
+    titleEn: 'Portable Power Station with Solar Charging | HousePlus',
+    nameZh: '500W便携式储能电源',
+    nameFr: 'Centrale Électrique Portable 500W',
+    nameRu: 'Портативная Электростанция 500Вт',
+    nameEs: 'Estación de Energía Portátil 500W',
+    nameAr: 'محطة طاقة محمولة 500 واط',
+    descEn: '512Wh LiFePO4 portable power station, 500W rated / 1000W surge inverter. Charges from solar, AC or car. Pure sine wave AC output, USB-C PD 60W, LED light — power anywhere for phones, laptops, fans, TVs and small appliances.',
+    descZh: '512Wh磷酸铁锂便携储能电源，额定500W/峰值1000W逆变输出。支持太阳能、市电、车载三种充电方式。纯正弦波交流输出，USB-C PD 60W快充，内置LED照明——随时随地为手机、笔记本、风扇、电视和小家电供电。',
+    descFr: 'Centrale électrique portable LiFePO4 512Wh, onduleur 500W crête 1000W. Recharge solaire, secteur ou voiture. Onduleur sinusoïdal pur, USB-C PD 60W, éclairage LED.',
+    descRu: 'Портативная электростанция LiFePO4 512Wh, инвертор 500Вт (пик 1000Вт). Зарядка от солнца, сети или авто. Чистый синус, USB-C PD 60W, LED-фонарь.',
+    descEs: 'Estación de energía portátil LiFePO4 de 512Wh, inversor de 500W (1000W pico). Carga solar, red o coche. Onda senoidal pura, USB-C PD 60W, luz LED.',
+    descAr: 'محطة طاقة محمولة LiFePO4 بسعة 512 واط/ساعة، عاكس 500 واط (1000 واط ذروة). شحن بالطاقة الشمسية أو الكهرباء أو السيارة. موجة جيبية نقية، USB-C PD 60W، إضاءة LED.',
+    image: '/images/products/power-station.jpg',
+    images: ['/images/products/power-station.jpg'],
+    moq: '20 pcs',
+    delivery: '7-15 days',
+    payment: 'T/T, L/C',
+    specs: [
+      { key: 'Battery', value: '512Wh LiFePO4' },
+      { key: 'Cycle Life', value: '3000+ cycles' },
+      { key: 'AC Output', value: '500W rated / 1000W surge, pure sine wave' },
+      { key: 'Outlets', value: '2× AC, 2× USB-A, 1× USB-C PD 60W, 1× car socket' },
+      { key: 'Solar Input', value: '12–24V, max 120W, MPPT built in' },
+      { key: 'Recharge Time', value: '0–80% in about 1.5h from AC' },
+      { key: 'Extras', value: 'LED light, pass-through charging, BMS protection' },
+      { key: 'Weight', value: '≈ 6.5kg with carry handle' },
+    ],
+    tags: ['solar', 'portable power station', 'LiFePO4', 'outdoor', 'backup'],
+    isNew: true,
+    isHot: true,
+    createdAt: '2024-03-01',
   },
 ];
 

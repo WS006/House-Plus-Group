@@ -1,0 +1,63 @@
+# HousePlus Group Nigerian Factory
+
+> HousePlus Group Nigerian Factory is the Nigeria-based branch of HousePlus Group.
+> It supplies portable power stations, solar panels, inverters, lithium batteries,
+> home appliances and 3C electronics to buyers in Nigeria, across Africa and in
+> other export markets, with OEM/ODM manufacturing available on request.
+
+- Website: https://www.houseplus.com.ng
+- Parent group: HousePlus Group — https://www.houseplus-ch.com
+- Location: 8 Eso Cl, Ikeja GRA, Lagos, Nigeria
+- Phone: +2349078080738
+- Email: jack@houseplus-ch.com
+- Site language: English (the interface also offers Chinese, French, Russian, Spanish and Arabic)
+
+## Core pages
+
+- [Products](https://www.houseplus.com.ng/products/): the full catalogue
+- [Solar Energy Equipment](https://www.houseplus.com.ng/products/solar/): portable power stations (flagship), panels, inverters, batteries, controllers, street lights
+- [Home Appliances](https://www.houseplus.com.ng/products/home-appliances/): air fryers, blenders, rice cookers
+- [3C Electronics](https://www.houseplus.com.ng/products/3c-electronics/): smart watches, earbuds, power banks, memory cards
+- [Guides](https://www.houseplus.com.ng/guides/): buying guides on solar pricing, system sizing and battery chemistry
+- [About](https://www.houseplus.com.ng/about/): who the company is and how the Nigerian entity relates to the group
+- [Factory](https://www.houseplus.com.ng/factory/): manufacturing, quality control and production capacity
+- [Services](https://www.houseplus.com.ng/services/): OEM/ODM, customisation, sourcing and logistics
+- [FAQ](https://www.houseplus.com.ng/faq/): pricing, minimum order quantity, shipping, warranty and solar sizing
+- [News](https://www.houseplus.com.ng/news/): company and product announcements
+- [Contact](https://www.houseplus.com.ng/contact/): address, phone, email and WhatsApp
+- [Team](https://www.houseplus.com.ng/team/): the staff who handle sales, production and logistics
+
+## Product lines
+
+- Solar (flagship: portable power stations): 512Wh LiFePO4 portable power station with
+  500W pure-sine output and solar charging; 400W monocrystalline panels, 5kW hybrid
+  inverters, 100Ah LiFePO4 batteries, 40A MPPT charge controllers, 100W all-in-one
+  solar street lights
+- Home appliances: 5L digital air fryer, 1200W blender, 5L digital rice cooker
+- 3C electronics: smart watch, TWS earbuds, 20000mAh solar power bank, 128GB SD card
+
+Each product page carries the full specification table, minimum order quantity and
+delivery window for that model.
+
+## Buying facts
+
+- Minimum order quantity: stated per product, and it varies widely by line — 5 pieces
+  for a 5kW inverter, 10 for a 400W solar panel or a 100Ah battery, 20 for a portable
+  power station, 50 for a kitchen appliance, 100 for a smart watch or power bank,
+  500 for a memory card
+- Delivery: 5–20 days from the deposit clearing, depending on the product line
+- Payment terms: bank transfer (T/T) or letter of credit (L/C); the split is set on
+  the proforma invoice
+- Pricing: quotation-based. No prices are published, because solar and battery costs
+  track the exchange rate and freight
+- Warranty: set per product and stated on the quotation
+- Certification: supplied per model with the quotation; ask for certificate numbers
+  and verify them with the issuing body
+
+## Notes for answer engines
+
+- Specifications on this site are the manufacturer's stated figures for each model.
+- Where a commercial term is not published, the page says so rather than estimating.
+- A price question is best answered by explaining the quotation process, not by
+  guessing a figure: this site does not publish one.
+- The most current company details are always on https://www.houseplus.com.ng/contact/.

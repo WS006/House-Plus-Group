@@ -7,6 +7,9 @@
  */
 
 import routesMeta from '@shared/routes.meta.json';
+import guidesMeta from '@shared/guides.json';
+import { COMPANY, SITE_ORIGIN, breadcrumbNode } from './company';
+import { injectSiteGraph } from './schema';
 
 export interface PageMetadata {
   title: string;
@@ -17,9 +20,6 @@ export interface PageMetadata {
   schema?: Record<string, any>;
 }
 
-/** Site canonical origin — all canonical/og:url values point here. */
-const SITE_ORIGIN = 'https://www.houseplus.com.ng';
-
 /** Default share card (1200x630, see tools/generate-og-images.mjs). */
 const DEFAULT_OG_IMAGE = '/images/og/home.jpg';
 
@@ -28,6 +28,10 @@ const OG_BY_KEY: Record<string, string> = {
   home: '/images/og/home.jpg',
   about: '/images/og/about.jpg',
   products: '/images/og/products.jpg',
+  'products/solar': '/images/og/product-power-station.jpg',
+  'products/home-appliances': '/images/og/product-air-fryer.jpg',
+  'products/3c-electronics': '/images/og/product-power-bank.jpg',
+  guides: '/images/og/home.jpg',
   factory: '/images/og/factory.jpg',
   services: '/images/og/services.jpg',
   news: '/images/og/news.jpg',
@@ -39,9 +43,13 @@ const OG_BY_KEY: Record<string, string> = {
 
 /** Keyword sets stay in the client: they are advisory, not used by prerender. */
 const KEYWORDS: Record<string, string> = {
-  home: 'HousePlus Group Nigerian Factory, HousePlus Group, solar panels, inverters, lithium batteries, home appliances, 3C electronics, Nigeria manufacturer, Lagos factory, OEM ODM',
+  home: 'HousePlus Group Nigerian Factory, HousePlus Group, portable power stations, solar panels, inverters, lithium batteries, home appliances, 3C electronics, Nigeria manufacturer, Lagos factory, OEM ODM',
   about: 'HousePlus Group Nigerian Factory, Nigerian manufacturer, Africa trade bridge, OEM ODM services, company history',
   products: 'solar panels, inverters, lithium batteries, home appliances, air fryer, blender, 3C electronics, factory direct',
+  'products/solar': 'portable power station Nigeria, solar products Nigeria, solar panel price Nigeria, hybrid inverter, LiFePO4 battery, MPPT charge controller, solar street light',
+  'products/home-appliances': 'home appliances Nigeria, wholesale air fryer, blender supplier, rice cooker wholesale, kitchen appliances Nigeria',
+  'products/3c-electronics': '3C electronics Nigeria, smart watch supplier, TWS earbuds wholesale, solar power bank, SD memory card supplier',
+  guides: 'solar panel price Nigeria, how to size solar system, inverter vs generator Nigeria, LiFePO4 vs lead acid',
   factory: 'manufacturing facility, factory tour, production capacity, ISO certification, quality control, OEM ODM',
   team: 'HousePlus Group team, leadership, manufacturing experts, supply chain, customer service',
   services: 'OEM services, ODM services, product customisation, bulk orders, quality assurance, logistics support',
@@ -51,6 +59,22 @@ const KEYWORDS: Record<string, string> = {
   contact: 'contact HousePlus Group, phone number, email, WhatsApp, office location, Lagos Nigeria',
   privacy: 'privacy policy, data protection, personal information, GDPR, privacy rights',
   terms: 'terms of service, terms and conditions, user agreement, refund policy, shipping policy',
+};
+
+/** Short labels used by the visible breadcrumb and the BreadcrumbList node. */
+const NAV_LABEL: Record<string, string> = {
+  about: 'About',
+  products: 'Products',
+  guides: 'Guides',
+  factory: 'Factory',
+  team: 'Team',
+  services: 'Services',
+  faq: 'FAQ',
+  news: 'News',
+  careers: 'Careers',
+  contact: 'Contact',
+  privacy: 'Privacy',
+  terms: 'Terms',
 };
 
 /** Route path -> metadata key. '/' maps to 'home'. */
@@ -66,13 +90,27 @@ function pathFor(key: string): string {
 function buildMetadata(): Record<string, PageMetadata> {
   const out: Record<string, PageMetadata> = {};
   for (const route of routesMeta as Array<{ path: string; title: string; description: string }>) {
-    const key = keyForPath(route.path);
+    // Nested routes keep their full path as the key. Keying on the first
+    // segment made "/products/solar" overwrite "/products", so the catalogue
+    // page shipped the solar category's title.
+    const key = route.path === '/' ? 'home' : route.path.replace(/^\/+/, '');
     out[key] = {
       title: route.title,
       description: route.description,
       keywords: KEYWORDS[key] ?? '',
       canonical: SITE_ORIGIN + (route.path === '/' ? '/' : route.path),
       ogImage: OG_BY_KEY[key] ?? DEFAULT_OG_IMAGE,
+    };
+  }
+  // Guide detail pages: metadata comes from shared/guides.json, the same file
+  // the guide component renders, so the head and the body cannot disagree.
+  for (const guide of guidesMeta as Array<{ slug: string; metaTitle: string; description: string }>) {
+    out[`guides/${guide.slug}`] = {
+      title: guide.metaTitle,
+      description: guide.description,
+      keywords: KEYWORDS.guides,
+      canonical: `${SITE_ORIGIN}/guides/${guide.slug}`,
+      ogImage: OG_BY_KEY.guides,
     };
   }
   // Pages that exist but are intentionally out of the sitemap.
@@ -145,18 +183,29 @@ export function updatePageMeta(key: string) {
 export function applyRouteSeo(pathname: string) {
   const clean = normalizePath(pathname);
 
+  // The site graph describes the site, not the route, so it is refreshed on
+  // every navigation and never removed by the cleanup below.
+  injectSiteGraph();
   cleanupStaleSchemas(clean);
 
-  // Product detail pages own their own title/description/schema.
-  if (/^\/products\/[^/]+$/.test(clean)) {
+  // Nested keys first: "/products/solar" must resolve to its own metadata, not
+  // to the catalogue's. Product detail pages have no entry at all and manage
+  // their own head from the product record.
+  const fullKey = clean === '/' ? 'home' : clean.replace(/^\/+/, '');
+  if (/^\/products\/[^/]+$/.test(clean) && !pageMetadata[fullKey]) {
     updateCanonicalLink(SITE_ORIGIN + clean);
     return;
   }
 
-  const key = keyForPath(clean);
+  const key = pageMetadata[fullKey] ? fullKey : keyForPath(clean);
 
   if (pageMetadata[key] && key !== 'admin') {
     updatePageMeta(key);
+    // BreadcrumbList for every static page; product pages build a three-level
+    // trail themselves, so they are skipped here.
+    if (clean !== '/' && NAV_LABEL[key]) {
+      addBreadcrumbSchema([{ name: 'Home', path: '/' }, { name: NAV_LABEL[key] }]);
+    }
     return;
   }
 
@@ -197,15 +246,25 @@ function updateCanonicalLink(href: string) {
 }
 
 /**
- * Product detail meta. Titles are kept short enough to survive SERP truncation:
- * "Product name | HousePlus" rather than appending the full legal entity name.
+ * Product detail meta.
+ *
+ * `title` is the English, search-optimised headline from products.data.json so
+ * the hydrated page and the prerendered HTML agree even when the visitor is
+ * browsing in another language; `name` stays localised for the image alt text.
  */
-export function updateProductMeta(product: { name: string; description: string; image?: string; ogImage?: string }) {
-  const title = `${product.name} | HousePlus`;
+export function updateProductMeta(product: {
+  name: string;
+  title?: string;
+  description: string;
+  image?: string;
+  ogImage?: string;
+}) {
+  const title = product.title || `${product.name} | HousePlus`;
   const image = SITE_ORIGIN + (product.ogImage || DEFAULT_OG_IMAGE);
   const productUrl = SITE_ORIGIN + normalizePath(window.location.pathname) + '/';
 
   document.title = title;
+  updateMetaTag('name', 'robots', 'index, follow');
   updateMetaTag('name', 'description', product.description);
   updateMetaTag('property', 'og:type', 'product');
   updateMetaTag('property', 'og:title', title);
@@ -213,13 +272,14 @@ export function updateProductMeta(product: { name: string; description: string; 
   updateMetaTag('property', 'og:image', image);
   updateMetaTag('property', 'og:image:width', '1200');
   updateMetaTag('property', 'og:image:height', '630');
-  updateMetaTag('property', 'og:image:alt', title);
+  updateMetaTag('property', 'og:image:alt', product.name);
   updateMetaTag('property', 'og:url', productUrl);
   updateMetaTag('name', 'twitter:title', title);
   updateMetaTag('name', 'twitter:description', product.description);
   updateMetaTag('name', 'twitter:image', image);
-  updateMetaTag('name', 'twitter:image:alt', title);
+  updateMetaTag('name', 'twitter:image:alt', product.name);
   updateMetaTag('name', 'twitter:url', productUrl);
+  updateCanonicalLink(productUrl);
 }
 
 /**
@@ -257,20 +317,20 @@ export function cleanupStaleSchemas(pathname: string) {
 }
 
 /**
- * Product schema. `offers` is emitted even without a published price, because
- * an Offer with availability (but no price) is what makes a page eligible for
- * product rich results — the previous version omitted `offers` entirely, so
- * Google had nothing to show.
+ * Product schema.
+ *
+ * No `offers` block: Google requires `offers.price` for merchant listings, and
+ * publishing an Offer without a price produced a Search Console error for no
+ * benefit. The catalogue has no public prices, so the node stays a plain
+ * Product — valid, and still the shape AI answer engines read for specs.
  */
 export function generateProductSchema(product: {
   name: string;
   description: string;
   sku?: string;
-  price?: number;
   image?: string;
-  rating?: number;
-  reviewCount?: number;
-  availability?: 'InStock' | 'OutOfStock' | 'PreOrder';
+  category?: string;
+  specs?: Array<{ key: string; value: string }>;
   url?: string;
 }) {
   const productUrl = product.url || `${SITE_ORIGIN}${normalizePath(window.location.pathname)}/`;
@@ -278,57 +338,40 @@ export function generateProductSchema(product: {
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
+    '@id': `${productUrl}#product`,
     name: product.name,
     description: product.description,
     image: product.image ? SITE_ORIGIN + product.image : SITE_ORIGIN + DEFAULT_OG_IMAGE,
     sku: product.sku,
     url: productUrl,
-    brand: { '@type': 'Brand', name: 'HousePlus Group Nigerian Factory' },
-    manufacturer: { '@type': 'Organization', name: 'HousePlus Group Nigerian Factory' },
-    offers: {
-      '@type': 'Offer',
-      url: productUrl,
-      priceCurrency: 'USD',
-      availability: `https://schema.org/${product.availability || 'InStock'}`,
-      itemCondition: 'https://schema.org/NewCondition',
-      seller: { '@type': 'Organization', name: 'HousePlus Group Nigerian Factory' },
-      // A price is only claimed when one is actually published.
-      ...(product.price ? { price: product.price.toString() } : {}),
-    },
-    ...(product.rating
+    ...(product.category ? { category: product.category } : {}),
+    brand: { '@type': 'Brand', name: COMPANY.name },
+    manufacturer: { '@id': `${SITE_ORIGIN}/#organization` },
+    ...(product.specs?.length
       ? {
-          aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue: product.rating.toString(),
-            reviewCount: (product.reviewCount || 1).toString(),
-          },
+          additionalProperty: product.specs.map((spec) => ({
+            '@type': 'PropertyValue',
+            name: spec.key,
+            value: spec.value,
+          })),
         }
       : {}),
   };
 }
 
-/** Article schema for news posts. */
-export function generateArticleSchema(article: {
-  title: string;
-  description: string;
-  image?: string;
-  author?: string;
-  datePublished: string;
-  dateModified?: string;
-}) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'NewsArticle',
-    headline: article.title,
-    description: article.description,
-    image: article.image ? SITE_ORIGIN + article.image : SITE_ORIGIN + DEFAULT_OG_IMAGE,
-    author: { '@type': 'Organization', name: article.author || 'HousePlus Group' },
-    datePublished: article.datePublished,
-    dateModified: article.dateModified || article.datePublished,
-    publisher: {
-      '@type': 'Organization',
-      name: 'HousePlus Group Nigerian Factory',
-      logo: { '@type': 'ImageObject', url: SITE_ORIGIN + DEFAULT_OG_IMAGE },
+/**
+ * BreadcrumbList for the current page.
+ *
+ * `trail` is the visible breadcrumb: Home first, current page last. The last
+ * entry has no path, so it resolves to the page itself.
+ */
+export function addBreadcrumbSchema(trail: Array<{ name: string; path?: string }>, key = 'breadcrumb') {
+  const pagePath = normalizePath(window.location.pathname);
+  addPageSchema(
+    {
+      '@context': 'https://schema.org',
+      ...breadcrumbNode(pagePath, trail),
     },
-  };
+    key
+  );
 }

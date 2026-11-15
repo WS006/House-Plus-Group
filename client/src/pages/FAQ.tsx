@@ -1,37 +1,53 @@
 // ============================================================
 // House Plus Group - FAQ Page
+//
+// Content lives in shared/faq.json so the same text powers the visible page,
+// the FAQPage schema and llms.txt. Questions render as <h3> inside a grouped
+// <h2> section: an accordion whose questions are <button> text is invisible to
+// the extraction that answer engines do, and a heading that is not on the page
+// makes the FAQPage markup invalid.
 // ============================================================
 
 import Breadcrumb from '@/components/Breadcrumb';
 import InquiryModal from '@/components/InquiryModal';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { AnimatePresence, motion } from 'framer-motion';
-import { ChevronDown, MessageCircle } from 'lucide-react';
+import faqGroups from '@shared/faq.json';
+import {
+  CheckCircle,
+  ChevronDown,
+  MessageCircle,
+} from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { generateFAQPageSchema, injectSchema, clearSchemaScripts } from '@/lib/schema';
 
+interface FaqItem {
+  q: string;
+  a: string;
+}
+
+interface FaqGroup {
+  group: string;
+  id: string;
+  faqs: FaqItem[];
+}
+
+const GROUPS = faqGroups as FaqGroup[];
+
+/** Flat list for the schema; must match what is rendered below. */
+const ALL_FAQS = GROUPS.flatMap((group) => group.faqs);
+
 export default function FAQ() {
   const { t } = useLanguage();
-  const [openIdx, setOpenIdx] = useState<number | null>(0);
+  const [openId, setOpenId] = useState<string | null>('price-0');
   const [inquiryOpen, setInquiryOpen] = useState(false);
-
-  const FAQS = [
-    { q: t('faq_q1'), a: t('faq_a1') },
-    { q: t('faq_q2'), a: t('faq_a2') },
-    { q: t('faq_q3'), a: t('faq_a3') },
-    { q: t('faq_q4'), a: t('faq_a4') },
-    { q: t('faq_q5'), a: t('faq_a5') },
-    { q: t('faq_q6'), a: t('faq_a6') },
-    { q: t('faq_q7'), a: t('faq_a7') },
-    { q: t('faq_q8'), a: t('faq_a8') },
-  ];
 
   useEffect(() => {
     clearSchemaScripts();
-    const faqData = FAQS.map(faq => ({ question: faq.q, answer: faq.a }));
-    const faqSchema = generateFAQPageSchema(faqData);
-    injectSchema(faqSchema, 'faq');
-  }, [FAQS]);
+    injectSchema(
+      generateFAQPageSchema(ALL_FAQS.map((faq) => ({ question: faq.q, answer: faq.a }))),
+      'faq'
+    );
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -39,59 +55,76 @@ export default function FAQ() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Breadcrumb items={[{ label: t('nav_faq') }]} />
           <h1 className="text-3xl sm:text-4xl font-black text-white mt-4 mb-2">{t('faq_title')}</h1>
-          <p className="text-white/60">{t('faq_subtitle')}</p>
+          <p className="text-white/60">
+            {ALL_FAQS.length} answers on pricing, minimum order quantities, shipping, warranty and
+            solar sizing.
+          </p>
         </div>
       </div>
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="space-y-3">
-          {FAQS.map((faq, i) => (
-            <div key={i} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-              <button
-                onClick={() => setOpenIdx(openIdx === i ? null : i)}
-                className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-gray-50 transition-colors"
-              >
-                <span className="font-semibold text-[#0f2d5e] pr-4">{faq.q}</span>
-                <motion.div
-                  animate={{ rotate: openIdx === i ? 180 : 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="flex-shrink-0"
-                >
-                  <ChevronDown className="w-5 h-5 text-[#f59e0b]" />
-                </motion.div>
-              </button>
-              <AnimatePresence>
-                {openIdx === i && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-6 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
+        {GROUPS.map((group) => (
+          <section key={group.id} className="mb-10">
+            <h2 className="text-lg font-black text-[#0f2d5e] mb-4">{group.group}</h2>
+            <div className="space-y-3">
+              {group.faqs.map((faq, i) => {
+                const id = `${group.id}-${i}`;
+                const open = openId === id;
+                return (
+                  <div key={id} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                    <h3>
+                      <button
+                        onClick={() => setOpenId(open ? null : id)}
+                        aria-expanded={open}
+                        aria-controls={`${id}-answer`}
+                        className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0f2d5e]"
+                      >
+                        <span className="font-semibold text-[#0f2d5e] pr-4">{faq.q}</span>
+                        <ChevronDown
+                          className={`w-5 h-5 text-[#b45309] flex-shrink-0 transition-transform ${open ? 'rotate-180' : ''}`}
+                          aria-hidden="true"
+                        />
+                      </button>
+                    </h3>
+                    {/* The answer is always in the HTML; collapsing only hides it
+                        visually, so crawlers and answer engines still read it. */}
+                    <div
+                      id={`${id}-answer`}
+                      hidden={!open}
+                      className="px-6 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4"
+                    >
                       {faq.a}
                     </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                  </div>
+                );
+              })}
             </div>
-          ))}
-        </div>
+          </section>
+        ))}
 
         {/* Still have questions */}
         <div className="mt-12 bg-[#0f2d5e] rounded-2xl p-8 text-center">
           <div className="w-14 h-14 bg-[#f59e0b]/20 text-[#f59e0b] rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <MessageCircle className="w-7 h-7" />
+            <MessageCircle className="w-7 h-7" aria-hidden="true" />
           </div>
-          <h3 className="text-white font-bold text-xl mb-3">Still Have Questions?</h3>
-          <p className="text-white/60 mb-6">Our team is ready to help you with any questions about our products and services.</p>
+          <h2 className="text-white font-bold text-xl mb-3">Still Have Questions?</h2>
+          <p className="text-white/60 mb-6">
+            Our team answers enquiries within one business day, in English or Chinese.
+          </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <button onClick={() => setInquiryOpen(true)} className="bg-[#f59e0b] hover:bg-[#d97706] text-[#0f2d5e] font-bold px-6 py-3 rounded-xl transition-colors">
+            <button
+              onClick={() => setInquiryOpen(true)}
+              className="bg-[#f59e0b] hover:bg-[#d97706] text-[#0f2d5e] font-bold px-6 py-3 rounded-xl transition-colors"
+            >
               Send Inquiry
             </button>
-            <a href="https://wa.me/2349078080738" target="_blank" rel="noopener noreferrer"
-              className="bg-[#25D366] hover:bg-[#1da851] text-white font-bold px-6 py-3 rounded-xl transition-colors">
+            <a
+              href="https://wa.me/2349078080738"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#25D366] hover:bg-[#1da851] text-white font-bold px-6 py-3 rounded-xl transition-colors inline-flex items-center gap-2"
+            >
+              <CheckCircle className="w-4 h-4" aria-hidden="true" />
               WhatsApp Us
             </a>
           </div>

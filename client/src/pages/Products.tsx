@@ -13,7 +13,8 @@ import { motion } from 'framer-motion';
 import { ChevronRight, Heart, Search, SlidersHorizontal, X } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useSearch } from 'wouter';
-import { injectSchema, clearSchemaScripts, generateWebPageSchema, generateOrganizationSchema } from '@/lib/schema';
+import { injectSchema, clearSchemaScripts, generateWebPageSchema } from '@/lib/schema';
+import { pageMetadata } from '@/lib/seo';
 
 type Category = 'all' | 'solar' | 'appliances' | '3c';
 
@@ -41,12 +42,17 @@ export default function Products() {
   // Inject Schema.org structured data
   useEffect(() => {
     clearSchemaScripts();
-    injectSchema(generateWebPageSchema({
-      pageTitle: 'Products - House Plus Group',
-      pageDescription: 'Browse our complete catalog of solar panels, inverters, lithium batteries, home appliances, and 3C electronics. Factory direct pricing with OEM/ODM options.',
-      pageUrl: 'https://www.houseplus.com.ng/products'
-    }), 'webpage');
-    // Organization markup is provided site-wide by index.html.
+    // Shared with the prerenderer via shared/routes.meta.json.
+    const meta = pageMetadata.products;
+    injectSchema(
+      generateWebPageSchema({
+        pageTitle: meta.title,
+        pageDescription: meta.description,
+        pageUrl: meta.canonical || 'https://www.houseplus.com.ng/products/',
+      }),
+      'webpage'
+    );
+    // The site-wide Organization + WebSite graph comes from applyRouteSeo().
   }, []);
 
   const allProducts = productsStore.getAll();
@@ -151,7 +157,7 @@ export default function Products() {
         <div className="flex items-center justify-between mb-6">
           <p className="text-gray-500 text-sm">
             Showing <span className="font-semibold text-[#0f2d5e]">{filtered.length}</span> products
-            {searchQuery && <span> for "<span className="text-[#f59e0b]">{searchQuery}</span>"</span>}
+            {searchQuery && <span> for "<span className="text-[#b45309]">{searchQuery}</span>"</span>}
           </p>
         </div>
 
@@ -192,7 +198,7 @@ export default function Products() {
                     sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) 50vw, 33vw"
                   />
                   <div className="absolute top-3 left-3 flex gap-1.5">
-                    {product.isNew && <span className="bg-[#10b981] text-white text-xs font-bold px-2 py-0.5 rounded-full">NEW</span>}
+                    {product.isNew && <span className="bg-[#047857] text-white text-xs font-bold px-2 py-0.5 rounded-full">NEW</span>}
                     {product.isHot && <span className="bg-[#f59e0b] text-[#0f2d5e] text-xs font-bold px-2 py-0.5 rounded-full">HOT</span>}
                   </div>
                   <button
@@ -216,7 +222,7 @@ export default function Products() {
                       {product.category === 'solar' ? 'Solar' : product.category === 'appliances' ? 'Appliances' : '3C'}
                     </span>
                   </div>
-                  <h3 className="font-bold text-[#0f2d5e] text-sm mt-2 mb-1.5 line-clamp-2 group-hover:text-[#f59e0b] transition-colors">
+                  <h3 className="font-bold text-[#0f2d5e] text-sm mt-2 mb-1.5 line-clamp-2 group-hover:text-[#b45309] transition-colors">
                     {getProductName(product)}
                   </h3>
                   <div className="flex items-center justify-between text-xs text-gray-400 mb-3">

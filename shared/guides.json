@@ -1,0 +1,234 @@
+[
+  {
+    "slug": "solar-panel-price-nigeria",
+    "title": "How much do solar panels cost in Nigeria?",
+    "metaTitle": "Solar Panel Prices in Nigeria — Buyer's Guide | HousePlus",
+    "description": "What a solar panel system costs in Nigeria: how prices are built up, why no honest supplier publishes a fixed list, and how to compare quotations line by line.",
+    "answer": "There is no fixed price list for solar panels in Nigeria, and a supplier who publishes one is quoting a number that is already out of date: panel and battery costs track the naira exchange rate and sea freight, both of which move weekly. What can be stated honestly is the structure of a quotation — panels, inverter, batteries, mounting, cabling, protection and installation labour — and the process for getting a firm number.",
+    "sections": [
+      {
+        "heading": "What a quotation actually contains",
+        "paragraphs": [
+          "A complete off-grid or hybrid quotation has six cost blocks, and knowing them lets you compare two suppliers line by line instead of comparing totals:"
+        ],
+        "list": [
+          "Panels — priced per watt; the array is sized by your daily kilowatt-hours, not by the number of rooms",
+          "Inverter — sized to the surge load of pumps and compressors, not the average load",
+          "Batteries — the largest single cost; LiFePO4 costs more up front and far less over five years",
+          "Mounting and cabling — roof type and the distance from array to inverter change this materially",
+          "Protection — earthing, surge arrestors and DC/AC breakers; the parts that decide whether lightning ends the system",
+          "Installation labour — usually quoted separately by your installer, not by the equipment supplier"
+        ]
+      },
+      {
+        "heading": "Why HousePlus does not publish a price list",
+        "paragraphs": [
+          "Prices are set by quotation for two reasons. First, the exchange rate: a panel bought in dollars and sold in naira needs repricing every time the rate moves, and a stale list price either loses money or overcharges. Second, freight: sea freight rates swing with demand, and a container is a material part of the landed cost of a 400W panel.",
+          "A quotation from us states the unit price, the total, the minimum order quantity, the delivery window and the payment terms in writing. Send the models, quantities and destination city through the contact page and the quotation comes back within one business day."
+        ]
+      },
+      {
+        "heading": "What a portable power station changes",
+        "paragraphs": [
+          "Not every buyer needs a wired installation. A portable power station — a battery, inverter and charge controller in one box — removes the mounting, cabling, protection and labour blocks from the quotation entirely, which is why it is the cheapest way to get reliable backup for lights, fans, phones, laptops and a television. Where the load is small and the wiring is the obstacle, the power station is the whole system.",
+          "It is not a substitute for a wired system when you need an air conditioner, a pumping machine or a whole house. Compare the two on load size and runtime, then choose; our guide to sizing a system covers the arithmetic."
+        ]
+      },
+      {
+        "heading": "How to compare two quotations",
+        "paragraphs": [
+          "Compare the same five things on both sides, and the cheaper-looking quote often turns out to be the expensive one:"
+        ],
+        "list": [
+          "Battery chemistry and cycle life — lead-acid at half the price needs replacing in two to three years",
+          "Inverter rating at surge — 5kW nominal says nothing about whether it starts a 1.5hp pump",
+          "Panel tolerance and grade — \"400W\" from a bin-grade cell underperforms from year one",
+          "What is excluded — no protection gear in the quote means paying for it later at a worse price",
+          "Warranty terms in writing — who repairs, at what cost, and for how long"
+        ]
+      }
+    ],
+    "related": [
+      { "label": "Portable power stations and the full solar line", "path": "/products/solar" },
+      { "label": "How to size a solar system", "path": "/guides/how-to-size-a-solar-system" },
+      { "label": "LiFePO4 vs lead-acid batteries", "path": "/guides/lifepo4-vs-lead-acid-battery" }
+    ]
+  },
+  {
+    "slug": "how-to-size-a-solar-system",
+    "title": "How many solar panels does a house in Nigeria need?",
+    "metaTitle": "How to Size a Solar System for a Nigerian Home | HousePlus",
+    "description": "A step-by-step method for sizing a home solar system in Nigeria: count your kilowatt-hours, size the battery bank for rainy-season autonomy, then match the inverter and the panel array to it.",
+    "answer": "A Nigerian home needs as many panels as its daily kilowatt-hours require — typically 6 to 16 panels of 400W for a household without air conditioning, and several times that with it. The number comes from an energy audit, not from the size of the house: two homes with the same floor area can differ by a factor of five.",
+    "sections": [
+      {
+        "heading": "Step 1 — Count your daily kilowatt-hours",
+        "paragraphs": [
+          "List every appliance, its wattage and the hours it runs per day, then multiply and add. The table below uses realistic Nigerian values; adjust to your own loads."
+        ],
+        "table": {
+          "headers": ["Appliance", "Typical watts", "Hours/day", "Wh/day"],
+          "rows": [
+            ["LED lights × 8", "8 W each", "5", "320"],
+            ["Ceiling fans × 3", "60 W each", "8", "1,440"],
+            ["TV + decoder", "120 W", "5", "600"],
+            ["Fridge (inverter type)", "100 W avg", "24", "2,400"],
+            ["Laptops/phones", "65 W", "6", "390"],
+            ["Water pump (1/2 hp)", "370 W", "0.5", "185"],
+            ["Total (no AC)", "—", "—", "≈ 5.3 kWh/day"]
+          ]
+        },
+        "list": [
+          "Adding a 1.5hp air conditioner for six night hours adds roughly 5–6 kWh/day — it can double the whole system. That is why the audit comes first."
+        ]
+      },
+      {
+        "heading": "Step 2 — Size the battery bank for cloudy days",
+        "paragraphs": [
+          "Divide your daily kWh by the usable depth of discharge, then multiply by the days of autonomy you want. LiFePO4 delivers about 80–90% of rated capacity; plan one full cloudy day as a minimum, two in the rainy season.",
+          "Example: the 5.3 kWh load above, two days of autonomy, 85% usable depth: 5.3 × 2 ÷ 0.85 ≈ 12.5 kWh of battery. On a 48V bus that is about 260Ah — e.g. three 48V 100Ah LiFePO4 batteries."
+        ]
+      },
+      {
+        "heading": "Step 3 — Match the inverter to the surge",
+        "paragraphs": [
+          "Add up everything that can run at once, then check what starts at the same time. Fridge and pump compressors draw two to three times rated power for a second at startup. A 5kW hybrid inverter handles a typical no-AC household comfortably; with air conditioning, run the numbers per unit before choosing."
+        ]
+      },
+      {
+        "heading": "Step 4 — Size the panel array to refill the bank",
+        "paragraphs": [
+          "Nigerian peak sun averages roughly 4–4.5 equivalent hours per day year-round, less in the rainy season. The array must refill the battery bank on an average day, not a perfect one.",
+          "Example: to replace 5.3 kWh at 80% system efficiency needs about 6.6 kWh of generation; at 4 sun-hours that is a 1.7kW array — five 400W panels, or seven if you want rainy-season margin on top of the two-day battery."
+        ]
+      },
+      {
+        "heading": "When a portable power station is enough",
+        "paragraphs": [
+          "If the audit comes out at 1–1.5 kWh/day for a short list of small loads — lights, fans, phones, a laptop, a TV — a 512Wh portable power station covers the evening and recharges from the sun or the wall, with no installation at all. Once the list includes a fridge running 24 hours, a pump or air conditioning, you are into the wired system described above."
+        ]
+      },
+      {
+        "heading": "Common mistakes",
+        "paragraphs": ["The same four errors cause most underperforming home systems:"],
+        "list": [
+          "Sizing panels to the roof instead of the load",
+          "Buying the battery last with what is left of the budget — it is the component that actually carries the house through the night",
+          "Mixing old and new batteries in one bank — the weak cell drags the whole string down",
+          "Skipping surge protection to save money, then losing the inverter to the first harmattan storm"
+        ]
+      }
+    ],
+    "related": [
+      { "label": "500W portable power station", "path": "/products/portable-power-station-500w" },
+      { "label": "5KW hybrid solar inverter", "path": "/products/solar-inverter-5kw" },
+      { "label": "100Ah LiFePO4 battery", "path": "/products/lithium-battery-100ah" }
+    ]
+  },
+  {
+    "slug": "inverter-vs-generator-nigeria",
+    "title": "Inverter system or generator — which costs less in Nigeria?",
+    "metaTitle": "Inverter vs Generator Running Costs in Nigeria | HousePlus",
+    "description": "Comparing a battery-inverter system against a petrol generator in Nigeria: fuel mathematics, noise and maintenance, where each option wins, and why many homes end up with a hybrid of both.",
+    "answer": "For daily household backup, an inverter system with batteries costs far less per kilowatt-hour than a petrol generator — generator fuel alone typically exceeds the amortised cost of a properly sized solar-plus-storage system within two to three years. Generators still win for high-power, occasional loads: welding, borehole pumping several kilowatts, or a workshop of machines running all day.",
+    "sections": [
+      {
+        "heading": "The fuel arithmetic",
+        "paragraphs": [
+          "A typical 2.5–3kVA petrol generator consumes roughly 1.5–2.5 litres per hour at moderate load. Run it five hours a day and it burns 8–12 litres daily — before oil changes, spark plugs and the inevitable repairs. An inverter system, once installed, consumes nothing to run; its costs are the batteries you eventually replace and the panels that never stop working.",
+          "The exact crossover point depends on the fuel price and how many hours a day the grid is absent, which is why we do not publish a fixed payback figure. What is constant is the direction: the more the generator runs, the faster the inverter system pays for itself."
+        ]
+      },
+      {
+        "heading": "Side by side",
+        "paragraphs": ["The comparison that matters, item by item:"],
+        "table": {
+          "headers": ["Factor", "Petrol generator", "Inverter + battery (+ solar)"],
+          "rows": [
+            ["Running cost", "Fuel + oil + parts, daily", "Near zero; battery replacement after years"],
+            ["Noise", "60–75 dB — audible to the street", "Silent"],
+            ["Fumes", "Exhaust; cannot run indoors", "None"],
+            ["Start-up", "Pull cord or starter battery", "Automatic, milliseconds"],
+            ["High-power loads", "Handles any load within rating", "Limited by inverter rating and battery current"],
+            ["Runtime", "As long as fuel lasts", "As long as the battery bank is sized for"],
+            ["Lifetime", "3–5 years of hard use", "Panels 20+ years; batteries 5–10 (LiFePO4)"]
+          ]
+        }
+      },
+      {
+        "heading": "The cheapest way to find out",
+        "paragraphs": [
+          "If you are not sure whether your load needs a wired system at all, start with a portable power station. It is an inverter and a LiFePO4 battery in one box: run your real evening loads from it for a week and you will know your kilowatt-hours to the nearest tenth — the number any quotation depends on — before spending on a whole-house installation."
+        ]
+      },
+      {
+        "heading": "Where the generator still wins",
+        "paragraphs": [
+          "A generator is the right tool when the load is large and intermittent. A 5kW inverter and the battery bank to feed it for hours costs more than a 5kVA generator by a wide margin — if you only need that power two hours a week, the generator is cheaper and simpler. Workshops, event power and borehole pumping without solar all fall in this camp."
+        ]
+      },
+      {
+        "heading": "The hybrid answer most homes settle on",
+        "paragraphs": [
+          "In practice, most Nigerian homes that can afford it converge on the same setup: an inverter system with LiFePO4 storage carries lights, fans, electronics, the fridge and Wi-Fi through every outage silently and at no running cost, and a small generator is reserved for the rare heavy or multi-day load. The hybrid 5kW inverter in our catalogue is built for exactly this pattern — grid, solar and generator input on one unit."
+        ]
+      }
+    ],
+    "related": [
+      { "label": "500W portable power station", "path": "/products/portable-power-station-500w" },
+      { "label": "5KW hybrid solar inverter", "path": "/products/solar-inverter-5kw" },
+      { "label": "How to size a solar system", "path": "/guides/how-to-size-a-solar-system" }
+    ]
+  },
+  {
+    "slug": "lifepo4-vs-lead-acid-battery",
+    "title": "LiFePO4 or lead-acid battery — which should you buy?",
+    "metaTitle": "LiFePO4 vs Lead-Acid Batteries for Nigerian Solar | HousePlus",
+    "description": "Lithium LiFePO4 versus lead-acid for solar storage in Nigeria: cycle life, usable capacity, heat tolerance, total cost over five years, and the cases where lead-acid is still the right answer.",
+    "answer": "For a solar system that cycles daily, LiFePO4 is the cheaper battery over its life despite costing more up front: it delivers roughly 80–90% of rated capacity for 4000+ cycles, where a lead-acid battery delivers about 50% of rated capacity for 500–800 cycles before replacement. Lead-acid remains reasonable for standby use — charged once and rarely cycled — and for the tightest budgets buying their first system.",
+    "sections": [
+      {
+        "heading": "The numbers that decide it",
+        "paragraphs": ["The specifications that matter for daily-cycling storage:"],
+        "table": {
+          "headers": ["Property", "LiFePO4 (our 100Ah 48V)", "Lead-acid (AGM/gel, comparable)"],
+          "rows": [
+            ["Usable capacity", "80–90% of rating", "≈ 50% of rating"],
+            ["Cycle life", "4000+ cycles", "500–800 cycles"],
+            ["Round-trip efficiency", "≈ 95–98%", "≈ 80–85%"],
+            ["Weight (per kWh)", "Roughly one third", "Heavy — often needs a stand"],
+            ["Hot-weather life", "Tolerant of 35–45°C ambient", "Life halves for every ~10°C above 25°C"],
+            ["Maintenance", "None; BMS protects the cells", "Ventilation; terminal checks"],
+            ["Cost per usable kWh-cycle", "Lower over system life", "Lower purchase price only"]
+          ]
+        }
+      },
+      {
+        "heading": "What that means in naira over five years",
+        "paragraphs": [
+          "Do the comparison per usable kilowatt-hour delivered, not per naira on the invoice. A lead-acid bank priced at half a LiFePO4 bank must be replaced roughly four times in the period a LiFePO4 bank lasts once — and each replacement carries labour and downtime on top of the battery price. In a country where ambient temperatures in the dry season sit above 35°C, the lead-acid calendar life shortens further; lithium chemistry is largely indifferent to it.",
+          "This is why our storage catalogue is LiFePO4: the 100Ah 48V unit with a built-in battery management system is the battery we would put in our own homes, and it is the same chemistry inside our portable power stations."
+        ]
+      },
+      {
+        "heading": "When lead-acid is still the right call",
+        "paragraphs": ["Two situations justify lead-acid honestly:"],
+        "list": [
+          "Standby duty — a battery that sits charged for months and discharges rarely (some office UPS setups). Calendar life, not cycle life, governs, and lead-acid is adequate.",
+          "A first system on the tightest possible budget — buying a working lead-acid system now and a lithium bank in two years can be the only sequence that gets power at all. Price it with open eyes: you are renting the cheap option."
+        ]
+      },
+      {
+        "heading": "Sizing rules that differ between chemistries",
+        "paragraphs": [
+          "Because lead-acid only delivers half its rating, a lead-acid bank must be roughly twice the amp-hour rating of a LiFePO4 bank for the same usable energy. If a quote sizes them identically, one of the two is wrong. The other trap is mixing: never combine old and new batteries, or the two chemistries, in one bank — the BMS and the lead-acid charge profile are incompatible, and the weak battery drags the whole string down."
+        ]
+      }
+    ],
+    "related": [
+      { "label": "100Ah LiFePO4 lithium battery", "path": "/products/lithium-battery-100ah" },
+      { "label": "Portable power stations and the full solar line", "path": "/products/solar" },
+      { "label": "How to size a solar system", "path": "/guides/how-to-size-a-solar-system" }
+    ]
+  }
+]

@@ -111,7 +111,7 @@ export default function Factory() {
             {CAPABILITIES.map((cap, i) => (
               <FadeIn key={i} delay={i * 0.1}>
                 <div className="bg-gray-50 rounded-2xl p-7 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
-                  <div className="w-12 h-12 bg-[#f59e0b]/20 text-[#f59e0b] rounded-xl flex items-center justify-center mb-5 group-hover:bg-[#f59e0b] group-hover:text-white transition-all">
+                  <div className="w-12 h-12 bg-[#f59e0b]/20 text-[#b45309] rounded-xl flex items-center justify-center mb-5 group-hover:bg-[#b45309] group-hover:text-white transition-all">
                     {cap.icon}
                   </div>
                   <h3 className="text-lg font-bold text-[#0f2d5e] mb-3">{cap.title}</h3>
@@ -135,7 +135,7 @@ export default function Factory() {
             ].map((stat, i) => (
               <FadeIn key={i} delay={i * 0.1}>
                 <div>
-                  <div className="text-3xl sm:text-4xl font-black text-[#f59e0b] mb-2">{stat.value}</div>
+                  <div className="text-3xl sm:text-4xl font-black text-[#b45309] mb-2">{stat.value}</div>
                   <div className="text-white/60 text-sm">{stat.label}</div>
                 </div>
               </FadeIn>
@@ -197,7 +197,7 @@ export default function Factory() {
               >
                 <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-5 py-4 font-semibold text-[#0f2d5e] hover:bg-gray-50 [&::-webkit-details-marker]:hidden">
                   <span className="text-base font-semibold text-[#0f2d5e]">{item.q}</span>
-                  <ChevronDown className="w-5 h-5 flex-shrink-0 text-[#f59e0b] transition-transform group-open:rotate-180" />
+                  <ChevronDown className="w-5 h-5 flex-shrink-0 text-[#b45309] transition-transform group-open:rotate-180" />
                 </summary>
                 <div className="px-5 pb-5 -mt-1 text-gray-600 leading-relaxed text-sm">{item.a}</div>
               </details>

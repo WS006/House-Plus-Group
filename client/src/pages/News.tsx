@@ -9,7 +9,8 @@ import { getImageSize } from '@/lib/imageManifest';
 import { Calendar, ChevronRight, Tag } from 'lucide-react';
 import { Link } from 'wouter';
 import { useEffect } from 'react';
-import { generateArticleSchema, injectSchema, clearSchemaScripts } from '@/lib/schema';
+import { clearSchemaScripts, injectSchema } from '@/lib/schema';
+import { addBreadcrumbSchema } from '@/lib/seo';
 
 const NEWS_ARTICLES = [
   {
@@ -75,17 +76,29 @@ export default function News() {
 
   useEffect(() => {
     clearSchemaScripts();
-    // 为最新的新闻文章添加 NewsArticle Schema
-    const latestArticle = NEWS_ARTICLES[0];
-    const articleSchema = generateArticleSchema({
-      pageTitle: latestArticle.title,
-      pageDescription: latestArticle.excerpt,
-      pageUrl: `https://www.houseplus.com.ng/news/${latestArticle.id}`,
-      imageUrl: latestArticle.image,
-      articlePublishedDate: new Date(latestArticle.date).toISOString(),
-      articleAuthor: 'House Plus Group'
-    });
-    injectSchema(articleSchema, 'article');
+    // CollectionPage, not NewsArticle: these announcements have no individual
+    // detail pages, so an Article node whose url 404s would be a broken claim.
+    // The dates below are the real publication dates from the list above.
+    injectSchema(
+      {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: 'News & Updates — HousePlus Group Nigeria',
+        description:
+          'Product launches, company milestones and solar market updates from HousePlus Group Nigerian Factory.',
+        mainEntity: {
+          '@type': 'ItemList',
+          itemListElement: NEWS_ARTICLES.map((article, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: article.title,
+            description: article.excerpt,
+          })),
+        },
+      },
+      'article'
+    );
+    addBreadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'News' }]);
   }, []);
 
   return (
@@ -123,7 +136,7 @@ export default function News() {
                   <Calendar className="w-3.5 h-3.5" /> {NEWS_ARTICLES[0].date}
                 </span>
               </div>
-              <h2 className="text-2xl font-black text-[#0f2d5e] mb-4 group-hover:text-[#f59e0b] transition-colors">{NEWS_ARTICLES[0].title}</h2>
+              <h2 className="text-2xl font-black text-[#0f2d5e] mb-4 group-hover:text-[#b45309] transition-colors">{NEWS_ARTICLES[0].title}</h2>
               <p className="text-gray-600 leading-relaxed mb-6">{NEWS_ARTICLES[0].excerpt}</p>
               <div className="flex flex-wrap gap-2 mb-6">
                 {NEWS_ARTICLES[0].tags.map(tag => (
@@ -132,7 +145,7 @@ export default function News() {
                   </span>
                 ))}
               </div>
-              <button className="inline-flex items-center gap-2 text-[#0f2d5e] font-semibold hover:text-[#f59e0b] transition-colors">
+              <button className="inline-flex items-center gap-2 text-[#0f2d5e] font-semibold hover:text-[#b45309] transition-colors">
                 {t('news_read_more')} <ChevronRight className="w-4 h-4" />
               </button>
             </div>
@@ -160,7 +173,7 @@ export default function News() {
                 <div className="flex items-center gap-1 text-gray-400 text-xs mb-3">
                   <Calendar className="w-3.5 h-3.5" /> {article.date}
                 </div>
-                <h3 className="font-bold text-[#0f2d5e] mb-3 line-clamp-2 group-hover:text-[#f59e0b] transition-colors">{article.title}</h3>
+                <h3 className="font-bold text-[#0f2d5e] mb-3 line-clamp-2 group-hover:text-[#b45309] transition-colors">{article.title}</h3>
                 <p className="text-gray-500 text-sm line-clamp-3 mb-4">{article.excerpt}</p>
                 <div className="flex flex-wrap gap-1.5">
                   {article.tags.slice(0, 2).map(tag => (
