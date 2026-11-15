@@ -24,3 +24,15 @@
 # Filenames are stable; binaries only change when the weight list changes.
 /fonts/*
   Cache-Control: public, max-age=2592000
+
+# Browsers keep favicons far longer than the HTTP cache says, and they live at
+# fixed paths, so a rebrand otherwise shows up days later (or never). Revalidate
+# every time — the payload is a few KB and the ETag makes it a 304.
+/favicon.ico
+  Cache-Control: public, max-age=0, must-revalidate
+
+/favicon.svg
+  Cache-Control: public, max-age=0, must-revalidate
+
+/apple-touch-icon.png
+  Cache-Control: public, max-age=0, must-revalidate
