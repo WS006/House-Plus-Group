@@ -3,14 +3,21 @@
 # Live project: houseplus-group-ng in the account that owns the houseplus.com.ng zone
 # (affca529f7b55b7eb2b3770c954bd36d). Custom domain www.houseplus.com.ng is attached there.
 #
-# Deployment is a Direct Upload of the pre-built docs/ directory:
+# Deployments come from the GitHub repo (WS006/House-Plus-Group, branch main) with
+#   build command:  exit 0
+#   output dir:     docs
+# so pushing publishes the pre-built docs/ directory as-is. Pages never runs
+# `npm run build`: the prerender step boots every route in headless Chromium,
+# which the build image does not have (prerender.mjs exits 1 rather than
+# publishing 24 blank pages). Build locally, commit docs/, then push.
+#
+# SKIP_DEPENDENCY_INSTALL=1 is set on the project for the same reason: the build
+# only copies files, and installing 300 MB of dependencies first is wasted work
+# (and the stale pnpm-lock.yaml made it fail outright).
+#
+# Direct upload still works for an emergency hotfix:
 #   CLOUDFLARE_API_TOKEN=... CLOUDFLARE_ACCOUNT_ID=affca529f7b55b7eb2b3770c954bd36d \
 #   npx wrangler pages deploy docs --project-name houseplus-group-ng --branch main
-#
-# The project intentionally does NOT connect to Git, and Pages never runs
-# `npm run build`: the prerender step boots each route in headless Chromium,
-# which CI runners do not have (prerender.mjs exits 1 rather than publishing
-# 24 blank pages). Build locally, then upload docs/.
 name = "houseplus-group-ng"
 pages_build_output_dir = "docs"
 compatibility_date = "2026-01-01"
