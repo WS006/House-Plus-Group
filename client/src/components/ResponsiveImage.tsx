@@ -27,9 +27,13 @@ interface ResponsiveImageProps {
 
 const WIDTHS = [480, 768, 1200, 1800];
 
-function variants(src: string) {
+function variants(src: string, sourceWidth: number) {
   const base = src.replace(/\.jpe?g$/i, '');
-  return WIDTHS.map((w) => ({ w, url: `${base}-${w}.webp` }));
+  // The build only emits a variant when it does not have to upscale, so a
+  // 1200px source has no -1800.webp. Advertising that width in the srcset
+  // makes a high-DPI browser pick a URL that 404s and the image disappears.
+  const usable = WIDTHS.filter((w) => w <= sourceWidth * 1.05);
+  return usable.map((w) => ({ w, url: `${base}-${w}.webp` }));
 }
 
 export default function ResponsiveImage({
@@ -42,13 +46,13 @@ export default function ResponsiveImage({
   sizes = '(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) 50vw, 33vw',
   pictureClassName = '',
 }: ResponsiveImageProps) {
-  const list = variants(src);
+  const list = variants(src, width);
   const srcSet = list.map((v) => `${v.url} ${v.w}w`).join(', ');
   const fallback = src.replace(/\.jpe?g$/i, '.webp');
 
   return (
     <picture className={pictureClassName}>
-      <source type="image/webp" srcSet={srcSet} sizes={sizes} />
+      {srcSet && <source type="image/webp" srcSet={srcSet} sizes={sizes} />}
       <img
         src={fallback}
         alt={alt}

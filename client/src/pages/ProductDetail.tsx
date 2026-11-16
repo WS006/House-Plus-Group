@@ -29,7 +29,7 @@ const OG_BY_PRODUCT_ID: Record<string, string> = {
   'sd-card-128gb': '/images/og/product-sd-card.jpg',
   'charge-controller-40a': '/images/og/product-charge-controller.jpg',
   'rice-cooker-5l': '/images/og/product-rice-cooker.jpg',
-  'portable-power-station-500w': '/images/og/product-power-station.jpg',
+  'portable-power-station-500w': '/images/og/product-power-station-v2.jpg',
 };
 
 /** schema.org category label per catalogue category. */

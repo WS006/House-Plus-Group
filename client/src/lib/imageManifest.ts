@@ -18,7 +18,7 @@ export const IMAGE_SIZES: Record<string, ImageSize> = {
   '/images/products/charge-controller.jpg': { width: 1200, height: 1800 },
   '/images/products/lithium-battery.jpg': { width: 1200, height: 1724 },
   '/images/products/power-bank.jpg': { width: 1200, height: 1800 },
-  '/images/products/power-station.jpg': { width: 1200, height: 900 },
+  '/images/products/power-station-v2.jpg': { width: 1200, height: 900 },
   '/images/products/rice-cooker.jpg': { width: 1200, height: 800 },
   '/images/products/sd-card.jpg': { width: 1200, height: 800 },
   '/images/products/smart-watch.jpg': { width: 1200, height: 1800 },

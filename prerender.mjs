@@ -39,7 +39,7 @@ const OG_BY_ROUTE = {
   '/': '/images/og/home.jpg',
   '/about': '/images/og/about.jpg',
   '/products': '/images/og/products.jpg',
-  '/products/solar': '/images/og/product-power-station.jpg',
+  '/products/solar': '/images/og/product-power-station-v2.jpg',
   '/products/home-appliances': '/images/og/product-air-fryer.jpg',
   '/products/3c-electronics': '/images/og/product-power-bank.jpg',
   '/guides': '/images/og/home.jpg',
@@ -66,7 +66,7 @@ const OG_BY_PRODUCT = {
   'sd-card-128gb': '/images/og/product-sd-card.jpg',
   'charge-controller-40a': '/images/og/product-charge-controller.jpg',
   'rice-cooker-5l': '/images/og/product-rice-cooker.jpg',
-  'portable-power-station-500w': '/images/og/product-power-station.jpg',
+  'portable-power-station-500w': '/images/og/product-power-station-v2.jpg',
 };
 
 /** Static guide routes share the home card (no per-guide artwork exists). */

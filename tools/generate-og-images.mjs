@@ -44,7 +44,7 @@ const sources = [
   { src: 'products/sd-card.jpg', out: 'product-sd-card.jpg' },
   { src: 'products/charge-controller.jpg', out: 'product-charge-controller.jpg' },
   { src: 'products/rice-cooker.jpg', out: 'product-rice-cooker.jpg' },
-  { src: 'products/power-station.jpg', out: 'product-power-station.jpg' },
+  { src: 'products/power-station-v2.jpg', out: 'product-power-station-v2.jpg' },
 ];
 
 let made = 0;

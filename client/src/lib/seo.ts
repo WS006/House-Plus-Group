@@ -28,7 +28,7 @@ const OG_BY_KEY: Record<string, string> = {
   home: '/images/og/home.jpg',
   about: '/images/og/about.jpg',
   products: '/images/og/products.jpg',
-  'products/solar': '/images/og/product-power-station.jpg',
+  'products/solar': '/images/og/product-power-station-v2.jpg',
   'products/home-appliances': '/images/og/product-air-fryer.jpg',
   'products/3c-electronics': '/images/og/product-power-bank.jpg',
   guides: '/images/og/home.jpg',

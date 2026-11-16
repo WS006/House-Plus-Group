@@ -28,7 +28,7 @@ const IMAGE_BY_ROUTE = {
   '/': '/images/hero-solar.jpg',
   '/about': '/images/about-team.jpg',
   '/products': '/images/products/solar-panel.jpg',
-  '/products/solar': '/images/products/power-station.jpg',
+  '/products/solar': '/images/products/power-station-v2.jpg',
   '/products/home-appliances': '/images/products/air-fryer.jpg',
   '/products/3c-electronics': '/images/products/power-bank.jpg',
   '/guides': '/images/hero-solar.jpg',
