@@ -12,6 +12,7 @@ import InquiryModal from '@/components/InquiryModal';
 import ResponsiveImage from '@/components/ResponsiveImage';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getImageSize } from '@/lib/imageManifest';
+import { productAlt } from '@/lib/alt';
 import { Product, favoritesStore, productsStore } from '@/lib/store';
 import { addBreadcrumbSchema, addPageSchema } from '@/lib/seo';
 import { clearSchemaScripts } from '@/lib/schema';
@@ -218,7 +219,7 @@ export default function CategoryProducts() {
               <Link href={`/products/${featured.id}`} className="block relative h-64 lg:h-auto group">
                 <ResponsiveImage
                   src={featured.image}
-                  alt={featured.nameEn}
+                  alt={productAlt(featured.nameEn, content.slug)}
                   {...getImageSize(featured.image)}
                   priority
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -292,7 +293,7 @@ export default function CategoryProducts() {
               <Link href={`/products/${product.id}`} className="block relative overflow-hidden h-48">
                 <ResponsiveImage
                   src={product.image}
-                  alt={product.nameEn}
+                  alt={productAlt(product.nameEn, product.category)}
                   {...getImageSize(product.image)}
                   priority={i === 0}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -345,7 +346,11 @@ export default function CategoryProducts() {
         </div>
       </div>
 
-      <InquiryModal open={inquiryOpen} onClose={() => setInquiryOpen(false)} />
+      <InquiryModal
+        open={inquiryOpen}
+        onClose={() => setInquiryOpen(false)}
+        productName={featured?.nameEn}
+      />
     </div>
   );
 }

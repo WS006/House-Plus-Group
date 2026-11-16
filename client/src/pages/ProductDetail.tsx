@@ -7,6 +7,7 @@ import InquiryModal from '@/components/InquiryModal';
 import ResponsiveImage from '@/components/ResponsiveImage';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getImageSize } from '@/lib/imageManifest';
+import { productAlt } from '@/lib/alt';
 import { Product, favoritesStore, productsStore } from '@/lib/store';
 import { addBreadcrumbSchema, addPageSchema, generateProductSchema, updateProductMeta } from '@/lib/seo';
 import { clearSchemaScripts } from '@/lib/schema';
@@ -175,7 +176,7 @@ export default function ProductDetail() {
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 mb-4">
               <ResponsiveImage
                 src={product.images[activeImg] || product.image}
-                alt={`${getName(product)} - HousePlus Group Nigerian Factory Product`}
+                alt={productAlt(getName(product), product.category)}
                 {...getImageSize(product.images[activeImg] || product.image)}
                 className="w-full h-80 sm:h-96 object-cover"
                 pictureClassName="block w-full"
@@ -195,7 +196,7 @@ export default function ProductDetail() {
                   >
                     <ResponsiveImage
                       src={img}
-                      alt={`${getName(product)} - HousePlus Group Nigerian Factory Thumbnail ${i + 1}`}
+                      alt={productAlt(getName(product), product.category, `View ${i + 1}`)}
                       {...getImageSize(img)}
                       className="w-full h-full object-cover"
                       pictureClassName="block w-full h-full"
@@ -355,7 +356,7 @@ export default function ProductDetail() {
                 <Link key={p.id} href={`/products/${p.id}`} className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-all group">
                   <ResponsiveImage
                     src={p.image}
-                    alt={`${getName(p)} - HousePlus Group Nigerian Factory Related Product`}
+                    alt={productAlt(getName(p), p.category)}
                     {...getImageSize(p.image)}
                     className="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-300"
                     pictureClassName="block w-full"

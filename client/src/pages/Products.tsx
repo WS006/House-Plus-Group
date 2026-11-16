@@ -8,6 +8,7 @@ import InquiryModal from '@/components/InquiryModal';
 import ResponsiveImage from '@/components/ResponsiveImage';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getImageSize } from '@/lib/imageManifest';
+import { productAlt } from '@/lib/alt';
 import { Product, favoritesStore, productsStore } from '@/lib/store';
 import { motion } from 'framer-motion';
 import { ChevronRight, Heart, Search, SlidersHorizontal, X } from 'lucide-react';
@@ -190,7 +191,7 @@ export default function Products() {
                 <div className="relative overflow-hidden h-48">
                   <ResponsiveImage
                     src={product.image}
-                    alt={getProductName(product)}
+                    alt={productAlt(getProductName(product), product.category)}
                     {...getImageSize(product.image)}
                     priority={i === 0}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

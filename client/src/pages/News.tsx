@@ -118,7 +118,7 @@ export default function News() {
             <div className="relative overflow-hidden h-64 lg:h-auto">
               <ResponsiveImage
                 src={NEWS_ARTICLES[0].image}
-                alt={NEWS_ARTICLES[0].title}
+                alt={`${NEWS_ARTICLES[0].title} — HousePlus Group Nigerian Factory news`}
                 {...getImageSize(NEWS_ARTICLES[0].image)}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 pictureClassName="block w-full h-full"
@@ -159,7 +159,7 @@ export default function News() {
               <div className="relative overflow-hidden h-48">
                 <ResponsiveImage
                 src={article.image}
-                alt={`${article.title} - News Article`}
+                alt={`${article.title} — HousePlus Group Nigerian Factory news`}
                 {...getImageSize(article.image)}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 pictureClassName="block w-full h-full"

@@ -14,6 +14,7 @@ import FadeIn from '@/components/FadeIn';
 import InquiryModal from '@/components/InquiryModal';
 import ResponsiveImage from '@/components/ResponsiveImage';
 import { getImageSize } from '@/lib/imageManifest';
+import { productAlt } from '@/lib/alt';
 import { injectSchema, clearSchemaScripts, generateWebPageSchema } from '@/lib/schema';
 import { pageMetadata } from '@/lib/seo';
 
@@ -326,7 +327,7 @@ export default function Home() {
                   <ul className="space-y-1.5 mb-6 flex-1">
                     {industry.products.map(p => (
                       <li key={p} className="flex items-center gap-2 text-sm text-gray-600">
-                        <CheckCircle className="w-4 h-4 text-[#10b981] flex-shrink-0" />
+                        <CheckCircle className="w-4 h-4 text-[#047857] flex-shrink-0" />
                         {p}
                       </li>
                     ))}
@@ -367,7 +368,7 @@ export default function Home() {
                   <div className="relative overflow-hidden h-52">
                     <ResponsiveImage
                       src={product.image}
-                      alt={product.nameEn}
+                      alt={productAlt(product.nameEn, product.category)}
                       {...getImageSize(product.image)}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       pictureClassName="block w-full h-full"
@@ -375,7 +376,7 @@ export default function Home() {
                     />
                     <div className="absolute top-3 left-3 flex gap-1.5">
                       {product.isNew && (
-                        <span className="bg-[#10b981] text-white text-xs font-bold px-2 py-0.5 rounded-full">NEW</span>
+                        <span className="bg-[#047857] text-white text-xs font-bold px-2 py-0.5 rounded-full">NEW</span>
                       )}
                       {product.isHot && (
                         <span className="bg-[#f59e0b] text-[#0f2d5e] text-xs font-bold px-2 py-0.5 rounded-full">HOT</span>
@@ -473,7 +474,7 @@ export default function Home() {
               <div className="relative">
                 <ResponsiveImage
                   src="/images/about-team.jpg"
-                  alt="HousePlus Group Nigerian Factory Team"
+                  alt="Production and sales team at the HousePlus Group Nigerian Factory, Lagos, Nigeria"
                   {...getImageSize('/images/about-team.jpg')}
                   className="rounded-2xl shadow-2xl w-full object-cover h-[450px]"
                   pictureClassName="block w-full"
@@ -501,7 +502,7 @@ export default function Home() {
         <div className="absolute inset-0">
           <ResponsiveImage
             src="/images/africa-market.jpg"
-            alt="Africa Market"
+            alt="Map of Africa highlighting the markets HousePlus Group supplies from its Nigerian factory"
             {...getImageSize('/images/africa-market.jpg')}
             className="w-full h-full object-cover"
             pictureClassName="block w-full h-full"

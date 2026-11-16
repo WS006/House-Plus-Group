@@ -16,10 +16,13 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Not fingerprinted: these were re-encoded in this very release, so a one-year
-# immutable header would have pinned the old files.
+# Not fingerprinted, so this directory follows a strict rule: replacing an image
+# means giving it a NEW filename (power-station-v2.jpg) and re-running the build,
+# never overwriting the bytes behind an existing name — otherwise the one-year
+# immutable header keeps serving the old picture. Icons live outside /images and
+# revalidate on every request.
 /images/*
-  Cache-Control: public, max-age=604800
+  Cache-Control: public, max-age=31536000, immutable
 
 # Filenames are stable; binaries only change when the weight list changes.
 /fonts/*

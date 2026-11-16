@@ -1,0 +1,1 @@
+const e={solar:"solar energy equipment",appliances:"home appliance","home-appliances":"home appliance","3c":"3C electronics","3c-electronics":"3C electronics"};function c(c,o,r){const a=`${c} — ${e[o]??"product"} supplied factory-direct by HousePlus Group Nigerian Factory, Nigeria`;return r?`${a}. ${r}`:a}export{c as p};
