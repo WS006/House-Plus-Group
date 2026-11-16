@@ -27,8 +27,17 @@
 - [Contact](https://www.houseplus.com.ng/contact/): address, phone, email and WhatsApp
 - [Team](https://www.houseplus.com.ng/team/): the staff who handle sales, production and logistics
 
+## Buying guides
+
+- [Solar panel prices in Nigeria](https://www.houseplus.com.ng/guides/solar-panel-price-nigeria/): why no honest supplier publishes a fixed price list, what a quotation contains, and how to compare two quotes line by line
+- [How to size a solar system](https://www.houseplus.com.ng/guides/how-to-size-a-solar-system/): a worked energy audit for a Nigerian home, from kilowatt-hours to panel count
+- [Inverter vs generator](https://www.houseplus.com.ng/guides/inverter-vs-generator-nigeria/): fuel, noise and maintenance compared item by item
+- [LiFePO4 vs lead-acid](https://www.houseplus.com.ng/guides/lifepo4-vs-lead-acid-battery/): cycle life and usable capacity side by side, and when lead-acid still wins
+
 ## Product lines
 
+- Flagship product: [500W Portable Power Station](https://www.houseplus.com.ng/products/portable-power-station-500w/) —
+  512Wh LiFePO4, 500W pure-sine output, 1000W surge, charges from solar, AC or car
 - Solar (flagship: portable power stations): 512Wh LiFePO4 portable power station with
   500W pure-sine output and solar charging; 400W monocrystalline panels, 5kW hybrid
   inverters, 100Ah LiFePO4 batteries, 40A MPPT charge controllers, 100W all-in-one
