@@ -106,6 +106,13 @@
     <loc>https://www.houseplus.com.ng/terms/</loc>
   </url>
   <url>
+    <loc>https://www.houseplus.com.ng/products/portable-power-station-500w/</loc>
+    <image:image>
+      <image:loc>https://www.houseplus.com.ng/images/products/power-station.jpg</image:loc>
+      <image:title>500W Portable Power Station</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://www.houseplus.com.ng/products/solar-panel-mono-400w/</loc>
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/solar-panel.jpg</image:loc>
@@ -187,13 +194,6 @@
     <image:image>
       <image:loc>https://www.houseplus.com.ng/images/products/rice-cooker.jpg</image:loc>
       <image:title>5L Digital Rice Cooker</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://www.houseplus.com.ng/products/portable-power-station-500w/</loc>
-    <image:image>
-      <image:loc>https://www.houseplus.com.ng/images/products/power-station.jpg</image:loc>
-      <image:title>500W Portable Power Station</image:title>
     </image:image>
   </url>
   <url>

@@ -1,5 +1,14 @@
 [
   {
+    "id": "portable-power-station-500w",
+    "category": "solar",
+    "nameEn": "500W Portable Power Station",
+    "titleEn": "Portable Power Station with Solar Charging | HousePlus",
+    "descEn": "512Wh LiFePO4 portable power station, 500W rated / 1000W surge inverter. Charges from solar, AC or car. Pure sine wave AC output, USB-C PD 60W, LED light — power anywhere for phones, laptops, fans, TVs and small appliances.",
+    "image": "/images/products/power-station.jpg",
+    "moq": "20 pcs"
+  },
+  {
     "id": "solar-panel-mono-400w",
     "category": "solar",
     "nameEn": "400W Monocrystalline Solar Panel",
@@ -98,14 +107,5 @@
     "descEn": "5L digital rice cooker with 12 cooking functions. Non-stick inner pot, keep warm function, delay timer. Perfect for families.",
     "image": "/images/products/rice-cooker.jpg",
     "moq": "50 pcs"
-  },
-  {
-    "id": "portable-power-station-500w",
-    "category": "solar",
-    "nameEn": "500W Portable Power Station",
-    "titleEn": "Portable Power Station with Solar Charging | HousePlus",
-    "descEn": "512Wh LiFePO4 portable power station, 500W rated / 1000W surge inverter. Charges from solar, AC or car. Pure sine wave AC output, USB-C PD 60W, LED light — power anywhere for phones, laptops, fans, TVs and small appliances.",
-    "image": "/images/products/power-station.jpg",
-    "moq": "20 pcs"
   }
 ]
