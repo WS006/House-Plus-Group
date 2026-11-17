@@ -37,12 +37,12 @@ export default function Terms() {
               <h2 className="text-2xl font-bold text-[#0f2d5e] mb-4">1. About These Terms</h2>
               <p>
                 These Terms govern your use of www.houseplus.com.ng (the "Site"), operated by{' '}
-                <strong>HousePlus Group Nigerian Factory</strong>, the Nigerian branch of HousePlus
-                Group (official group website:{' '}
+                <strong>HousePlus Group Nigerian Factory</strong>, the Nigerian branch and local
+                entity of HousePlus Group (official group website:{' '}
                 <a
                   href="https://www.houseplus-ch.com"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener"
                   className="text-[#b45309] underline underline-offset-2"
                 >
                   houseplus-ch.com

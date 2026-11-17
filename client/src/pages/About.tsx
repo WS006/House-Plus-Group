@@ -156,7 +156,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Breadcrumb items={[{ label: t('nav_about') }]} />
           <h1 className="text-3xl sm:text-4xl font-black text-white mt-4 mb-2">{t('about_title')}</h1>
-          <p className="text-white/60">The Nigerian branch of HousePlus Group — global manufacturing, local support</p>
+          <p className="text-white/60">HousePlus Group Nigerian Factory is the Nigerian branch and local entity of HousePlus Group — global manufacturing, local support.</p>
         </div>
       </div>
 
@@ -165,7 +165,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-center gap-x-2 gap-y-1 text-center">
           <Building2 className="w-4 h-4 text-[#f59e0b] flex-shrink-0 hidden sm:block" />
           <span className="text-white/75 text-xs sm:text-sm leading-relaxed">{t('group_affiliation_text')}</span>
-          <a href="https://www.houseplus-ch.com" target="_blank" rel="noopener noreferrer" className="text-[#f59e0b] hover:text-[#fbbf24] font-semibold text-xs sm:text-sm underline underline-offset-2">
+          <a href="https://www.houseplus-ch.com" target="_blank" rel="noopener" className="text-[#f59e0b] hover:text-[#fbbf24] font-semibold text-xs sm:text-sm underline underline-offset-2">
             {t('group_affiliation_label')} ↗
           </a>
         </div>

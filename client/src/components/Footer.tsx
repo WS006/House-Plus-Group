@@ -4,6 +4,7 @@
 // ============================================================
 
 import { useLanguage } from '@/contexts/LanguageContext';
+import { COMPANY } from '@/lib/company';
 import { LANGUAGES } from '@/lib/i18n';
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Youtube, Twitter } from 'lucide-react';
 import { Link } from 'wouter';
@@ -53,14 +54,17 @@ export default function Footer() {
             <p className="text-white/60 text-sm leading-relaxed mb-5">
               {t('footer_desc')}
             </p>
-            <a
-              href="https://www.houseplus-ch.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block text-[#f59e0b] hover:text-[#fbbf24] text-xs font-semibold mb-5 underline underline-offset-2"
-            >
-              {t('group_affiliation_label')} ↗
-            </a>
+            <p className="text-white/60 text-xs leading-relaxed mb-5">
+              {t('group_affiliation_text')}{' '}
+              <a
+                href={COMPANY.parentOrganization.url}
+                target="_blank"
+                rel="noopener"
+                className="text-[#f59e0b] hover:text-[#fbbf24] font-semibold underline underline-offset-2"
+              >
+                {t('group_affiliation_label')} ↗
+              </a>
+            </p>
             {/* Social Links */}
             <div className="flex gap-3">
               <a href="https://wa.me/2349078080738" target="_blank" rel="noopener noreferrer"

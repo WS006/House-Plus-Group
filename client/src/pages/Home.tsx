@@ -239,7 +239,7 @@ export default function Home() {
           <a
             href="https://www.houseplus-ch.com"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener"
             className="text-[#f59e0b] hover:text-[#fbbf24] font-semibold text-xs sm:text-sm underline underline-offset-2"
           >
             {t('group_affiliation_label')} ↗

@@ -44,7 +44,7 @@ export default function Privacy() {
                 <a
                   href="https://www.houseplus-ch.com"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener"
                   className="text-[#b45309] underline underline-offset-2"
                 >
                   houseplus-ch.com
