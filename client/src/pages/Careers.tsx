@@ -16,7 +16,7 @@ const JOBS = [
   { title: 'Solar Energy Technical Consultant', location: 'Lagos, Nigeria', type: 'Full-time', dept: 'Technical', desc: 'Provide technical support for solar energy products, assist clients with system design, and conduct product training.' },
   { title: 'Marketing Specialist (Digital)', location: 'Remote', type: 'Full-time', dept: 'Marketing', desc: 'Manage social media, content marketing, and digital advertising campaigns for African and global markets.' },
   { title: 'Logistics Coordinator', location: 'Lagos, Nigeria', type: 'Full-time', dept: 'Operations', desc: 'Coordinate shipments from China to Nigeria and other African countries. Handle customs clearance and last-mile delivery.' },
-  { title: 'Product Sourcing Specialist', location: 'China (Guangzhou/Shenzhen)', type: 'Full-time', dept: 'Sourcing', desc: 'Identify and evaluate new product opportunities, negotiate with Chinese manufacturers, and manage supplier relationships.' },
+  { title: 'Product Sourcing Specialist', location: 'China (Guangzhou/Zhongshan)', type: 'Full-time', dept: 'Sourcing', desc: 'Identify and evaluate new product opportunities, negotiate with Chinese manufacturers, and manage supplier relationships.' },
   { title: 'Customer Service Representative', location: 'Lagos, Nigeria / Remote', type: 'Part-time', dept: 'Customer Service', desc: 'Handle customer inquiries via WhatsApp, email, and phone. Provide product information and after-sales support.' },
 ];
 

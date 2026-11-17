@@ -59,7 +59,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="inline-block text-[#f59e0b] hover:text-[#fbbf24] text-xs font-semibold mb-5 underline underline-offset-2"
             >
-              {t('group_affiliation_label')} 鈫?
+              {t('group_affiliation_label')} ↗
             </a>
             {/* Social Links */}
             <div className="flex gap-3">
